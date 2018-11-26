@@ -1,0 +1,56 @@
+.card{
+    height: 280px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 380px;
+    background-color: rgba(0,0,0,0.5) !important;
+}
+
+h3{
+    color: white;
+}
+
+.input-group-prepend span{
+    width: 30px;
+    height: auto;
+    background-color: rgba(0,0,0,0.5) !important;
+    color: #ffffff;
+    text-align-all: center;
+}
+
+input:focus{
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+
+}
+
+.form-check label{
+    color: white;
+    font-size: 15px;
+}
+
+.form-check-input{
+    font-size: 15px;
+    display: inline;
+}
+h2, h4 {
+    color: #ffffff;
+    text-align: center;
+}
+.card header{
+    color: #ffffff;
+}
+.mb-1{
+    color: white;
+}
+a{
+    color:white;
+}
+.logo {
+    border-bottom: 4px solid red;
+    border-bottom-color: #EE7401;
+}
+.entrar{
+    background-color: #EE7401;
+    color:white;
+}

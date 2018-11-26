@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html >
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,18 +10,18 @@
     <title>Inicio Sistema Salud</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/estilo.css')}}" rel="stylesheet">
 
-    <!-- Custom styles for this template
-    <link href="css/cover.css" rel="stylesheet">-->
+
     <style>
         html, body {
-            background-image: url("img/fondo1.jpg");
-            background-size: 150% 300%;
+            background-image: url("img/fondo2.png");
+            background-size: 100% 200%;
             color: #00447c;
             font-family: 'Raleway', sans-serif;
             font-weight: 40;
-            height: 50vh;
+            height: 60vh;
             margin: 0;
         }
         .container {
@@ -30,99 +30,90 @@
     </style>
 </head>
 <body>
+
 <div class="container">
-    <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="img/logotipo.png" alt="" width="600" height="150">
-        <h2>SISTEMA DE SALUD<br/>DISPENSARIO MÉDICO DILIPA</h2>
-    </div>
+    <div class="row logo">
+        <div class="col-md-3">
+            <div class="py-4">
+                <img class="d-block mx-auto mb-6" src="img/dili.png" alt="" width="500" height="100">
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="py-4">
+                <img class="d-block mx-auto mb-6" src="img/logo1.png" alt="" width="350" height="110">
+            </div>
+        </div>
+    </div><br><br>
 
     <div class="row">
-        <div class="col-md-5 order-md-2">
-            <h5 class="d-flex justify-content-between text-md-center">
-                Inicio de sesion
-            </h5>
-            <!--<a href="{{ route('login') }}">Login</a>-->
+        <div class="col-md-12" style="align-content: center">
+            <h2>SISTEMA DE SALUD</h2>
+            <h4>Dispensario Médico Dilipa</h4>
+                <div class="card offset-md-4">
+                    <div class="card-body">
+                        <h3>Sign In</h3>
+                        <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+                            @csrf
+                            <div class="col-auto">
 
-                <div>
-                    <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
-                        @csrf
-                        <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-left">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="py-2"><i class="fas fa-user fa-lg fa-fw"></i></span>
+                                    </div>
+                                    <input id="email" placeholder="user@dilipa.edu.ec" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                    @if ($errors->has('email'))
+                                        <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
+                                    @endif
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-left">{{ __('Password') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
+                                </div>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="py-2"><i class="fas fa-lock-open fa-lg fa-fw"></i></span>
+                                    </div>
+                                    <input id="password" placeholder="contraseña" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                    @if ($errors->has('password'))
+                                        <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
+                                    @endif
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
+                            <div class="offset-md-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="remember">
+                                            {{ __('Recúerdame') }}
+                                    </label>
+                                </div>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
+                                <a for="customControlAutosizing" href="{{ route('password.request')}}">
+                                    Olvidaste la contraseña?</a>
                             </div>
-                        </div>
-                    </form>
+                            <button type="submit" class="btn offset-md-5 entrar">{{ __('Entrar') }}</button>
+                        </form><br>
+                    </div>
                 </div>
-        </div>
-        <div class="col-md-7 order-md-1">
-            555
+            </div>
         </div>
     </div>
-
-    <div class="my-5 pt-5 text-muted text-center text-small">
+    <div class="my-5 text-muted text-center text-small footer">
         <p class="mb-1">&copy;2018 Dispensario Medico Dilipa</p>
-        <ul class="list-inline">
+        <!--<ul class="list-inline">
             <li class="list-inline-item"><a href="#">Privacy</a></li>
             <li class="list-inline-item"><a href="#">Terms</a></li>
             <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
+        </ul>*/-->
     </div>
 </div>
+
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
-<!-- Bootstrap core JavaScript
-    ================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<script src="bootstrap/assets/js/vendor/popper.min.js"></script>
-<script src="bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="bootstrap/assets/js/vendor/holder.min.js"></script>
 </html>
 
 
