@@ -14,6 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+/********************************************************************************************************/
+/*RUTAS DOCTOR*/
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/consultapaciente', 'Doctor\PacienteController@index')->name('consultapaciente');
 Route::get('/paciente/{id_paciente?}', 'Doctor\PacienteController@show')->name('consulta');
@@ -22,12 +24,15 @@ Route::post('registro', 'Doctor\ConsultaController@insert')->name('registro');
 Route::post('/posts', 'Doctor\PacienteController@store')->name ('diagnostico');
 Route::get('/diagnostico', 'Doctor\DiagnosticoController@index')->name('diagnostico');
 
-Route::get('/cita', 'ConsultaController@cita')->name('citamedica');
-
+Route::post('/citamedica', 'Doctor\ConsultaController@cita');
+Route::get('/pacientes', 'Paciente\PacienteController@index')->name('pacientes');
 //Route::get('/importar', 'ExcelController@importar')->name('importar'); //Importar archivos excel a mysql.
+/********************************************************************************************************/
+/*RUTAS ASISTENTE*/
 
-
-
+/********************************************************************************************************/
+/*RUTAS PACIENTE*/
+Route::get('/pacientes/{id_paciente?}', 'Paciente\PacienteController@show')->name('datosfiliacion');
 
 
 

@@ -88,7 +88,7 @@ body {
 .list-group-item {
     background-color: #00447C;
     color: #ffffff;
-    border: 1px solid #EE7401;
+    border: 1px solid;
     border-color: #ffffff;
 }
 

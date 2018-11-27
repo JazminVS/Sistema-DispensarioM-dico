@@ -6,20 +6,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="{{asset('img/icono.png')}}">
-
-    <title>Doctor</title>
+    <title>Paciente</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
-
     <!-- Custom styles for this template -->
-    <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
-
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <!-- CHOOSEN-->
-    <link href="{{asset('choosen/chosen.css')}}" rel="stylesheet">
-
+    <link href="{{asset('css/paciente.css')}}" rel="stylesheet">
 
 </head>
 
@@ -46,7 +38,7 @@
                         {{ csrf_field() }}
                     </form>
                 </li>
-        @endguest
+                @endguest
     </ul>
 </nav>
 
@@ -55,38 +47,32 @@
         <nav class="col-md-2 d-none d-md-block sidebar dilipa">
             <div class="sidebar-sticky">
                 <div href="#" class="list-group-item flex-column align-items">
-                    <div class="d-flex w-100">
-                        <img src="{{asset('img/doctor.png')}}" alt="logo_dispensario" width="100" height="50">
-                        <h6 class="mb-1">PERFIL DOCTOR<br></h6>
+                    <div class="row">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <small>Dr(a).{{ Auth::user()->name }}</small>
+                        <div class="col-sm-5 col-md-4">
+                            <img src="{{asset('img/paciente.png')}}" alt="logo_dispensario" width="70" height="60">
+                        </div>
+                        <div class="col-sm-5 offset-sm-0 col-md-8 h6">
+                            Paciente<br>
+                            <small>Jazmin Villamarin</small>
+                        </div>
                     </div>
                 </div>
                 <div class="list-group text-uppercase" >
-                    <a href="home" class="list-group-item list-group-item-action">
+                    <a href="datosfiliacion" class="list-group-item list-group-item-action">
                         <span data-feather="home"></span>
-                        Dashboard
+                        Datos de Filiación
                     </a>
                     <a href="consultapaciente" class="list-group-item list-group-item-action">
                         <span data-feather="heart"></span>
-                        Consulta médica
+                        Historial Previo
                     </a>
-                    <a href="/#" class="list-group-item list-group-item-action">
-                        <span data-feather="calendar"></span>
-                        Cita médica
-                    </a>
-                    <a href="pacientes" class="list-group-item list-group-item-action">
-                        <span data-feather="users"></span>
-                        Pacientes
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <span data-feather="truck"></span>
-                        Farmacia
-                    </a>
+
+
                 </div>
             </div>
         </nav>
@@ -111,36 +97,4 @@
     feather.replace()
 </script>
 
-
-<!-- Graphs -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-<script>
-    var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            datasets: [{
-                data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-                lineTension: 0,
-                backgroundColor: 'transparent',
-                borderColor: '#007bff',
-                borderWidth: 4,
-                pointBackgroundColor: '#007bff'
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: false
-                    }
-                }]
-            },
-            legend: {
-                display: false,
-            }
-        }
-    });
-</script>
 </html>

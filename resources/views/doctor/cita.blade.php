@@ -28,23 +28,7 @@
                     </form>
                     -->
     </div>
-    <script>
-        $(document).ready(function() {
 
-            $('#calendar').fullCalendar({
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
-                },
-                defaultDate: '2018-11-16',
-                editable: false,
-                eventLimit: true, // allow "more" link when too many events
-                events: [{"title":"were","url":".\/?view=editreservation&id=1","start":"2018-11-15T11:12"}]		});
-
-        });
-
-    </script>
 
     <div class="row">
         <div class="col-md-12">
