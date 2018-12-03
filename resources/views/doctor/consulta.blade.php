@@ -12,10 +12,10 @@
         <h5 class="col-sm-3">Paciente</h5>
         <div class="col-sm-7">
             <?PHP
-             $id_paciente=$paciente->id;
+             $pacienteid=$paciente->id;
              //echo $id_paciente;
             ?>
-            <input disabled type="text"  class="form-control" id="paciente" name="paciente" value="{!!$id_paciente!!}">
+            <input disabled type="text"  class="form-control" id="paciente" name="pacienteid" value="{!!$pacienteid!!}">
         </div>
     </div>
 

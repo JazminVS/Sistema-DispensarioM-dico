@@ -92,32 +92,9 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="discapacidad" class="col-md-2 col-form-label">Tipo</label>
-            <label for="discapacidad" class="col-md-1 col-form-label">Fisica  %</label>
-            <div class="col-md-2">
-                <input type="text" class="form-control" id="discapacidad" name="discapacidad">
-            </div>
-            <label for="discapacidad" class="col-md-1 col-form-label">Intelectual%</label>
-            <div class="col-md-2">
-                <input type="text" class="form-control" id="discapacidad" name="discapacidad">
-            </div>
+
         </div>
-        <div class="form-group row">
-            <label for="discapacidad" class="col-md-1 offset-md-2 col-form-label">Mental%</label>
-            <div class="col-md-2">
-                <input type="text" class="form-control" id="discapacidad" name="discapacidad">
-            </div>
-            <label for="discapacidad" class="col-md-1 col-form-label">Auditiva%</label>
-            <div class="col-md-2">
-                <input type="text" class="form-control" id="discapacidad" name="discapacidad">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="discapacidad" class="col-md-1 offset-md-2 col-form-label">Visual %</label>
-            <div class="col-md-2">
-                <input type="text" class="form-control" id="discapacidad" name="discapacidad">
-            </div>
-        </div>
+
         <button class="btn btn-bd-primary">EDITAR</button>
 
     </form>

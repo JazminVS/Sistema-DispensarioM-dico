@@ -29,7 +29,9 @@ Route::get('/pacientes', 'Paciente\PacienteController@index')->name('pacientes')
 //Route::get('/importar', 'ExcelController@importar')->name('importar'); //Importar archivos excel a mysql.
 /********************************************************************************************************/
 /*RUTAS ASISTENTE*/
-
+Route::get('/asistente', 'asistente\AsistenteController@index')->name('asistente');
+Route::get('/asistente/usuario', 'asistente\AsistenteController@ingresar');
+Route::post('asistente/pacienteasis', 'Paciente\PacienteController@create')->name('pacienteasis');
 /********************************************************************************************************/
 /*RUTAS PACIENTE*/
 Route::get('/pacientes/{id_paciente?}', 'Paciente\PacienteController@show')->name('datosfiliacion');
