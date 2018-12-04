@@ -4,18 +4,18 @@
     <div class="border-bottom border-info">
         <h2 class="text-center text-info">CONSULTA MÉDICA</h2>
     </div>
-
+    <?PHP
+    $id=$paciente->id;
+    //echo $id_paciente;
+    ?>
 <div class="container offset-md-1"><br/>
     <form class="form-horizontal" method="POST" action="{{ route('registro') }}">
         {{ csrf_field() }}
     <div class="form-group row">
-        <h5 class="col-sm-3">Paciente</h5>
-        <div class="col-sm-7">
-            <?PHP
-             $pacienteid=$paciente->id;
-             //echo $id_paciente;
-            ?>
-            <input disabled type="text"  class="form-control" id="paciente" name="pacienteid" value="{!!$pacienteid!!}">
+        <h5 class="col-md-3">Paciente</h5>
+        <input value="{{$paciente->id}}" name="paciente" style="display:none">
+        <div class="col-md-7">
+         <input value="{{$paciente->nombres." ".$paciente->apellidos}}" class="form-control" >
         </div>
     </div>
 

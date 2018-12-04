@@ -33,7 +33,7 @@
             </div>
             <label for="estado_civil" class="col-md-2 col-form-label">Estado civil</label>
             <div class="col-md-3">
-            <select class="form-control" name="estado_civil">
+            <select id="" class="form-control" name="estado_civil">
                 @foreach($estado_civil as $estado)
                     <option value="{{$estado->id}}">{{$estado->descripcion}}</option>
                 @endforeach
@@ -45,7 +45,7 @@
             <div class="col-md-3">
                 <select class="form-control" name="genero">
                     @foreach($generos as $genero)
-                        <option>{{$genero->descripcion}}</option>
+                        <option value="{{$genero->id}}">{{$genero->descripcion}}</option>
                     @endforeach
                 </select>
             </div>
@@ -57,9 +57,9 @@
         <div class="form-group row">
             <label for="nivel_instruccion" class="col-md-2 col-form-label">Nivel de Instrucción</label>
             <div class="col-md-3">
-                <select class="form-control">
+                <select class="form-control" name="instruccion">
                     @foreach($tipo_instruccion as $instruccion)
-                        <option>{{$instruccion->descripcion}}</option>
+                        <option value="{{$instruccion->id}}">{{$instruccion->descripcion}}</option>
                     @endforeach
                 </select>
             </div>
@@ -162,12 +162,13 @@
             ]);
                 ?>
             <div class="col-md-3">
-                <select class="form-control">
-                </select><br>
+
                 <textarea class="form-control rounded-0" id="direccion" name="direccion" rows="3"></textarea>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-2">
                 <label for="telf1" class="col-form-label">telefono convencional</label>
+            </div>
+            <div class="col-md-3">
                 <input type="text" class="form-control" id="telf1" name="telf1" placeholder="(02)3010856">
             </div>
         </div>
@@ -180,13 +181,16 @@
                 <label for="telf1" class="col-form-label">telefono convencional</label>
                 <input type="text" class="form-control" id="telf1" name="telf3" placeholder="(02)3010856">
             </div>
-        </div>
+        </div></br>
         <div class="form-group row">
             <label for="discapacidad" class="col-md-2 col-form-label">Discapacidad</label>
-            <div class="col-md-3">
-                <input type="text" class="form-control" id="discapacidad" name="discapacidad">
+            <div class="col-md-1">
+                <label class="radio-inline">
+                    <input type="radio" id="discapacidad" value="true" name="discapacidad">Si</label>
+                <label class="radio-inline">
+                    <input type="radio" id="discapacidad" value="false" name="discapacidad">No</label>
             </div>
-            <label for="carnet" class="col-md-2 col-form-label">No.carnet</label>
+            <label for="carnet" class="col-md-1 col-form-label">No.carnet</label>
             <div class="col-md-3">
                 <input type="text" class="form-control" id="carnet" name="carnet">
             </div>
@@ -194,15 +198,15 @@
         <div class="form-group row">
             <label for="nivel_instruccion" class="col-md-2 col-form-label">Tipo Discapacidad</label>
             <div class="col-md-3">
-                <select class="form-control">
+                <select class="form-control" name="tipo_discapacidad">
                     @foreach($tipo_discapacidad as $discapacidad)
-                        <option>{{$discapacidad->descripcion}}</option>
+                        <option value="{{$discapacidad->id}}">{{$discapacidad->descripcion}}</option>
                     @endforeach
                 </select>
             </div>
             <label for="carnet" class="col-md-2 col-form-label">Porcentaje(%)</label>
             <div class="col-md-3">
-                <input type="text" class="form-control" id="carnet" name="carnet" placeholder="10">
+                <input type="text" class="form-control" id="carnet" name="porcentaje" placeholder="10">
             </div>
         </div>
 

@@ -19,10 +19,8 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/consultapaciente', 'Doctor\PacienteController@index')->name('consultapaciente');
 Route::get('/paciente/{id_paciente?}', 'Doctor\PacienteController@show')->name('consulta');
-Route::post('registro', 'Doctor\ConsultaController@insert')->name('registro');
-
-Route::post('/posts', 'Doctor\PacienteController@store')->name ('diagnostico');
-Route::get('/diagnostico', 'Doctor\DiagnosticoController@index')->name('diagnostico');
+Route::post('/registro',  'Doctor\ConsultaController@insertar')->name('registro');
+Route::post('/diagnostico',  'Doctor\ConsultaController@diagnostico')->name('insertardiagnostico');
 
 Route::post('/citamedica', 'Doctor\ConsultaController@cita');
 Route::get('/pacientes', 'Paciente\PacienteController@index')->name('pacientes');
