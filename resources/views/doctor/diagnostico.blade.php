@@ -3,21 +3,22 @@
 @section('content')
     <div class="container offset-1">
                 <h4>Diagnóstico</h4>
-        <form class="form-horizontal" method="POST" action="{{route('insertardiagnostico')}}">
+        <form class="form-horizontal" method="POST" action="{{ route('insertardiagnostico') }}">
+            {{ csrf_field() }}
                 <?php
 
                 echo"Consulta ingresada correctamente",$id_consulta;
                 ?>
             <input value="{{$id_consulta}}" name="consulta" style="display:none">
-            <div class="form-group row ">
-            <label for="inputPassword" class="col-md-3 col-form-label">Tipo de diagnóstico</label>
-            <div class="col-md-7">
-                 <select class="form-control col-md-4" name="diagnostico">
-                      @foreach($diagnosticos as $diagnostico)
-                      <option value="{{$diagnostico->id}}">{{$diagnostico->descripcion}}</option>
-                      @endforeach
-                 </select>
-            </div>
+            <div class="form-group row">
+            <label for="tipo_diagnostico" class="col-md-3 col-form-label">Tipo diagnóstico</label>
+                <div class="col-md-3">
+                     <select class="form-control" name="diagnostico" id="tipo_diagnostico">
+                          @foreach($diagnosticos as $diagnostico)
+                              <option value="{{$diagnostico->id}}">{{$diagnostico->descripcion}}</option>
+                          @endforeach
+                     </select>
+                </div>
             </div>
 
             <div class="form-group row ">
