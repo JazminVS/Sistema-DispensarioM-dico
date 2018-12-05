@@ -27,10 +27,14 @@ Route::get('/pacientes', 'Paciente\PacienteController@index')->name('pacientes')
 //Route::get('/importar', 'ExcelController@importar')->name('importar'); //Importar archivos excel a mysql.
 /********************************************************************************************************/
 /*RUTAS ASISTENTE*/
-Route::get('/asistente', 'asistente\AsistenteController@index')->name('asistente');
+Route::get('/asistente/asistente', 'asistente\AsistenteController@index')->name('asistente');
 Route::get('/asistente/usuario', 'asistente\AsistenteController@ingresar');
-Route::post('asistente/pacienteasis', 'Paciente\PacienteController@create')->name('pacienteasis');
-Route::post('asistente/procedimientos', 'asistente\AsistenteController@procedimientos')->name('procedimientos');
+Route::post('asistente/pacienteasis', 'Paciente\PacienteController@crear')->name('pacienteasis');
+Route::get('/asistente/paciente', 'Paciente\PacienteController@paciente')->name('paciente');
+Route::get('/asistente/{id_paciente?}', 'Paciente\PacienteController@verpaciente')->name('procedimiento');
+Route::post('/asistente/ingresoprocedimiento', 'asistente\AsistenteController@ingresoprocedimiento')->name('ingreso_procedimiento');
+Route::get('/asistente/farmacia', 'asistente\AsistenteController@farmacia')->name('farmacia');
+//Route::get('/asistente/procedimientos', 'asistente\AsistenteController@procedimiento')->name('procedimientos');
 
 /********************************************************************************************************/
 /*RUTAS PACIENTE*/

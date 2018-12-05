@@ -67,7 +67,7 @@
                         <span data-feather="home"></span>
                         Perfil
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a href="paciente" class="list-group-item list-group-item-action">
                         <span data-feather="heart"></span>
                         Procedimientos
                     </a>
@@ -79,7 +79,7 @@
                         <span data-feather="heart"></span>
                         Citas médicas
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a href="farmacia" class="list-group-item list-group-item-action">
                         <span data-feather="heart"></span>
                         Farmacia
                     </a>
