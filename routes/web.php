@@ -30,6 +30,8 @@ Route::get('/pacientes', 'Paciente\PacienteController@index')->name('pacientes')
 Route::get('/asistente', 'asistente\AsistenteController@index')->name('asistente');
 Route::get('/asistente/usuario', 'asistente\AsistenteController@ingresar');
 Route::post('asistente/pacienteasis', 'Paciente\PacienteController@create')->name('pacienteasis');
+Route::post('asistente/procedimientos', 'asistente\AsistenteController@procedimientos')->name('procedimientos');
+
 /********************************************************************************************************/
 /*RUTAS PACIENTE*/
 Route::get('/pacientes/{id_paciente?}', 'Paciente\PacienteController@show')->name('datosfiliacion');
