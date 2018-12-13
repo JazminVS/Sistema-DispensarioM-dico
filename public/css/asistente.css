@@ -109,6 +109,25 @@ body {
     border-color: #EE7401;
 }
 
+.btn-dilipa1{
+    color: #ffffff;
+    background-color: #00447C;
+    border-color: #00447C;
+}
 
+.bg-cielo {
+    background-color: #1f659e !important;
+}
+
+.list-group-mine .list-group-item {
+    background-color: #00447C;
+    border-top: 1px solid #FFFFFF;
+    border-left-color: #fff;
+    border-right-color: #fff;
+}
+
+.list-group-mine .list-group-item:hover {
+    background-color: #EE7401;
+}
 
 

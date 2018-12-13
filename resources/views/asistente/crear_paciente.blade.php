@@ -1,100 +1,148 @@
 @extends('layouts.asistente')
-
-
 @section('content')
-    <h4>Ingreso de Pacientes</h4>
-    <hr/>
-    <form class="offset-md-1" method="POST" action="{{route('pacienteasis')}}">
+    <div class="border-bottom border-dark">
+        <h3 class="text-center text-dark">INGRESO DE PACIENTES</h3>
+    </div><br>
+    <form class="offset-md-1" method="POST" action="{{route('crearpaciente')}}">
         {{ csrf_field() }}
-        <div class="form-group row">
-            <label for="nombres" class="col-md-2 col-form-label">Nombres</label>
-            <div class="col-md-3">
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <label for="nombres" class="col-form-label">Nombres</label>
                 <input type="text" class="form-control" id="nombres" name="nombres">
             </div>
-            <label for="nombres" class="col-md-2 col-form-label">Apellidos</label>
-            <div class="col-md-3">
+            <div class="col-md-4 form-group">
+                <label for="nombres" class="col-form-label ">Apellidos</label>
                 <input type="text" class="form-control" id="nombres" name="apellidos">
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="sucursal" class="col-md-1 col-form-label">Sucursal</label>
-            <div class="col-md-3">
-                <select class="form-control" name="sucursal" id="sucursal">
-                    @foreach($sucursales as $sucursal)
-                        <option value="{{$sucursal->id}}">{{$sucursal->descripcion}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <label for="area" class="col-md-1 col-form-label">Area</label>
-            <div class="col-md-2">
-                <input type="text" class="form-control" id="area" name="area" >
-            </div>
-            <label for="puesto" class="col-md-1 col-form-label">Puesto</label>
-            <div class="col-md-2">
-                <input type="text" class="form-control" id="puesto" name="puesto" >
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="cedula" class="col-md-2 col-form-label">Cedula de identidad</label>
-            <div class="col-md-3">
-                <input type="text" class="form-control" id="cedula" name="cedula">
-            </div>
-            <label for="fecha_nacimiento" class="col-md-2 col-form-label">Fecha de nacimiento</label>
-            <div class="col-md-3">
-                <input type="text" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="lugar" class="col-md-2 col-form-label">Lugar de nacimiento</label>
-            <div class="col-md-3">
-                <input type="text" class="form-control" id="lugar" name="lugar">
-            </div>
-            <label for="estado_civil" class="col-md-2 col-form-label">Estado civil</label>
-            <div class="col-md-3">
-            <select id="" class="form-control" name="estado_civil">
-                @foreach($estado_civil as $estado)
-                    <option value="{{$estado->id}}">{{$estado->descripcion}}</option>
-                @endforeach
-            </select>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="genero" class="col-md-2 col-form-label">Genero</label>
-            <div class="col-md-3">
-                <select class="form-control" name="genero">
+            <div class="col-md-4 form-group">
+                <label for="genero" class="col-form-label">Genero</label>
+                <select class="form-control col-md-8" name="genero">
                     @foreach($generos as $genero)
                         <option value="{{$genero->id}}">{{$genero->descripcion}}</option>
                     @endforeach
                 </select>
             </div>
-            <label for="edad" class="col-md-2 col-form-label">Edad</label>
-            <div class="col-md-3">
-                <input type="text" class="form-control" id="edad" name="edad" placeholder="23">
+        </div>
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <label for="fecha_nacimiento" class="col-form-label">Fecha de nacimiento</label>
+                <input id="datepicker" width="276" name="fecha_nacimiento" class="col-md-9">
+                <script>
+                    $('#datepicker').datepicker({
+                        uiLibrary: 'bootstrap4',
+                        onSelect: function(date) {
+                            alert(date);
+                        }
+                    });
+                </script>
+            </div>
+            <div class="col-md-4 form-group">
+                <label for="lugar" class="col-form-label">Lugar de nacimiento</label>
+                <input type="text" class="form-control" id="lugar" name="lugar">
+            </div>
+            <div class="col-md-4 form-group">
+                <label for="estado_civil" class="col-form-label">Estado civil</label>
+                <select id="" class="form-control col-md-8" name="estado_civil">
+                    @foreach($estado_civil as $estado)
+                        <option value="{{$estado->id}}">{{$estado->descripcion}}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
-        <div class="form-group row">
-            <label for="nivel_instruccion" class="col-md-2 col-form-label">Nivel de Instrucción</label>
-            <div class="col-md-3">
-                <select class="form-control" name="instruccion">
+        <label for="cedula" class="col-form-label">Cedula de identidad</label>
+        <input type="text" class="form-control col-md-3" id="cedula" name="cedula" maxlength="10">
+        <br>
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <label for="sucursal" class="col-form-label">Sucursal</label>
+                <select class="form-control col-md-8" name="sucursal" id="sucursal">
+                    @foreach($sucursales as $sucursal)
+                        <option value="{{$sucursal->id}}">{{$sucursal->descripcion}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-4 form-group">
+                <label for="area" class="col-form-label">Area</label>
+                <input type="text" class="form-control" id="area" name="area">
+            </div>
+            <div class="col-md-4 form-group">
+                <label for="puesto" class="col-form-label">Puesto</label>
+                <input type="text" class="form-control" id="puesto" name="puesto"><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <label for="nivel_instruccion" class="col-form-label">Nivel de Instrucción</label>
+                <select class="form-control col-md-8" name="instruccion">
                     @foreach($tipo_instruccion as $instruccion)
                         <option value="{{$instruccion->id}}">{{$instruccion->descripcion}}</option>
                     @endforeach
                 </select>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="profesion" class="col-md-2 col-form-label">Profesion</label>
-            <div class="col-md-3">
-                <input type="text" class="form-control" id="profesion" name="profesion"
-                       placeholder="Tecnico Industrial">
+            <div class="col-md-4 form-group">
+                <label for="profesion" class=" col-form-label">Profesion</label>
+                <input type="text" class="form-control" id="profesion" name="profesion">
             </div>
-            <label for="ocupacion" class="col-md-2 col-form-label">Ocupacion</label>
-            <div class="col-md-3">
+            <div class="col-md-4 form-group">
+                <label for="ocupacion" class="col-form-label">Ocupacion</label>
                 <input type="text" class="form-control" id="ocupacion" name="ocupacion">
             </div>
         </div>
-        <div class="form-group row">
-            <label for="direccion" class="col-md-2 col-form-label">Direccion domiciliaria</label>
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <label for="direccion" class="col-form-label">Direccion domiciliaria</label>
+                <textarea class="form-control" rows="2" id="direccion" name="direccion"></textarea>
+            </div>
+            <div class="col-md-4 form-group">
+                <label for="telf1" class="col-form-label">Telf. convencional</label>
+                <input type="text" class="form-control" id="telf1" name="telf1">
+            </div>
+            <div class="col-md-4 form-group">
+                <label for="telf2" class="col-form-label">Nro. celular</label>
+                <input type="text" class="form-control" id="telf2" name="telf2">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <label for="contacto" class="col-form-label">Contacto de emergencia</label>
+                <input type="text" class="form-control" id="contacto" name="contacto">
+            </div>
+            <div class="col-md-4 form-group">
+                <label for="telf3" class="col-form-label">Telf.convencional</label>
+                <input type="text" class="form-control" id="telf3" name="telf3">
+            </div>
+            <div class="col-md-4 form-group">
+                <label for="telf4" class="col-form-label">Nro. celular</label>
+                <input type="text" class="form-control" id="telf4" name="telf4">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 form-group">
+                <label for="discapacidad" class="col-form-label">Discapacidad</label>
+                <label class="radio-inline col-form-label">
+                    <input type="radio" id="discapacidad" value="true" name="discapacidad">Si</label>
+                <label class="radio-inline col-form-label">
+                    <input type="radio" id="discapacidad" value="false" name="discapacidad">No</label>
+            </div>
+            <div class="col-md-3 form-group">
+                <label for="carnet" class="col-form-label">No.carnet</label>
+                <input type="text" class="form-control" id="carnet" name="carnet" maxlength="10">
+            </div>
+            <div class="col-md-3 form-group">
+                <label for="nivel_instruccion" class="col-form-label">Tipo Discapacidad</label>
+                <select class="form-control col-md-8" name="tipo_discapacidad">
+                    @foreach($tipo_discapacidad as $discapacidad)
+                        <option value="{{$discapacidad->id}}">{{$discapacidad->descripcion}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-3 form-group">
+                <label for="carnet" class="col-form-label">Porcentaje(%)</label>
+                <input type="text" class="form-control" id="carnet" name="porcentaje" maxlength="10">
+            </div>
+        </div>
+
+    <button class="btn btn-outline-danger btn-block" type="submit" style="max-width: 60rem;">CREAR PACIENTE</button>
             <?php
             $data = array ([
                 'Azuay' =>[
@@ -179,59 +227,5 @@
 
             ]);
                 ?>
-            <div class="col-md-3">
-
-                <textarea class="form-control rounded-0" id="direccion" name="direccion" rows="3"></textarea>
-            </div>
-            <div class="col-md-2">
-                <label for="telf1" class="col-form-label">telefono convencional</label>
-            </div>
-            <div class="col-md-3">
-                <input type="text" class="form-control" id="telf1" name="telf1" placeholder="(02)3010856">
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-md-5">
-                <label for="contacto" class=" col-form-label">Contacto de emergencia</label>
-                <input type="text" class="form-control" id="contacto" name="contacto">
-            </div>
-            <div class="col-md-5">
-                <label for="telf1" class="col-form-label">telefono convencional</label>
-                <input type="text" class="form-control" id="telf1" name="telf3" placeholder="(02)3010856">
-            </div>
-        </div></br>
-        <div class="form-group row">
-            <label for="discapacidad" class="col-md-2 col-form-label">Discapacidad</label>
-            <div class="col-md-1">
-                <label class="radio-inline">
-                    <input type="radio" id="discapacidad" value="true" name="discapacidad">Si</label>
-                <label class="radio-inline">
-                    <input type="radio" id="discapacidad" value="false" name="discapacidad">No</label>
-            </div>
-            <label for="carnet" class="col-md-1 col-form-label">No.carnet</label>
-            <div class="col-md-3">
-                <input type="text" class="form-control" id="carnet" name="carnet">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="nivel_instruccion" class="col-md-2 col-form-label">Tipo Discapacidad</label>
-            <div class="col-md-3">
-                <select class="form-control" name="tipo_discapacidad">
-                    @foreach($tipo_discapacidad as $discapacidad)
-                        <option value="{{$discapacidad->id}}">{{$discapacidad->descripcion}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <label for="carnet" class="col-md-2 col-form-label">Porcentaje(%)</label>
-            <div class="col-md-3">
-                <input type="text" class="form-control" id="carnet" name="porcentaje" placeholder="10">
-            </div>
-        </div>
-
-
-
-        <button class="btn btn-bd-primary" type="submit">ACEPTAR</button>
-
     </form>
-    </br>
 @endsection

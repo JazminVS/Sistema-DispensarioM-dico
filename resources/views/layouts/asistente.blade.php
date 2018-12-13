@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, user-calable=no, initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+
     <link rel="icon" href="{{asset('img/icono.png')}}">
     <title>Asistente</title>
 
@@ -12,6 +13,12 @@
     <link href="{{asset('bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{asset('css/asistente.css')}}" rel="stylesheet">
+
+    <!--CALENDARIO ENLACES1-->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -44,8 +51,8 @@
 
 <div class="container-fluid">
     <div class="row">
-        <nav class="col-md-2 d-none d-md-block sidebar dilipa">
-            <div class="sidebar-sticky">
+        <nav class="col-md-2 d-none d-md-block sidebar">
+            <div class="sidebar-sticky dilipa">
                 <div href="#" class="list-group-item flex-column align-items">
                     <div class="row">
                         @if (session('status'))
@@ -62,32 +69,41 @@
                         </div>
                     </div>
                 </div>
-                <div class="list-group text-uppercase group" >
-                    <a href="asistente" class="list-group-item list-group-item-action">
+                <div class="list-group list-group-mine">
+                    <a href="home" class="list-group-item">
                         <span data-feather="home"></span>
-                        Perfil
+                        PERFIL
                     </a>
-                    <a href="paciente" class="list-group-item list-group-item-action">
-                        <span data-feather="heart"></span>
-                        Procedimientos
+                    <a href="paciente" class="list-group-item">
+                        <span data-feather="folder-plus"></span>
+                        PROCEDIMIENTOS
                     </a>
-                    <a href="/asistente/usuario" class="list-group-item list-group-item-action">
-                        <span data-feather="heart"></span>
-                        Pacientes
+                    <a href="pacientes" class="list-group-item">
+                        <span data-feather="user-plus"></span>
+                        PACIENTES
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <span data-feather="heart"></span>
-                        Citas médicas
+                    <a class="list-group-item">
+                        <span data-feather="eye"></span>
+                        EXAMEN FISICO
                     </a>
-                    <a href="farmacia" class="list-group-item list-group-item-action">
-                        <span data-feather="heart"></span>
-                        Farmacia
+                    <a href="#" class="list-group-item">
+                        <span data-feather="calendar"></span>
+                        CITAS MEDICAS
                     </a>
+                    <a href="medicamentos" class="list-group-item">
+                        <span data-feather="briefcase"></span>
+                        MEDICAMENTOS
+                    </a>
+                    <a href="reportes" class="list-group-item">
+                        <span data-feather="clipboard"></span>
+                        REPORTES
+                    </a>
+
                 </div>
             </div>
         </nav>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 ">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 ">
             @yield('content')
         </main>
     </div>

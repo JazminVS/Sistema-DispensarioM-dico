@@ -75,7 +75,7 @@
                         <span data-feather="heart"></span>
                         Consulta médica
                     </a>
-                    <a href="/#" class="list-group-item list-group-item-action">
+                    <a  class="list-group-item list-group-item-action">
                         <span data-feather="calendar"></span>
                         Cita médica
                     </a>
@@ -83,7 +83,7 @@
                         <span data-feather="users"></span>
                         Pacientes
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a  class="list-group-item list-group-item-action">
                         <span data-feather="truck"></span>
                         Farmacia
                     </a>

@@ -14,26 +14,52 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
 /********************************************************************************************************/
 /*RUTAS DOCTOR*/
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/consultapaciente', 'Doctor\PacienteController@index')->name('consultapaciente');
-Route::get('/paciente/{id_paciente?}', 'Doctor\PacienteController@show')->name('consulta');
-Route::post('/registro',  'Doctor\ConsultaController@insertar')->name('registro');
-Route::post('/diagnostico',  'Doctor\ConsultaController@diagnostico')->name('insertardiagnostico');
+Route::group(['prefix' => 'doctor'], function() {
+    //prefijo 'doctor'
+        Route::get('home', 'HomeController@index')->name('home');
+        Route::get('consultapaciente', 'Doctor\PacienteController@index')->name('consultapaciente');
+        Route::get('paciente/{id_paciente?}', 'Doctor\PacienteController@show')->name('consulta');
+        Route::post('registro',  'Doctor\ConsultaController@insertar')->name('registro');
+        Route::post('diagnostico',  'Doctor\ConsultaController@diagnostico')->name('insertardiagnostico');
+        Route::get('citamedica', 'Doctor\ConsultaController@cita');
+        Route::get('pacientes', 'Paciente\PacienteController@index')->name('pacientes');
+});
 
-Route::post('/citamedica', 'Doctor\ConsultaController@cita');
-Route::get('/pacientes', 'Paciente\PacienteController@index')->name('pacientes');
-//Route::get('/importar', 'ExcelController@importar')->name('importar'); //Importar archivos excel a mysql.
+//Route::get('/importar', 'ExcelController@importar')->name('importar'); //Importar archivos excel a mysql.*/
 /********************************************************************************************************/
 /*RUTAS ASISTENTE*/
-Route::get('/asistente/asistente', 'asistente\AsistenteController@index')->name('asistente');
-Route::get('/asistente/usuario', 'asistente\AsistenteController@ingresar');
-Route::post('asistente/pacienteasis', 'Paciente\PacienteController@crear')->name('pacienteasis');
-Route::get('/asistente/paciente', 'Paciente\PacienteController@paciente')->name('paciente');
-Route::get('/asistente/{id_paciente?}', 'Paciente\PacienteController@verpaciente')->name('procedimiento');
-Route::post('/asistente/ingresoprocedimiento', 'asistente\AsistenteController@ingresoprocedimiento')->name('ingreso_procedimiento');
-Route::get('/asistente/farmacia', 'asistente\AsistenteController@farmacia')->name('farmacia');
+Route::group(['prefix' => 'asistente'], function() {
+    Route::get('home', 'asistente\AsistenteController@index')->name('asistentehome');
+    Route::get('pacientes', 'asistente\AsistenteController@ingresar');
+    Route::get('paciente', 'Paciente\PacienteController@paciente');
+    Route::get('medicamentos', 'asistente\FarmaciaController@index');
+    Route::get('botiquinasucursales', 'asistente\FarmaciaController@sucursales');
+    Route::get('/reportes', 'asistente\AsistenteController@reportes')->name('reportes');
+    Route::get('botiquinsucursal', 'asistente\FarmaciaController@verbotiquin');
+});
+Route::group(['prefix' => 'asistente'], function() {
+    Route::get('{id_paciente?}', 'Paciente\PacienteController@verpaciente');
+    Route::get('editar/{id_medicamento?}', 'asistente\FarmaciaController@editarmedicamento');
+    Route::get('ver/{id_medicina?}', 'asistente\FarmaciaController@vermedicamento');
+
+});
+
+Route::group(['prefix' => 'asistente'], function() {
+    Route::post('pacienteasis', 'Paciente\PacienteController@crear')->name('crearpaciente');
+    Route::post('ingresoprocedimiento', 'asistente\AsistenteController@ingresoprocedimiento')->name('ingreso_procedimiento');
+    Route::post('ingresomedicamento', 'asistente\FarmaciaController@ingresar')->name('ingreso_medicamento');
+    Route::post('ingresomedicamento', 'asistente\FarmaciaController@ingresar')->name('ingreso_medicamento');
+    Route::post('medicamentoingresado', 'asistente\FarmaciaController@agregarmedicamento')->name('agregarmedicamento');
+    Route::post('editarmedicamento', 'asistente\FarmaciaController@editar')->name('editar_medicamento');
+});
+
+
+
+
 //Route::get('/asistente/procedimientos', 'asistente\AsistenteController@procedimiento')->name('procedimientos');
 
 /********************************************************************************************************/
