@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Paciente extends Model
 {
@@ -12,8 +13,11 @@ class Paciente extends Model
 
     protected $table = 'pacientes';
 
-    public function scopeName ($query, $name, $cedula){
-        $query->where('nombres',$name);
-        $query->where('CI',$cedula);
+    public function scopeName ($query, $name){
+        //dd("scope:",$name);
+        if(trim($name) != "" ){
+            $query->orWhere(DB::raw("CONCAT(`nombres`, ' ', `apellido1`,' ',  `apellido2`)"), 'LIKE', "%".$name."%");
+        }
     }
+
 }

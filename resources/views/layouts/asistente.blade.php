@@ -10,7 +10,7 @@
     <title>Asistente</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{asset('bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('bootstrap/dist/css/bootstrap.css')}}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{asset('css/asistente.css')}}" rel="stylesheet">
 
@@ -23,28 +23,26 @@
 </head>
 
 <body>
-<nav class="navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow navbar-laravel logo dilipa">
-    <img src="{{asset('img/logo1.png')}}" class="navbar-brand col-md-2 mr-0" alt="logo_dispensario" width="auto" height="auto">
-    <div class="navbar-text">
-        <h4 class="text-light">SISTEMA DE SALUD DISPENSARIO MÉDICO DILIPA</h4>
+<nav class="navbar navbar-expand navbar-dark fixed-top flex-md-nowrap p-0 shadow logo dilipa">
+    <img src="{{asset('img/logo1.png')}}" class="navbar-brand col-sm-3 col-md-2 mr-0" alt="logo_dispensario" width="auto" height="auto">
+    <div class="navbar-text mr-0 mr-md-3 offset-md-2 col-md-5">
+        <h4 class="text-light">SISTEMA DE SALUD <br>DISPENSARIO MÉDICO DILIPA</h4>
     </div>
-    <ul class="navbar-nav px-3 text-light">
+    <ul class="navbar-nav text-light col-md-4 list-inline">
         @guest
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
+            <li class="list-inline-item">
+                <a href="{{ route('register') }}">{{ __('Registrarse') }}</a>
             </li>
             @else
-                Usuario: {{ Auth::user()->name }}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                        {{ __('Cerrar sesión') }}
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-                </li>
+            <li class="list-inline-item">Bienvenido usuario(a) {{ Auth::user()->name }}</li>
+            <li class="list-inline-item">
+                <a  href="{{ route('logout') }}" onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();">{{Cerrar Sesión}}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+            </li>
                 @endguest
     </ul>
 </nav>

@@ -29,15 +29,7 @@ class AsistenteController extends Controller
         return view ('asistente.reportes.reportes');
     }
 
-    public function ingresar()
-    {
-        $estado_civil=EstadoCivil::all();
-        $generos=Genero::all();
-        $tipo_instruccion=NivelInstruccion::all();
-        $tipo_discapacidad=TipoDiscapacidad::all();
-        $sucursales=Sucursal::all();
-        return view ('asistente.crear_paciente',compact('estado_civil','generos','tipo_instruccion','tipo_discapacidad','sucursales'));
-    }
+
 
     public function ingresoprocedimiento(Request $request)
     {

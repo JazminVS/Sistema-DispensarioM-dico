@@ -11,9 +11,16 @@
                 <input type="text" class="form-control" id="nombres" name="nombres">
             </div>
             <div class="col-md-4 form-group">
-                <label for="nombres" class="col-form-label ">Apellidos</label>
-                <input type="text" class="form-control" id="nombres" name="apellidos">
+                <label for="nombres" class="col-form-label ">Apellido Paterno</label>
+                <input type="text" class="form-control" id="nombres" name="apellido1">
             </div>
+            <div class="col-md-4 form-group">
+                <label for="nombres" class="col-form-label ">Apellido Materno</label>
+                <input type="text" class="form-control" id="nombres" name="apellido2">
+            </div>
+
+        </div>
+        <div class="row">
             <div class="col-md-4 form-group">
                 <label for="genero" class="col-form-label">Genero</label>
                 <select class="form-control col-md-8" name="genero">
@@ -22,8 +29,6 @@
                     @endforeach
                 </select>
             </div>
-        </div>
-        <div class="row">
             <div class="col-md-4 form-group">
                 <label for="fecha_nacimiento" class="col-form-label">Fecha de nacimiento</label>
                 <input id="datepicker" width="276" name="fecha_nacimiento" class="col-md-9">
@@ -40,6 +45,8 @@
                 <label for="lugar" class="col-form-label">Lugar de nacimiento</label>
                 <input type="text" class="form-control" id="lugar" name="lugar">
             </div>
+        </div>
+        <div class="row">
             <div class="col-md-4 form-group">
                 <label for="estado_civil" class="col-form-label">Estado civil</label>
                 <select id="" class="form-control col-md-8" name="estado_civil">
@@ -48,10 +55,13 @@
                     @endforeach
                 </select>
             </div>
+            <div class="col-md-4 form-group">
+                <label for="cedula" class="col-form-label">Cedula de identidad</label>
+                <input type="text" class="form-control col-md-8" id="cedula" name="cedula" maxlength="10">
+            </div>
         </div>
-        <label for="cedula" class="col-form-label">Cedula de identidad</label>
-        <input type="text" class="form-control col-md-3" id="cedula" name="cedula" maxlength="10">
-        <br>
+
+
         <div class="row">
             <div class="col-md-4 form-group">
                 <label for="sucursal" class="col-form-label">Sucursal</label>

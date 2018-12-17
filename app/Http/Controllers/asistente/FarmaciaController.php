@@ -16,13 +16,21 @@ class FarmaciaController extends Controller
     public function index()
     {
         $tipo_medicamento=TipoMedicamento::all();
-        return view ('asistente.farmacia',compact('tipo_medicamento'));
+        return view ('asistente.farmacia.crearmedicamento',compact('tipo_medicamento'));
     }
-    public function sucursales()
+    //BOTIQUINES EN SUCURSALES
+
+    public function listamedicamentos(Request $request)
     {
         $tipo_medicamento=TipoMedicamento::all();
-        $medicamentos=Medicamento::all();
-        return view ('asistente.farmacia_sucursales',compact('medicamentos','tipo_medicamento'));
+        //$medicamentos=Medicamento::all();
+        if($request){
+            $query=trim($request->get('searchText'));
+            $medicamentos=DB::table('farmacia')->where('nombre','LIKE','%'.$query.'%')
+                ->orderBy('nombre')
+                ->paginate(5);
+        }
+        return view ('asistente.farmacia.listamedicamentos',compact('medicamentos','tipo_medicamento'));
     }
     public function ingresar(Request $request)
     {
@@ -53,20 +61,20 @@ class FarmaciaController extends Controller
     {
         $medicamento=Medicamento::whereId($id)->firstOrFail();
         $sucursales=Sucursal::all();
-        return view('asistente.botiquin',compact('medicamento','sucursales'));
+        return view('asistente.farmacia.botiquin',compact('medicamento','sucursales'));
     }
 
     public function editarmedicamento($id)
     {
         $medicina=Medicamento::find($id);
         $tipomedicamentos=TipoMedicamento::all();
-        return view('asistente.editarbotiquin',compact('medicina','id','tipomedicamentos'));
+        return view('asistente.farmacia.editarbotiquin',compact('medicina','id','tipomedicamentos'));
     }
 
     public function verbotiquin()
     {
         $sucursales=Sucursal::all();
-        return view('asistente.botiquinsucursal',compact('sucursales'));
+        return view('asistente.farmacia.botiquinsucursal',compact('sucursales'));
     }
 
     public function agregarmedicamento(Request $request)

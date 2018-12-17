@@ -18,7 +18,7 @@ body {
     bottom: 0;
     left: 0;
     z-index: 100; /* Behind the navbar */
-    padding: 80px 0 0; /* Alto del navbar */
+    padding: 90px 0 0; /* Alto del navbar */
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 
@@ -114,11 +114,19 @@ body {
     background-color: #00447C;
     border-color: #00447C;
 }
-
-.bg-cielo {
-    background-color: #1f659e !important;
+.btn-buscar{
+    color: #000000;
+    background-color:#EE7401 ;
+    border-color:#EE7401 ;
 }
 
+.btn-cielo{
+    color: #ffffff;
+    background-color: #00447cd9;
+    border-color: #00447cd9;
+}
+
+/*SELECCION FONDO COLOR ANARANJADO DE DILIPA*/
 .list-group-mine .list-group-item {
     background-color: #00447C;
     border-top: 1px solid #FFFFFF;
@@ -130,4 +138,44 @@ body {
     background-color: #EE7401;
 }
 
+.titulo {
+    color: #EE7401 !important;
+}
+.subtitulo {
+    color: #ee7401e0 !important;
+}
+.badge-rosa{
+    color: #fff;
+    background-color: #991141;
+}
 
+.badge-rosa[href]:hover, .badge-primary[href]:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: #991141;
+}
+
+.table .thead-rosa th {
+    color: #fff;
+    background-color: #b55676;
+    border-color: #b55676;
+}
+
+
+
+.table .thead-limon th {
+    color: #fff;
+    background-color: #b7c903;
+    border-color: #b7c903;
+}
+
+.badge-limon{
+    color: #fff;
+    background-color: #9fb000;
+}
+
+.badge-limon[href]:hover, .badge-primary[href]:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: #9fb000;
+}

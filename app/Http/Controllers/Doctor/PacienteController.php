@@ -11,9 +11,15 @@ class PacienteController extends Controller
 {
     public function index(Request $request)
     {
-        //dd($request->get('name'));
-        $pacientes=Paciente::all();
-        return view ('doctor.paciente',compact('pacientes'));
+        $pacientes = Paciente::name($request->get('nombre'))
+            ->orderBy('apellido1')
+            ->paginate('4');
+        return view('doctor.consultas.pacientes', compact('pacientes'));
+    }
+    public function listapacientes(Request $request)
+    {
+        $pacientes = Paciente::all();
+        return view('doctor.paciente', compact('pacientes'));
     }
 
     public function show($id)

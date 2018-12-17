@@ -5,14 +5,15 @@
     <div class="border-bottom border-dark">
         <h4 class="text-dark">ADMINISTRACION DE MEDICAMENTOS</h4>
     </div>
+
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto offset-5">
+                <li class="nav-item active">
+                    <a class="nav-link" href="listamedicamentos"><span data-feather="folder-plus"></span>BOTIQUINES</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="medicamentos"><span data-feather="plus-square"></span>CREAR MEDICAMENTO</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="botiquinasucursales"><span data-feather="folder-plus"></span>BOTIQUINES</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="botiquinsucursal"><span data-feather="folder-plus"></span>MEDICAMENTO EN SUCURSALES</a>

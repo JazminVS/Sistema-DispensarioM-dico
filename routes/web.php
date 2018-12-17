@@ -26,7 +26,7 @@ Route::group(['prefix' => 'doctor'], function() {
         Route::post('registro',  'Doctor\ConsultaController@insertar')->name('registro');
         Route::post('diagnostico',  'Doctor\ConsultaController@diagnostico')->name('insertardiagnostico');
         Route::get('citamedica', 'Doctor\ConsultaController@cita');
-        Route::get('pacientes', 'Paciente\PacienteController@index')->name('pacientes');
+        Route::get('pacientes', 'Doctor\PacienteController@listapacientes')->name('pacientes');
 });
 
 //Route::get('/importar', 'ExcelController@importar')->name('importar'); //Importar archivos excel a mysql.*/
@@ -34,11 +34,12 @@ Route::group(['prefix' => 'doctor'], function() {
 /*RUTAS ASISTENTE*/
 Route::group(['prefix' => 'asistente'], function() {
     Route::get('home', 'asistente\AsistenteController@index')->name('asistentehome');
-    Route::get('pacientes', 'asistente\AsistenteController@ingresar');
-    Route::get('paciente', 'Paciente\PacienteController@paciente');
+    Route::get('pacientes', 'asistente\PacienteController@verpacientes');
+    Route::get('paciente', 'asistente\PacienteController@pacientes');
+    Route::get('paciente1', 'asistente\PacienteController@paciente')->name('asistentepaciente');
     Route::get('medicamentos', 'asistente\FarmaciaController@index');
-    Route::get('botiquinasucursales', 'asistente\FarmaciaController@sucursales');
-    Route::get('/reportes', 'asistente\AsistenteController@reportes')->name('reportes');
+    Route::get('listamedicamentos', 'asistente\FarmaciaController@listamedicamentos');
+    Route::get('reportes', 'asistente\ReportesController@index')->name('reportes');
     Route::get('botiquinsucursal', 'asistente\FarmaciaController@verbotiquin');
 });
 Route::group(['prefix' => 'asistente'], function() {
@@ -49,9 +50,8 @@ Route::group(['prefix' => 'asistente'], function() {
 });
 
 Route::group(['prefix' => 'asistente'], function() {
-    Route::post('pacienteasis', 'Paciente\PacienteController@crear')->name('crearpaciente');
+    Route::post('pacienteasis', 'asistente\PacienteController@crearpaciente')->name('crearpaciente');
     Route::post('ingresoprocedimiento', 'asistente\AsistenteController@ingresoprocedimiento')->name('ingreso_procedimiento');
-    Route::post('ingresomedicamento', 'asistente\FarmaciaController@ingresar')->name('ingreso_medicamento');
     Route::post('ingresomedicamento', 'asistente\FarmaciaController@ingresar')->name('ingreso_medicamento');
     Route::post('medicamentoingresado', 'asistente\FarmaciaController@agregarmedicamento')->name('agregarmedicamento');
     Route::post('editarmedicamento', 'asistente\FarmaciaController@editar')->name('editar_medicamento');

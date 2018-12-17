@@ -2,10 +2,15 @@
 
 
 @section('content')
-<div>
     <div class="border-bottom border-dark">
-        <h5 class="text-center text-dark">REGISTRO DE PROCEDIMIENTOS</h5>
-    </div><br>
+        <h3 class="text-center titulo">PROCEDIMIENTOS</h3>
+    </div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="paciente">Selección de Pacientes</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Registro del Procedimiento</li>
+        </ol>
+    </nav>
     <form  method="POST" action="{{route('ingreso_procedimiento')}}" class="offset-md-1">
         {{ csrf_field() }}
         <div class="row">
@@ -100,5 +105,4 @@
         </div>
         </div>
     </form>
-
 @endsection
