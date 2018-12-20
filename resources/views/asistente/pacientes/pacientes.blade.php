@@ -79,7 +79,7 @@
                     <td>{!! $tiposucursal !!}</td>
                     <td>{!! $estadocivils!!}</td>
                     <td>
-                        <a class="badge badge-tomate" href="">Editar</a>
+                        <a class="badge badge-tomate" href="{{action('asistente\PacienteController@editarpacientes',$paciente->id)}}">Editar</a>
                         <a class="badge badge-azul" href="">Eliminar</a>
                     </td>
                 </tr>

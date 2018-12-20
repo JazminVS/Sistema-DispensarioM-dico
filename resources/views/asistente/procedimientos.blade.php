@@ -68,8 +68,12 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <h5 class="offset-md-4 subtitulo">DATOS DEL PACIENTE</h5>
+                <h5 class="offset-md-3 subtitulo">DATOS DEL PACIENTE</h5>
                 <hr>
+                <a class="offset-md-8 col-md-1">
+                    <span data-feather="eye"></span>
+                    EDITAR
+                </a>
                 <div class="form-group">
                     <label for="nombres" class="col-form-label">Nombres y Apellidos</label>
                     <input type="text" class="form-control" id="nombres" name="paciente" value="{{$paciente->id}}" style="display: none">

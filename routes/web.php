@@ -36,7 +36,7 @@ Route::group(['prefix' => 'asistente'], function() {
     Route::get('home', 'asistente\AsistenteController@index')->name('asistentehome');
     Route::get('pacientes', 'asistente\PacienteController@listapacientes')->name('asistentepacientes');
     Route::get('crearpaciente', 'asistente\PacienteController@verpacientes')->name('crearpaciente');
-    Route::get('editarpaciente', 'asistente\PacienteController@editarpacientes')->name('editarpaciente');
+    Route::get('editarpaciente/{id}', 'asistente\PacienteController@editarpacientes')->name('editarpaciente');
     Route::get('paciente', 'asistente\PacienteController@pacientes');
     Route::get('paciente1', 'asistente\PacienteController@paciente')->name('asistentepaciente');
     Route::get('medicamentos', 'asistente\FarmaciaController@index');
@@ -53,6 +53,7 @@ Route::group(['prefix' => 'asistente'], function() {
 
 Route::group(['prefix' => 'asistente'], function() {
     Route::post('pacienteasis', 'asistente\PacienteController@crearpaciente')->name('agregarpaciente');
+    Route::post('actualizarpaciente/{id_paciente?}', 'asistente\PacienteController@actualizarpaciente')->name('actualizarpaciente');
     Route::post('ingresoprocedimiento', 'asistente\AsistenteController@ingresoprocedimiento')->name('ingreso_procedimiento');
     Route::post('ingresomedicamento', 'asistente\FarmaciaController@ingresar')->name('ingreso_medicamento');
     Route::post('medicamentoingresado', 'asistente\FarmaciaController@agregarmedicamento')->name('agregarmedicamento');
