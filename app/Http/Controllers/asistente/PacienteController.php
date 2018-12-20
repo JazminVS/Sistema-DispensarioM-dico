@@ -42,6 +42,22 @@ class PacienteController extends Controller
         $sucursales=Sucursal::all();
         return view ('asistente.pacientes.crear_paciente',compact('estado_civil','generos','tipo_instruccion','tipo_discapacidad','sucursales'));
     }
+    public function listapacientes(Request $request)
+    {
+        $sucursales= Sucursal::all();
+        $estado_civil=EstadoCivil::all();
+        $pacientes = Paciente::name($request->get('nombre'))
+            ->orderBy('apellido1')
+            ->paginate('5');
+        return view ('asistente.pacientes.pacientes',compact('pacientes','sucursales','estado_civil'));
+    }
+    protected function editarpacientes($id_paciente)
+    {
+            $paciente = Paciente::find($id_paciente);
+            return view('doctor.consulta',compact('paciente'));
+    {
+
+
     protected function crearpaciente(Request $request)
     {
         function edad($fecha_nacimiento)

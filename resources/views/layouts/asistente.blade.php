@@ -24,9 +24,9 @@
 
 <body>
 <nav class="navbar navbar-expand navbar-dark fixed-top flex-md-nowrap p-0 shadow logo dilipa">
-    <img src="{{asset('img/logo1.png')}}" class="navbar-brand col-sm-3 col-md-2 mr-0" alt="logo_dispensario" width="auto" height="auto">
-    <div class="navbar-text mr-0 mr-md-3 offset-md-2 col-md-5">
-        <h4 class="text-light">SISTEMA DE SALUD <br>DISPENSARIO MÉDICO DILIPA</h4>
+    <img src="{{asset('img/logo1.png')}}" class="navbar-brand col-sm-3 col-md-2 mr-0" alt="logo_dispensario" width="100px" height="100px">
+    <div class="navbar-text mr-0 mr-md-3 offset-md-1 col-md-6">
+        <h4 class="text-light">SISTEMA DE SALUD DISPENSARIO MÉDICO DILIPA</h4>
     </div>
     <ul class="navbar-nav text-light col-md-4 list-inline">
         @guest
@@ -34,16 +34,20 @@
                 <a href="{{ route('register') }}">{{ __('Registrarse') }}</a>
             </li>
             @else
-            <li class="list-inline-item">Bienvenido usuario(a) {{ Auth::user()->name }}</li>
+            <li class="list-inline-item nav-link">Bienvenido usuario(a) {{ Auth::user()->name }}</li>
             <li class="list-inline-item">
-                <a  href="{{ route('logout') }}" onclick="event.preventDefault();
-                       document.getElementById('logout-form').submit();">{{Cerrar Sesión}}
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        {{ __('Cerrar sesión') }}<span data-feather="corner-down-left"></span>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
             </li>
-                @endguest
+        @endguest
     </ul>
 </nav>
 
@@ -102,7 +106,7 @@
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 ">
-            @yield('content')
+            @yield('content')<br>
         </main>
     </div>
 </div>

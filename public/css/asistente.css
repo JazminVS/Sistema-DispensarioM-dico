@@ -161,21 +161,89 @@ body {
     border-color: #b55676;
 }
 
-
-
 .table .thead-limon th {
     color: #fff;
-    background-color: #b7c903;
-    border-color: #b7c903;
+    background-color: #91bed5;
+    border-color: #91bed5;
+}
+
+.table .thead-celeste th {
+    color: #fff;
+    background-color: #0071bd;
+    border-color: #0071bd;
+}
+.table .thead-tomate th {
+    color: #fff;
+    background-color: #f26202;
+    border-color: #f26202;
 }
 
 .badge-limon{
-    color: #fff;
-    background-color: #9fb000;
+    color: #000;
+    background-color: #91bed5;
 }
 
 .badge-limon[href]:hover, .badge-primary[href]:focus {
+    color: #000;
+    text-decoration: none;
+    background-color: #91bed5;
+}
+.btn-limon{
+    color: #000;
+    background-color: #91bed5;
+    border-color: #91bed5;
+}
+.btn-celeste {
+    color: #ffffff;
+    background-color: #0071bd;
+    border-color: #0071bd;
+}
+.badge-celeste{
+    color: #fff;
+    background-color: #0071bd;
+}
+
+.badge-celeste[href]:hover, .badge-primary[href]:focus {
     color: #fff;
     text-decoration: none;
-    background-color: #9fb000;
+    background-color: #0071bd;
 }
+.btn-azul {
+    color: #ffffff;
+    background-color: #30426a;
+    border-color: #30426a;
+}
+.badge-azul{
+    color: #fff;
+    background-color: #30426a;
+}
+
+.badge-azul [href]:hover, .badge-primary[href]:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: #30426a;
+}
+
+.btn-tomate {
+    color: #ffffff;
+    background-color: #f26202;
+    border-color: #f26202;
+}
+
+.badge-tomate{
+    color: #fff;
+    background-color: #f26202;
+}
+
+.badge-tomate [href]:hover, .badge-primary[href]:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: #f26202;
+}
+/*PALETA DE COLORES
+1. #30426a
+2. #0071bd
+3. #91bed5
+4. #ffffff
+5. #f26202
+*/

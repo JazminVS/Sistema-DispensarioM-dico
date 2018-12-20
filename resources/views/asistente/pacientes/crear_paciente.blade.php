@@ -1,9 +1,16 @@
 @extends('layouts.asistente')
 @section('content')
     <div class="border-bottom border-dark">
-        <h3 class="text-center text-dark">INGRESO DE PACIENTES</h3>
-    </div><br>
-    <form class="offset-md-1" method="POST" action="{{route('crearpaciente')}}">
+        <h3 class="text-center titulo">PACIENTES</h3>
+    </div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="pacientes">Lista de Pacientes</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Nuevo paciente</li>
+        </ol>
+    </nav>
+    <h5 class="text-primary col-md-8">Formulario Nuevo Paciente</h5>
+    <form class="offset-md-1" method="POST" action="{{route('agregarpaciente')}}">
         {{ csrf_field() }}
         <div class="row">
             <div class="col-md-4 form-group">
@@ -127,32 +134,32 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3 form-group">
-                <label for="discapacidad" class="col-form-label">Discapacidad</label>
-                <label class="radio-inline col-form-label">
+            <div class="col-md-2 offset-md-1 form-group">
+                <label for="discapacidad" class="col-form-label">Discapacidad</label><br>
+                <label class="radio offset-md-1 col-form-label">
                     <input type="radio" id="discapacidad" value="true" name="discapacidad">Si</label>
-                <label class="radio-inline col-form-label">
+                <label class="radio offset-md-1 col-form-label">
                     <input type="radio" id="discapacidad" value="false" name="discapacidad">No</label>
             </div>
-            <div class="col-md-3 form-group">
+            <div class="col-md-2 form-group">
                 <label for="carnet" class="col-form-label">No.carnet</label>
                 <input type="text" class="form-control" id="carnet" name="carnet" maxlength="10">
             </div>
-            <div class="col-md-3 form-group">
+            <div class="col-md-2 form-group">
                 <label for="nivel_instruccion" class="col-form-label">Tipo Discapacidad</label>
-                <select class="form-control col-md-8" name="tipo_discapacidad">
+                <select class="form-control" name="tipo_discapacidad">
                     @foreach($tipo_discapacidad as $discapacidad)
                         <option value="{{$discapacidad->id}}">{{$discapacidad->descripcion}}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-3 form-group">
+            <div class="col-md-2 form-group">
                 <label for="carnet" class="col-form-label">Porcentaje(%)</label>
                 <input type="text" class="form-control" id="carnet" name="porcentaje" maxlength="10">
             </div>
         </div>
 
-    <button class="btn btn-outline-danger btn-block" type="submit" style="max-width: 60rem;">CREAR PACIENTE</button>
+        <button type="submit" class="btn btn-dilipa btn-md" >CREAR PACIENTE</button>
             <?php
             $data = array ([
                 'Azuay' =>[

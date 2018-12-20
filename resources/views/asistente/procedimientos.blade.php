@@ -15,6 +15,8 @@
         {{ csrf_field() }}
         <div class="row">
             <div class="col-md-6">
+                <h5 class="offset-md-3 subtitulo">DATOS DEL PROCEDIMIENTO</h5>
+                <hr>
                 <div class="form-group">
                     <label for="fecha" class="col-form-label">Fecha</label>
                     <input type="text" class="form-control col-md-6" id="fecha" name="fecha">
@@ -66,7 +68,8 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <h6 class="offset-md-4">Datos del paciente</h6>
+                <h5 class="offset-md-4 subtitulo">DATOS DEL PACIENTE</h5>
+                <hr>
                 <div class="form-group">
                     <label for="nombres" class="col-form-label">Nombres y Apellidos</label>
                     <input type="text" class="form-control" id="nombres" name="paciente" value="{{$paciente->id}}" style="display: none">
@@ -101,7 +104,7 @@
         </div>
 
         <div class="form-group offset-md-5">
-            <button class="btn btn-dilipa btn-md">ACEPTAR</button>
+            <button class="btn btn-celeste btn-lg">ACEPTAR</button>
         </div>
         </div>
     </form>

@@ -46,13 +46,13 @@
                     <input type="text" class="form-control" id="nombre_medicamento" name="nombre" value="{{$medicina->nombre}}">
                 </div>
                 <?php
-                    $id_tipomed=$medicina->fk_tipo_medicamento;
-                    foreach ($tipomedicamentos as $tipomedicamen=>$ids) {
-                        $id=$ids->id;
-                        if ($id==$id_tipomed){
-                            $tipo_medicamento=$ids->descripcion;
-                        }
+                $id_tipomed=$medicina->fk_tipo_medicamento;
+                foreach ($tipomedicamentos as $tipomedicamen=>$ids) {
+                    $id=$ids->id;
+                    if ($id==$id_tipomed){
+                        $tipo_medicamento=$ids->descripcion;
                     }
+                }
                 ?>
                 <div class="form-group col-md-5 offset-md-1">
                     <label for="tipo_medicamento">Tipo</label>
