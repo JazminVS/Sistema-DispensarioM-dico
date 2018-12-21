@@ -76,6 +76,10 @@
                         <span data-feather="home"></span>
                         PERFIL
                     </a>
+                    <a href="#" class="list-group-item">
+                        <span data-feather="calendar"></span>
+                        CITAS MEDICAS
+                    </a>
                     <a href="paciente" class="list-group-item">
                         <span data-feather="folder-plus"></span>
                         PROCEDIMIENTOS
@@ -88,11 +92,8 @@
                         <span data-feather="eye"></span>
                         EXAMEN FISICO
                     </a>
-                    <a href="#" class="list-group-item">
-                        <span data-feather="calendar"></span>
-                        CITAS MEDICAS
-                    </a>
-                    <a href="medicamentos" class="list-group-item">
+
+                    <a href="listamedicamentos" class="list-group-item">
                         <span data-feather="briefcase"></span>
                         MEDICAMENTOS
                     </a>

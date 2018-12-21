@@ -5,7 +5,7 @@
     </div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a>Lista de Pacientes</a></li>
+            <li class="breadcrumb-item"><a >Lista de Pacientes</a></li>
             <li class="breadcrumb-item active" aria-current="page">Editar paciente</li>
         </ol>
     </nav>

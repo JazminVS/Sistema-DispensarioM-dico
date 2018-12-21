@@ -3,8 +3,9 @@
 
 @section('content')
     <div class="border-bottom border-dark">
-        <h4 class="text-dark">ADMINISTRACION DE MEDICAMENTOS</h4>
+        <h3 class="text-center titulo">ADMINISTRACION DE MEDICAMENTOS</h3>
     </div>
+
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto offset-5">
