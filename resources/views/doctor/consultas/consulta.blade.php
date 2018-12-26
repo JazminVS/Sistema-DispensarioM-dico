@@ -1,14 +1,22 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    <div class="border-bottom border-info">
-        <h2 class="text-center text-info">CONSULTA MÉDICA</h2>
+    <div class="border-bottom border-dilipa">
+        <h3 class="text-center text-dilipa">CONSULTA MEDICA</h3>
     </div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a >Lista de Pacientes</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Consulta Médica</li>
+        </ol>
+    </nav>
     <?PHP
     $id=$paciente->id;
     //echo $id_paciente;
     ?>
-<div class="container offset-md-1"><br/>
+    <h5 class="text-primary text-center">Datos de consulta médica</h5><br>
+<div class="container offset-md-1">
+
     <form class="form-horizontal" method="POST" action="{{ route('registro') }}">
         {{ csrf_field() }}
     <div class="form-group row">

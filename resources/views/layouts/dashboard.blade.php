@@ -14,39 +14,40 @@
 
     <!-- Custom styles for this template -->
     <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
-
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <!-- CHOOSEN-->
-    <link href="{{asset('choosen/chosen.css')}}" rel="stylesheet">
+    /
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
 
 </head>
 
 <body>
-<nav class="navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow navbar-laravel logo dilipa">
-    <img src="{{asset('img/logo1.png')}}" class="navbar-brand col-md-2 mr-0" alt="logo_dispensario" width="auto" height="auto">
-    <div class="navbar-text">
+<nav class="navbar navbar-expand navbar-dark fixed-top flex-md-nowrap p-0 shadow logo dilipa">
+    <img src="{{asset('img/logo1.png')}}" class="navbar-brand col-sm-3 col-md-2 mr-0" alt="logo_dispensario" width="100px" height="100px">
+    <div class="navbar-text mr-0 mr-md-3 offset-md-1 col-md-6">
         <h4 class="text-light">SISTEMA DE SALUD DISPENSARIO MÉDICO DILIPA</h4>
     </div>
-    <ul class="navbar-nav px-3 text-light">
+    <ul class="navbar-nav text-light col-md-4 list-inline">
         @guest
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
+            <li class="list-inline-item">
+                <a href="{{ route('register') }}">{{ __('Registrarse') }}</a>
             </li>
             @else
-                Usuario: {{ Auth::user()->name }}
+                <li class="list-inline-item nav-link">Bienvenido usuario(a) {{ Auth::user()->name }}</li>
+                <li class="list-inline-item">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                        {{ __('Cerrar sesión') }}
+                        {{ __('Cerrar sesión') }}<span data-feather="corner-down-left"></span>
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                     </form>
                 </li>
-        @endguest
+                </li>
+                @endguest
     </ul>
 </nav>
 
@@ -63,7 +64,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <small>Dr(a).{{ Auth::user()->name }}</small>
+                        <small>Doctor</small>
                     </div>
                 </div>
                 <div class="list-group text-uppercase" >
@@ -109,38 +110,5 @@
 <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
 <script>
     feather.replace()
-</script>
-
-
-<!-- Graphs -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-<script>
-    var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            datasets: [{
-                data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-                lineTension: 0,
-                backgroundColor: 'transparent',
-                borderColor: '#007bff',
-                borderWidth: 4,
-                pointBackgroundColor: '#007bff'
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: false
-                    }
-                }]
-            },
-            legend: {
-                display: false,
-            }
-        }
-    });
 </script>
 </html>

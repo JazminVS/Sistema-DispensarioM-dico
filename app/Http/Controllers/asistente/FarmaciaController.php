@@ -23,13 +23,10 @@ class FarmaciaController extends Controller
     public function listamedicamentos(Request $request)
     {
         $tipo_medicamento=TipoMedicamento::all();
-        //$medicamentos=Medicamento::all();
-        if($request){
-            $query=trim($request->get('searchText'));
-            $medicamentos=DB::table('farmacia')->where('nombre','LIKE','%'.$query.'%')
-                ->orderBy('nombre')
-                ->paginate(5);
-        }
+
+        $medicamentos = Medicamento::name($request->get('nombre'))
+            ->orderBy('nombre')
+            ->paginate('4');
         return view ('asistente.farmacia.listamedicamentos',compact('medicamentos','tipo_medicamento'));
     }
     public function ingresar(Request $request)

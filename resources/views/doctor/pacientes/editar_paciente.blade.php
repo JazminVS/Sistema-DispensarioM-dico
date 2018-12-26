@@ -1,12 +1,13 @@
-@extends('layouts.asistente')
+@extends('layouts.dashboard')
+
 @section('content')
-    <div class="border-bottom border-dark">
-        <h3 class="text-center titulo">PACIENTES</h3>
+    <div class="border-bottom border-dilipa">
+        <h3 class="text-center text-dilipa">PACIENTES</h3>
     </div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a >Lista de Pacientes</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Editar paciente</li>
+            <li class="breadcrumb-item active">Lista de Pacientes</li>
+            <li class="breadcrumb-item active">Editar Paciente</li>
         </ol>
     </nav>
     <h5 class="text-primary col-md-8">Formulario Editar Paciente</h5>
@@ -31,7 +32,16 @@
             <div class="col-md-4 form-group">
                 <label for="genero" class="col-form-label">Genero</label>
                 <?php
+                /*GENERO*/
+                $id_genero=$paciente->pk_genero;
 
+                foreach ($generos as $genero=>$ids) {
+                $id=$ids->id;
+                if ($id==$id_genero){
+                    $gen=$ids->descripcion;
+                }
+                }
+                echo $gen;
                 ?>
                 <select class="form-control col-md-8" name="genero">
                     @foreach($generos as $genero)
@@ -59,6 +69,17 @@
         <div class="row">
             <div class="col-md-4 form-group">
                 <label for="estado_civil" class="col-form-label">Estado civil</label>
+                <?php
+                /*ESTADO CIVIL*/
+                $id_estado=$paciente->pk_estado_civil;
+                    foreach ($estado_civil as $estado=>$ids){
+                    $id=$ids->id;
+                    if ($id==$id_estado){
+                    $estadocivil=$ids->descripcion;
+                    }
+                }
+                echo $estadocivil;
+                ?>
                 <select id="" class="form-control col-md-8" name="estado_civil">
                     @foreach($estado_civil as $estado)
                         <option value="{{$estado->id}}">{{$estado->descripcion}}</option>

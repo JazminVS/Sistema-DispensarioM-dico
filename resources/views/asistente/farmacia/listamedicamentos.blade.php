@@ -15,7 +15,7 @@
                     <a class="nav-link" href="medicamentos"><span data-feather="plus-square"></span>Medicamentos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
+                    <a class="nav-link" href="botiquinsucursal"><span data-feather="folder-plus"></span>Medicamento en Sucursales</a>
                 </li>
             </ul>
         </div>
@@ -27,12 +27,14 @@
     </nav>
 
     <div>
-        <h6>Buscar medicamento</h6>
-        <form class="form-inline my-2 my-lg-0">
-            {{ csrf_field() }}
-            <input class="form-control mr-sm-2 col-md-5" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
-        </form>
+        {{Form::open(['route'=>'listamedicamentos','method'=>'GET','class'=>'form-inline'])}}
+        <h5 class="text-primary col-md-4">Lista de Medicamentos</h5>
+        {{Form::text('nombre',null,['class'=>'form-control form-control-sm col-md-4 offset-md-2','placeholder'=>'Por nombre de medicamento'])}}
+        <button class="btn btn-azul btn-sm col-md-1 " role="button" aria-pressed="true">
+            <span data-feather="search"></span>
+            Buscar
+        </button>
+        {{Form::close()}}
     </div>
         <!-- /.box --><!-- Tabla Lista de Usuarios -->
             <br>

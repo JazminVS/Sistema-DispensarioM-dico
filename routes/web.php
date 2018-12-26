@@ -24,6 +24,9 @@ Route::group(['prefix' => 'doctor'], function() {
     Route::get('citamedica', 'Doctor\ConsultaController@cita');
     Route::get('pacientes', 'Doctor\PacienteController@listapacientes')->name('pacientes');
 });
+Route::group(['prefix' => 'doctor'], function() {
+    Route::get('editarpaciente/{id_paciente?}',  'Doctor\PacienteController@editarpaciente')->name('doctor_editarpaciente');
+});
 //Route::get('/importar', 'ExcelController@importar')->name('importar'); //Importar archivos excel a mysql.*/
 /********************************************************************************************************/
 /*RUTAS ASISTENTE*/
@@ -34,7 +37,7 @@ Route::group(['prefix' => 'asistente'], function() {
     Route::get('pacientes/{idpaciente?}', 'asistente\PacienteController@editarpacientes')->name('editarpaciente');
     Route::get('paciente', 'asistente\PacienteController@paciente')->name('asistentepaciente');
     Route::get('medicamentos', 'asistente\FarmaciaController@index');
-    Route::get('listamedicamentos', 'asistente\FarmaciaController@listamedicamentos');
+    Route::get('listamedicamentos', 'asistente\FarmaciaController@listamedicamentos')->name('listamedicamentos');
     Route::get('reportes', 'asistente\ReportesController@index')->name('reportes');
     Route::get('botiquinsucursal', 'asistente\FarmaciaController@verbotiquin');
 });

@@ -11,7 +11,6 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('bootstrap/dist/css/bootstrap.css')}}" rel="stylesheet">
-    <!-- Custom styles for this template -->
     <link href="{{asset('css/asistente.css')}}" rel="stylesheet">
 
     <!--CALENDARIO ENLACES1-->
