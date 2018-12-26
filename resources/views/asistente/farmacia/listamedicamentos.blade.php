@@ -3,32 +3,38 @@
 
 @section('content')
     <div class="border-bottom border-dark">
-        <h4 class="text-dark">ADMINISTRACION DE MEDICAMENTOS</h4>
+        <h3 class="text-center titulo">ADMINISTRACION DE MEDICAMENTOS</h3>
     </div>
-
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto offset-5">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="listamedicamentos"><span data-feather="folder-plus"></span>BOTIQUINES</a>
+                    <a class="nav-link" href="listamedicamentos"><span data-feather="folder-plus"></span>Botiquines</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="medicamentos"><span data-feather="plus-square"></span>CREAR MEDICAMENTO</a>
+                    <a class="nav-link" href="medicamentos"><span data-feather="plus-square"></span>Medicamentos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="botiquinsucursal"><span data-feather="folder-plus"></span>MEDICAMENTO EN SUCURSALES</a>
+                    <a class="nav-link" href="botiquinsucursal"><span data-feather="folder-plus"></span>Medicamento en Sucursales</a>
                 </li>
             </ul>
         </div>
     </nav>
-    <br>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Lista de Medicamentos</li>
+        </ol>
+    </nav>
+
     <div>
-        <h6>Buscar medicamento</h6>
-        <form class="form-inline my-2 my-lg-0">
-            {{ csrf_field() }}
-            <input class="form-control mr-sm-2 col-md-5" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
-        </form>
+        {{Form::open(['route'=>'listamedicamentos','method'=>'GET','class'=>'form-inline'])}}
+        <h5 class="text-primary col-md-4">Lista de Medicamentos</h5>
+        {{Form::text('nombre',null,['class'=>'form-control form-control-sm col-md-4 offset-md-2','placeholder'=>'Por nombre de medicamento'])}}
+        <button class="btn btn-azul btn-sm col-md-1 " role="button" aria-pressed="true">
+            <span data-feather="search"></span>
+            Buscar
+        </button>
+        {{Form::close()}}
     </div>
         <!-- /.box --><!-- Tabla Lista de Usuarios -->
             <br>

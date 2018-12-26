@@ -1,12 +1,13 @@
-@extends('layouts.asistente')
+@extends('layouts.dashboard')
+
 @section('content')
-    <div class="border-bottom border-dark">
-        <h3 class="text-center titulo">PACIENTES</h3>
+    <div class="border-bottom border-dilipa">
+        <h3 class="text-center text-dilipa">PACIENTES</h3>
     </div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a >Lista de Pacientes</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Editar paciente</li>
+            <li class="breadcrumb-item active">Lista de Pacientes</li>
+            <li class="breadcrumb-item active">Editar Paciente</li>
         </ol>
     </nav>
     <h5 class="text-primary col-md-8">Formulario Editar Paciente</h5>
@@ -31,7 +32,16 @@
             <div class="col-md-4 form-group">
                 <label for="genero" class="col-form-label">Genero</label>
                 <?php
+                /*GENERO*/
+                $id_genero=$paciente->pk_genero;
 
+                foreach ($generos as $genero=>$ids) {
+                $id=$ids->id;
+                if ($id==$id_genero){
+                    $gen=$ids->descripcion;
+                }
+                }
+                echo $gen;
                 ?>
                 <select class="form-control col-md-8" name="genero">
                     @foreach($generos as $genero)
@@ -59,6 +69,17 @@
         <div class="row">
             <div class="col-md-4 form-group">
                 <label for="estado_civil" class="col-form-label">Estado civil</label>
+                <?php
+                /*ESTADO CIVIL*/
+                $id_estado=$paciente->pk_estado_civil;
+                    foreach ($estado_civil as $estado=>$ids){
+                    $id=$ids->id;
+                    if ($id==$id_estado){
+                    $estadocivil=$ids->descripcion;
+                    }
+                }
+                echo $estadocivil;
+                ?>
                 <select id="" class="form-control col-md-8" name="estado_civil">
                     @foreach($estado_civil as $estado)
                         <option value="{{$estado->id}}">{{$estado->descripcion}}</option>
@@ -67,14 +88,7 @@
             </div>
             <div class="col-md-4 form-group">
                 <label for="cedula" class="col-form-label">Cedula de identidad</label>
-                <input type="text" class="form-control col-md-8" id="cedula" name="cedula" maxlength="10" onkeypress="return aceptNum(event)" onpaste="return false;" value="{{$paciente->CI}}">
-                <script>
-                    var nav4 = window.Event ? true : false;
-                    function aceptNum(evt){
-                        var key = nav4 ? evt.which : evt.keyCode;
-                        return (key <= 13 || (key>= 48 && key <= 57));
-                    }
-                </script>
+                <input type="text" class="form-control col-md-8" id="cedula" name="cedula" maxlength="10" value="{{$paciente->CI}}">
             </div>
         </div>
 
@@ -122,25 +136,11 @@
             </div>
             <div class="col-md-4 form-group">
                 <label for="telf1" class="col-form-label">Telf. convencional</label>
-                <input type="tel" maxlength="10" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf1" name="telf1" value="{{$paciente->telf1}}">
-                <script>
-                    var nav4 = window.Event ? true : false;
-                    function aceptNum(evt){
-                        var key = nav4 ? evt.which : evt.keyCode;
-                        return (key <= 13 || (key>= 48 && key <= 57));
-                    }
-                </script>
+                <input type="text" class="form-control" id="telf1" name="telf1" value="{{$paciente->telf1}}">
             </div>
             <div class="col-md-4 form-group">
                 <label for="telf2" class="col-form-label">Nro. celular</label>
-                <input type="tel" maxlength="10" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf2" name="telf2" value="{{$paciente->telf2}}">
-                <script>
-                    var nav4 = window.Event ? true : false;
-                    function aceptNum(evt){
-                        var key = nav4 ? evt.which : evt.keyCode;
-                        return (key <= 13 || (key>= 48 && key <= 57));
-                    }
-                </script>
+                <input type="text" class="form-control" id="telf2" name="telf2" value="{{$paciente->telf2}}">
             </div>
         </div>
         <div class="row">
@@ -150,25 +150,11 @@
             </div>
             <div class="col-md-4 form-group">
                 <label for="telf3" class="col-form-label">Telf.convencional</label>
-                <input type="text"  maxlength="10" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf3" name="telf3" value="{{$paciente->telf3}}">
-                <script>
-                    var nav4 = window.Event ? true : false;
-                    function aceptNum(evt){
-                        var key = nav4 ? evt.which : evt.keyCode;
-                        return (key <= 13 || (key>= 48 && key <= 57));
-                    }
-                </script>
+                <input type="text" class="form-control" id="telf3" name="telf3" value="{{$paciente->telf3}}">
             </div>
             <div class="col-md-4 form-group">
                 <label for="telf4" class="col-form-label">Nro. celular</label>
-                <input type="text" maxlength="10" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf4" name="telf4" value="{{$paciente->telf4}}">
-                <script>
-                    var nav4 = window.Event ? true : false;
-                    function aceptNum(evt){
-                        var key = nav4 ? evt.which : evt.keyCode;
-                        return (key <= 13 || (key>= 48 && key <= 57));
-                    }
-                </script>
+                <input type="text" class="form-control" id="telf4" name="telf4" value="{{$paciente->telf4}}">
             </div>
         </div>
         <div class="row">
@@ -181,14 +167,7 @@
             </div>
             <div class="col-md-2 form-group">
                 <label for="carnet" class="col-form-label">No.carnet</label>
-                <input type="text" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="carnet" name="carnet" maxlength="10" value="{{$paciente->carnet}}">
-                <script>
-                    var nav4 = window.Event ? true : false;
-                    function aceptNum(evt){
-                        var key = nav4 ? evt.which : evt.keyCode;
-                        return (key <= 13 || (key>= 48 && key <= 57));
-                    }
-                </script>
+                <input type="text" class="form-control" id="carnet" name="carnet" maxlength="10" value="{{$paciente->carnet}}">
             </div>
             <div class="col-md-2 form-group">
                 <label for="nivel_instruccion" class="col-form-label">Tipo Discapacidad</label>
@@ -200,14 +179,7 @@
             </div>
             <div class="col-md-2 form-group">
                 <label for="carnet" class="col-form-label">Porcentaje(%)</label>
-                <input type="text" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="carnet" name="porcentaje" maxlength="3" value="{{$paciente->porcentaje}}">
-                <script>
-                    var nav4 = window.Event ? true : false;
-                    function aceptNum(evt){
-                        var key = nav4 ? evt.which : evt.keyCode;
-                        return (key <= 13 || (key>= 48 && key <= 57));
-                    }
-                </script>
+                <input type="text" class="form-control" id="carnet" name="porcentaje" maxlength="10" value="{{$paciente->porcentaje}}">
             </div>
         </div>
         <button type="submit" class="btn btn-dilipa btn-md" >ACTUALIZAR DATOS DEL PACIENTE</button>

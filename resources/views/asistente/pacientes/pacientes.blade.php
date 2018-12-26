@@ -16,14 +16,14 @@
                 Crear nuevo
             </a>
         </div>
-        <div class="col-md-8 ">
+        <div class="col-md-8">
             {{Form::open(['route'=>'asistentepacientes','method'=>'GET','class'=>'row form-group'])}}
             <div class="col-md-3 offset-md-2 col-form-label-sm">
                 {{Form::text('nombre',null,['class'=>'form-control','placeholder'=>'Por apellidos'])}}
             </div>
             <div class="col-md-3 offset-md-1 col-form-label-sm">
                 {{Form::text('cedula',null,['class'=>'form-control ','placeholder'=>'Por cedula'])}}
-            </div>
+            </div><br>
             <button href="#" class="btn btn-azul btn-sm col-md-2 offset-md-1" role="button" aria-pressed="true">
                 <span data-feather="search"></span>
                 Buscar

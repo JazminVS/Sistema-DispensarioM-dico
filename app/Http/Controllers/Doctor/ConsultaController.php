@@ -33,7 +33,7 @@ class ConsultaController extends Controller
         $diagnosticos=TipoDiagnostico::all();
         $enfermedades=cie::all();
 
-        return view('doctor.diagnostico', compact('id_consulta','diagnosticos', 'enfermedades','resultado'));
+        return view('doctor.consultas.diagnostico', compact('id_consulta','diagnosticos', 'enfermedades','resultado'));
 
     }
 
@@ -54,8 +54,5 @@ class ConsultaController extends Controller
 
     }
 
-    public function cita()
-    {
-        return view('doctor/cita');
-    }
+
 }

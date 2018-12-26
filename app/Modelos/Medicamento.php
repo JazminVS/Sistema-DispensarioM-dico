@@ -3,6 +3,7 @@
 namespace App\Modelos;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Medicamento extends Model
 {
@@ -10,4 +11,10 @@ class Medicamento extends Model
 
     protected $table = 'farmacia';
 
+    public function scopeName ($query, $name){
+        //dd("scope:",$name);
+        if(trim($name) != "" ){
+            $query->orWhere(DB::raw("nombre"), 'LIKE', "%".$name."%");
+        }
+    }
 }

@@ -11,7 +11,6 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('bootstrap/dist/css/bootstrap.css')}}" rel="stylesheet">
-    <!-- Custom styles for this template -->
     <link href="{{asset('css/asistente.css')}}" rel="stylesheet">
 
     <!--CALENDARIO ENLACES1-->
@@ -76,6 +75,10 @@
                         <span data-feather="home"></span>
                         PERFIL
                     </a>
+                    <a href="#" class="list-group-item">
+                        <span data-feather="calendar"></span>
+                        CITAS MEDICAS
+                    </a>
                     <a href="paciente" class="list-group-item">
                         <span data-feather="folder-plus"></span>
                         PROCEDIMIENTOS
@@ -88,10 +91,12 @@
                         <span data-feather="eye"></span>
                         EXAMEN FISICO
                     </a>
+
                     <a href="#" class="list-group-item">
                         <span data-feather="calendar"></span>
                         CITAS MEDICAS
                     </a>
+
                     <a href="listamedicamentos" class="list-group-item">
                         <span data-feather="briefcase"></span>
                         MEDICAMENTOS

@@ -29,11 +29,6 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="nombres" class="col-form-label">Diagnostico</label>
-                    <input type="text" class="form-control col-md-10" id="nombres" name="diagnostico">
-                    <small id="nombres" class="form-text text-muted">Por favor señale en este espacio su diagnóstico.</small>
-                </div>
-                <div class="form-group">
                     <label for="tipo sano" class="col-form-label">Sano</label>
                     <select id="" class="form-control col-md-8" name="sano">
                         @foreach($sanos as $sano)
@@ -56,6 +51,11 @@
                             <option value="{{$morbil->id}}">{{$morbil->descripcion}}</option>
                         @endforeach
                     </select>
+                </div>
+                <div class="form-group">
+                    <label for="nombres" class="col-form-label">Diagnostico</label>
+                    <input type="text" class="form-control col-md-10" id="nombres" name="diagnostico">
+                    <small id="nombres" class="form-text text-muted">Por favor señale en este espacio su diagnóstico.</small>
                 </div>
             </div>
             <div class="col-md-6">
