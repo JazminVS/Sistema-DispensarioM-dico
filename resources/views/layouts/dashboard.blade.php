@@ -80,13 +80,17 @@
                         <span data-feather="calendar"></span>
                         Cita médica
                     </a>
+                    <a href="pacientpro" class="list-group-item list-group-item-action">
+                        <span data-feather="folder-plus"></span>
+                        PROCEDIMIENTOS
+                    </a>
                     <a href="pacientes" class="list-group-item list-group-item-action">
-                        <span data-feather="users"></span>
+                        <span data-feather="user-plus"></span>
                         Pacientes
                     </a>
-                    <a  class="list-group-item list-group-item-action">
-                        <span data-feather="truck"></span>
-                        Farmacia
+                    <a class="list-group-item">
+                        <span data-feather="briefcase"></span>
+                        MEDICAMENTOS
                     </a>
                 </div>
             </div>

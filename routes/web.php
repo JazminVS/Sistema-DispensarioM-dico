@@ -1,14 +1,5 @@
 <?php
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -26,6 +17,8 @@ Route::group(['prefix' => 'doctor'], function() {
 });
 Route::group(['prefix' => 'doctor'], function() {
     Route::get('editarpaciente/{id_paciente?}',  'Doctor\PacienteController@editarpaciente')->name('doctor_editarpaciente');
+    Route::get('creapaciente',  'Doctor\PacienteController@verpacientes')->name('crear_paciente');
+    Route::get('pacientpro','Doctor\ProcedimientoController@pacientes')->name('pacientpro');
 });
 //Route::get('/importar', 'ExcelController@importar')->name('importar'); //Importar archivos excel a mysql.*/
 /********************************************************************************************************/

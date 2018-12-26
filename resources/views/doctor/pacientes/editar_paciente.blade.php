@@ -80,6 +80,7 @@
                 }
                 echo $estadocivil;
                 ?>
+
                 <select id="" class="form-control col-md-8" name="estado_civil">
                     @foreach($estado_civil as $estado)
                         <option value="{{$estado->id}}">{{$estado->descripcion}}</option>
