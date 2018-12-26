@@ -64,7 +64,14 @@
             </div>
             <div class="col-md-4 form-group">
                 <label for="cedula" class="col-form-label">Cedula de identidad</label>
-                <input type="text" class="form-control col-md-8" id="cedula" name="cedula" maxlength="10">
+                <input type="text" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control col-md-8" id="cedula" name="cedula" maxlength="10">
+                <script>
+                    var nav4 = window.Event ? true : false;
+                    function aceptNum(evt){
+                        var key = nav4 ? evt.which : evt.keyCode;
+                        return (key <= 13 || (key>= 48 && key <= 57));
+                    }
+                </script>
             </div>
         </div>
 
@@ -112,11 +119,25 @@
             </div>
             <div class="col-md-4 form-group">
                 <label for="telf1" class="col-form-label">Telf. convencional</label>
-                <input type="text" class="form-control" id="telf1" name="telf1">
+                <input type="text" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf1" name="telf1" maxlength="10">
+                <script>
+                    var nav4 = window.Event ? true : false;
+                    function aceptNum(evt){
+                        var key = nav4 ? evt.which : evt.keyCode;
+                        return (key <= 13 || (key>= 48 && key <= 57));
+                    }
+                </script>
             </div>
             <div class="col-md-4 form-group">
                 <label for="telf2" class="col-form-label">Nro. celular</label>
-                <input type="text" class="form-control" id="telf2" name="telf2">
+                <input type="text" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf2" name="telf2" maxlength="10">
+                <script>
+                    var nav4 = window.Event ? true : false;
+                    function aceptNum(evt){
+                        var key = nav4 ? evt.which : evt.keyCode;
+                        return (key <= 13 || (key>= 48 && key <= 57));
+                    }
+                </script>
             </div>
         </div>
         <div class="row">
@@ -126,11 +147,25 @@
             </div>
             <div class="col-md-4 form-group">
                 <label for="telf3" class="col-form-label">Telf.convencional</label>
-                <input type="text" class="form-control" id="telf3" name="telf3">
+                <input type="text" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf3" name="telf3" maxlength="10">
+                <script>
+                    var nav4 = window.Event ? true : false;
+                    function aceptNum(evt){
+                        var key = nav4 ? evt.which : evt.keyCode;
+                        return (key <= 13 || (key>= 48 && key <= 57));
+                    }
+                </script>
             </div>
             <div class="col-md-4 form-group">
                 <label for="telf4" class="col-form-label">Nro. celular</label>
-                <input type="text" class="form-control" id="telf4" name="telf4">
+                <input type="text" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf4" name="telf4" maxlength="10">
+                <script>
+                    var nav4 = window.Event ? true : false;
+                    function aceptNum(evt){
+                        var key = nav4 ? evt.which : evt.keyCode;
+                        return (key <= 13 || (key>= 48 && key <= 57));
+                    }
+                </script>
             </div>
         </div>
         <div class="row">
@@ -143,7 +178,14 @@
             </div>
             <div class="col-md-2 form-group">
                 <label for="carnet" class="col-form-label">No.carnet</label>
-                <input type="text" class="form-control" id="carnet" name="carnet" maxlength="10">
+                <input type="text" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="carnet" name="carnet" maxlength="10">
+                <script>
+                    var nav4 = window.Event ? true : false;
+                    function aceptNum(evt){
+                        var key = nav4 ? evt.which : evt.keyCode;
+                        return (key <= 13 || (key>= 48 && key <= 57));
+                    }
+                </script>
             </div>
             <div class="col-md-2 form-group">
                 <label for="nivel_instruccion" class="col-form-label">Tipo Discapacidad</label>
@@ -155,7 +197,14 @@
             </div>
             <div class="col-md-2 form-group">
                 <label for="carnet" class="col-form-label">Porcentaje(%)</label>
-                <input type="text" class="form-control" id="carnet" name="porcentaje" maxlength="10">
+                <input type="text" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="carnet" name="porcentaje" maxlength="3">
+                <script>
+                    var nav4 = window.Event ? true : false;
+                    function aceptNum(evt){
+                        var key = nav4 ? evt.which : evt.keyCode;
+                        return (key <= 13 || (key>= 48 && key <= 57));
+                    }
+                </script>
             </div>
         </div>
 

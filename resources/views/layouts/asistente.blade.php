@@ -92,7 +92,7 @@
                         <span data-feather="calendar"></span>
                         CITAS MEDICAS
                     </a>
-                    <a href="medicamentos" class="list-group-item">
+                    <a href="listamedicamentos" class="list-group-item">
                         <span data-feather="briefcase"></span>
                         MEDICAMENTOS
                     </a>
@@ -118,6 +118,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="bootstrap/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/asistente.js"></script>
 
 <!-- Icons -->
 <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>

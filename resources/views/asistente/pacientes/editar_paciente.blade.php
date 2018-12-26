@@ -64,7 +64,14 @@
             </div>
             <div class="col-md-4 form-group">
                 <label for="cedula" class="col-form-label">Cedula de identidad</label>
-                <input type="text" class="form-control col-md-8" id="cedula" name="cedula" maxlength="10" value="{{$paciente->CI}}">
+                <input type="text" class="form-control col-md-8" id="cedula" name="cedula" maxlength="10" onkeypress="return aceptNum(event)" onpaste="return false;" value="{{$paciente->CI}}">
+                <script>
+                    var nav4 = window.Event ? true : false;
+                    function aceptNum(evt){
+                        var key = nav4 ? evt.which : evt.keyCode;
+                        return (key <= 13 || (key>= 48 && key <= 57));
+                    }
+                </script>
             </div>
         </div>
 
@@ -112,11 +119,25 @@
             </div>
             <div class="col-md-4 form-group">
                 <label for="telf1" class="col-form-label">Telf. convencional</label>
-                <input type="text" class="form-control" id="telf1" name="telf1" value="{{$paciente->telf1}}">
+                <input type="tel" maxlength="10" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf1" name="telf1" value="{{$paciente->telf1}}">
+                <script>
+                    var nav4 = window.Event ? true : false;
+                    function aceptNum(evt){
+                        var key = nav4 ? evt.which : evt.keyCode;
+                        return (key <= 13 || (key>= 48 && key <= 57));
+                    }
+                </script>
             </div>
             <div class="col-md-4 form-group">
                 <label for="telf2" class="col-form-label">Nro. celular</label>
-                <input type="text" class="form-control" id="telf2" name="telf2" value="{{$paciente->telf2}}">
+                <input type="tel" maxlength="10" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf2" name="telf2" value="{{$paciente->telf2}}">
+                <script>
+                    var nav4 = window.Event ? true : false;
+                    function aceptNum(evt){
+                        var key = nav4 ? evt.which : evt.keyCode;
+                        return (key <= 13 || (key>= 48 && key <= 57));
+                    }
+                </script>
             </div>
         </div>
         <div class="row">
@@ -126,11 +147,25 @@
             </div>
             <div class="col-md-4 form-group">
                 <label for="telf3" class="col-form-label">Telf.convencional</label>
-                <input type="text" class="form-control" id="telf3" name="telf3" value="{{$paciente->telf3}}">
+                <input type="text"  maxlength="10" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf3" name="telf3" value="{{$paciente->telf3}}">
+                <script>
+                    var nav4 = window.Event ? true : false;
+                    function aceptNum(evt){
+                        var key = nav4 ? evt.which : evt.keyCode;
+                        return (key <= 13 || (key>= 48 && key <= 57));
+                    }
+                </script>
             </div>
             <div class="col-md-4 form-group">
                 <label for="telf4" class="col-form-label">Nro. celular</label>
-                <input type="text" class="form-control" id="telf4" name="telf4" value="{{$paciente->telf4}}">
+                <input type="text" maxlength="10" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf4" name="telf4" value="{{$paciente->telf4}}">
+                <script>
+                    var nav4 = window.Event ? true : false;
+                    function aceptNum(evt){
+                        var key = nav4 ? evt.which : evt.keyCode;
+                        return (key <= 13 || (key>= 48 && key <= 57));
+                    }
+                </script>
             </div>
         </div>
         <div class="row">
@@ -143,7 +178,14 @@
             </div>
             <div class="col-md-2 form-group">
                 <label for="carnet" class="col-form-label">No.carnet</label>
-                <input type="text" class="form-control" id="carnet" name="carnet" maxlength="10" value="{{$paciente->carnet}}">
+                <input type="text" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="carnet" name="carnet" maxlength="10" value="{{$paciente->carnet}}">
+                <script>
+                    var nav4 = window.Event ? true : false;
+                    function aceptNum(evt){
+                        var key = nav4 ? evt.which : evt.keyCode;
+                        return (key <= 13 || (key>= 48 && key <= 57));
+                    }
+                </script>
             </div>
             <div class="col-md-2 form-group">
                 <label for="nivel_instruccion" class="col-form-label">Tipo Discapacidad</label>
@@ -155,7 +197,14 @@
             </div>
             <div class="col-md-2 form-group">
                 <label for="carnet" class="col-form-label">Porcentaje(%)</label>
-                <input type="text" class="form-control" id="carnet" name="porcentaje" maxlength="10" value="{{$paciente->porcentaje}}">
+                <input type="text" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="carnet" name="porcentaje" maxlength="3" value="{{$paciente->porcentaje}}">
+                <script>
+                    var nav4 = window.Event ? true : false;
+                    function aceptNum(evt){
+                        var key = nav4 ? evt.which : evt.keyCode;
+                        return (key <= 13 || (key>= 48 && key <= 57));
+                    }
+                </script>
             </div>
         </div>
         <button type="submit" class="btn btn-dilipa btn-md" >ACTUALIZAR DATOS DEL PACIENTE</button>

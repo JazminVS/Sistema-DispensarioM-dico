@@ -1,6 +1,5 @@
 @extends('layouts.asistente')
 
-
 @section('content')
     <div class="border-bottom border-dark">
         <h3 class="text-center titulo">PROCEDIMIENTOS</h3>
@@ -19,21 +18,13 @@
                 <hr>
                 <div class="form-group">
                     <label for="fecha" class="col-form-label">Fecha</label>
-                    <input type="text" class="form-control col-md-6" id="fecha" name="fecha">
-                    <script>
-                        $('#fecha').datepicker({
-                            uiLibrary: 'bootstrap4',
-                            onSelect: function(date) {
-                                alert(date);
-                            }
-                        });
-                    </script>
+                    <input type="date" value="<?php echo date("Y-m-d");?>" class="form-control col-md-6" id="fecha" name="fecha">
                 </div>
                 <div class="form-group">
                     <label for="atencion" class="col-form-label">Atendido por</label>
                     <select class="form-control col-md-8" id="atencion" name="atencion">
                         @foreach($atencion as $att)
-                            <option value="{{$att->id}}">{{$att->descripcion}}</option>
+                            <option value="{{$att->id}}" selected> {{$att->descripcion}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -71,7 +62,7 @@
                 <h5 class="offset-md-3 subtitulo">DATOS DEL PACIENTE</h5>
                 <hr>
                 <a class="offset-md-8 col-md-1">
-                    <span data-feather="eye"></span>
+                    <span data-feather="eye" href="·"></span>
                     EDITAR
                 </a>
                 <div class="form-group">

@@ -36,7 +36,7 @@ Route::group(['prefix' => 'asistente'], function() {
     Route::get('home', 'asistente\AsistenteController@index')->name('asistentehome');
     Route::get('pacientes', 'asistente\PacienteController@listapacientes')->name('asistentepacientes');
     Route::get('crearpaciente', 'asistente\PacienteController@verpacientes')->name('crearpaciente');
-    Route::get('editarpaciente/{id}', 'asistente\PacienteController@editarpacientes')->name('editarpaciente');
+    Route::get('editarpaciente/{id?}', 'asistente\PacienteController@editarpacientes')->name('editarpaciente');
     Route::get('paciente', 'asistente\PacienteController@pacientes');
     Route::get('paciente1', 'asistente\PacienteController@paciente')->name('asistentepaciente');
     Route::get('medicamentos', 'asistente\FarmaciaController@index');
