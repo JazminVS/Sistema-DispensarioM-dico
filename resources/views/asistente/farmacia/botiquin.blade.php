@@ -38,7 +38,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="datepicker">Fecha de entrega</label>
-            <input id="datepicker" class="col-6" name="fecha" required>
+            <input id="datepicker" value="<?php echo date("Y-m-d");?>" class="col-6" name="fecha" required>
             <script>
                 $('#datepicker').datepicker({
                     uiLibrary: 'bootstrap4',
@@ -64,9 +64,13 @@
              <input type="text" class="form-control col-10"  value="{{$medicamento->nombre}}" disabled>
              <input type="text" class="form-control col-10" id="" name="medicamento" value="{{$medicamento->id}}" style="display: none">
          </div>
-        <div class="form-group col-md-3">
-            <label>Cantidad a entregar</label>
-            <input type="text" class="form-control col-10" name="cantidad_entrega">
+
+
+            <div class="form-group col-md-3">
+                <label>Cantidad a entregar</label>
+                <input type="number" class="form-control col-10" min="1" max="99" maxlength="3"  required name="cantidad_entrega">
+
+
         </div>
         <div class="form-group col-md-3">
             <label>Cantidad en farmacia</label>
