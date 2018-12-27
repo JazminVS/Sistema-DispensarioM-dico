@@ -11,7 +11,7 @@
     </nav>
     <div class="form-group">
     {{Form::open(['route'=>'consultapaciente','method'=>'GET','class'=>'form-inline'])}}
-    <h5 class="text-primary col-md-4">Lista de Pacientes</h5>
+    <h5 class="text-primary col-md-4">Búsqueda de Pacientes</h5>
     {{Form::text('nombre',null,['class'=>'form-control form-control-sm col-md-3','placeholder'=>'Por apellidos o nombres'])}}
     {{Form::text('cedula',null,['class'=>'form-control form-control-sm col-md-3','placeholder'=>'Por cedula'])}}
 

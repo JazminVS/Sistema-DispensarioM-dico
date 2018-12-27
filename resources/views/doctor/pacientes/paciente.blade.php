@@ -9,21 +9,26 @@
             <li class="breadcrumb-item active">Lista de Pacientes</li>
         </ol>
     </nav>
+    <div class="form-inline">
+    <h5 class="text-primary">Lista de Pacientes</h5>
+    <a class="btn btn-sm text-dark"  href="creapaciente" role="button">
+        <span data-feather="plus-circle"></span>
+        Crear nuevo
+    </a>
+        {{Form::open(['route'=>'pacientes','method'=>'GET','class'=>'row offset-md-4'])}}
 
-    <div class="form-group">
-        {{Form::open(['route'=>'pacientes','method'=>'GET','class'=>'form-inline'])}}
-        <h5 class="text-primary col-md-4">Lista de Pacientes</h5>
-        {{Form::text('nombre',null,['class'=>'form-control form-control-sm col-md-3','placeholder'=>'Por apellidos o nombres'])}}
-        {{Form::text('cedula',null,['class'=>'form-control form-control-sm col-md-3','placeholder'=>'Por cedula'])}}
+        {{Form::text('nombre',null,['class'=>'form-control form-control-sm col-md-5','placeholder'=>'Por apellidos o nombres'])}}
+        {{Form::text('cedula',null,['class'=>'form-control form-control-sm col-md-4','placeholder'=>'Por cedula'])}}
 
-        <button class="btn btn-sm col-md-1" role="button" aria-pressed="true">
+        <button class="btn btn-sm col-md-3 btn-outline-primary" role="button" aria-pressed="true">
             <span data-feather="search"></span>
             Buscar
         </button>
         {{Form::close()}}
-    </div>
+    </div><br>
 
 
+    <div>
     @if($pacientes->isEmpty())
         <p>No existen registros</p>
     @else
@@ -47,8 +52,8 @@
                     <td>{!! $paciente->fecha_nacimiento!!}</td>
                     <td>{!! $paciente->lugar_nacimiento!!}</td>
                     <td>
-                        <a class="btn btn-success btn-md" href="{!!action('Doctor\PacienteController@editarpaciente',$paciente->id)!!}">Editar</a>
-                        <a class="btn btn-info btn-md">Eliminar</a>
+                        <a class="btn btn-success btn-sm" href="{!!action('Doctor\PacienteController@editarpaciente',$paciente->id)!!}">Editar</a>
+                        <a class="btn btn-info btn-sm">Eliminar</a>
                     </td>
 
                 </tr>
@@ -56,4 +61,5 @@
             </tbody>
         </table>
         @endif
+    </div>
 @endsection
