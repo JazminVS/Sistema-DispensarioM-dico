@@ -31,6 +31,7 @@ class ConsultaController extends Controller
                 'pk_id_paciente'=> $id_paciente,
             ]);
         $diagnosticos=TipoDiagnostico::all();
+
         $enfermedades=cie::all();
 
         return view('doctor.consultas.diagnostico', compact('id_consulta','diagnosticos', 'enfermedades','resultado'));

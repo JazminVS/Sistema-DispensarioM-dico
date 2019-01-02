@@ -47,7 +47,7 @@
                         <td>{!! $paciente->fecha_nacimiento!!}</td>
                         <td>{!! $paciente->lugar_nacimiento!!}</td>
                         <td>
-                            <a class="btn btn-outline-info btn-sm" href="{!!action('Doctor\PacienteController@show',$paciente->id)!!}">Generar Procedimiento</a>
+                            <a class="btn btn-outline-info btn-sm" href="{!!action('Doctor\PacienteController@ver',$paciente->id)!!}">Generar Procedimiento</a>
                         </td>
                     </tr>
                 @endforeach

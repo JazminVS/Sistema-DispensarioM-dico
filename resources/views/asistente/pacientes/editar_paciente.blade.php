@@ -42,11 +42,17 @@
                 echo $gen;
                 ?>
                 ?>
-                <select class="form-control col-md-8" name="genero">
+                <select class="form-control col-md-8" name="genero" id="genero">
                     @foreach($generos as $genero)
                         <option value="{{$genero->id}}">{{$genero->descripcion}}</option>
                     @endforeach
                 </select>
+                <script>
+                    //Esta es la función que hace que se escoga la posicion que se desea
+                    $(function(){
+                        $("#genero").val($id_genero)
+                    });
+                </script>
             </div>
             <div class="col-md-4 form-group">
                 <label for="fecha_nacimiento" class="col-form-label">Fecha de nacimiento</label>

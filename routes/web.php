@@ -19,6 +19,7 @@ Route::group(['prefix' => 'doctor'], function() {
     Route::get('editarpaciente/{id_paciente?}',  'Doctor\PacienteController@editarpaciente')->name('doctor_editarpaciente');
     Route::get('creapaciente',  'Doctor\PacienteController@verpacientes')->name('crear_paciente');
     Route::get('pacientpro','Doctor\ProcedimientoController@pacientes')->name('pacientpro');
+    Route::get('pacient/{id_paciente?}', 'Doctor\PacienteController@ver')->name('procedimiento');
 });
 //Route::get('/importar', 'ExcelController@importar')->name('importar'); //Importar archivos excel a mysql.*/
 /********************************************************************************************************/

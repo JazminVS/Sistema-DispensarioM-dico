@@ -14,12 +14,15 @@
 
     <!-- Custom styles for this template -->
     <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
-    /
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
-
+    <!--Enlaces de Select 2 JQUERY -->
+    <link href="{{asset('cs/select2.min.css')}}" rel="stylesheet"/>
+    <script src="{{asset('js/select2.min.js')}}"></script>
+    <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
 </head>
 
 <body>
@@ -115,4 +118,7 @@
 <script>
     feather.replace()
 </script>
+
+
+
 </html>

@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Doctor;
 
 use App\EstadoCivil;
+use App\Modelos\AtendidoPor;
 use App\Modelos\Genero;
+use App\Modelos\Morbilidad;
 use App\Modelos\NivelInstruccion;
 use App\Modelos\Sucursal;
 use App\Modelos\TipoDiscapacidad;
+use App\Modelos\TipoSano;
+use App\Modelos\VigilanciaSalud;
 use Illuminate\Http\Request;
 use App\Paciente;
 use App\Http\Controllers\Controller;
@@ -33,6 +37,16 @@ class PacienteController extends Controller
     {
         $paciente=Paciente::whereId($id)->firstOrFail();
         return view('doctor.consultas.consulta',compact('paciente'));
+    }
+    public function ver($id){
+        $paciente=Paciente::whereId($id)->firstOrFail();
+
+        $sucursales=Sucursal::all();
+        $atencion=AtendidoPor::all();
+        $sanos=TipoSano::all();
+        $vigilancia=VigilanciaSalud::all();
+        $morbilidad=Morbilidad::all();
+        return view('doctor.procedimientos.procedimiento',compact('paciente','sucursales','atencion','sanos','vigilancia','morbilidad'));
     }
 
     public function edit($id_paciente)
