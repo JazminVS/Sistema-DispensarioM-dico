@@ -12,17 +12,22 @@
     <!-- Bootstrap core CSS -->
     <link href="{{asset('bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
+    <!-- CSS creados-->
     <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
-
+    <!-- Calendario en fechas -->
+    <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
-    <!--Enlaces de Select 2 JQUERY -->
-    <link href="{{asset('cs/select2.min.css')}}" rel="stylesheet"/>
-    <script src="{{asset('js/select2.min.js')}}"></script>
-    <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
+
+    <!-- select2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+
+    <!-- select2-bootstrap4-theme -->
+    <link href="{{asset('css/select2-bootstrap4.min.css')}}" rel="stylesheet">
+
+
+
 </head>
 
 <body>
@@ -70,7 +75,7 @@
                         <small>Doctor</small>
                     </div>
                 </div>
-                <div class="list-group text-uppercase" >
+                <div class="list-group text-uppercase list-group-mine" >
                     <a href="home" class="list-group-item list-group-item-action">
                         <span data-feather="home"></span>
                         Dashboard
@@ -101,6 +106,7 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 ">
             @yield('content')
+            @include('flashy::message')
         </main>
     </div>
 </div>
@@ -111,14 +117,28 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="bootstrap/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<script src="bootstrap/dist/js/bootstrap.min.js"></script>
-
+<script src="{{asset('bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <!-- Icons -->
 <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
 <script>
     feather.replace()
 </script>
+<!-- JQuery-->
+<script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
+<!--select2-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<!-- Select2-bootstrap4-theme -->
+<script src="{{asset('js/selector.js')}}"></script>
+<!--Flash-->
+<!-- If using flash()->important() or flash()->overlay(), you'll need to pull in the JS for Twitter Bootstrap. -->
+<script src="//code.jquery.com/jquery.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-
+<script>
+    $('#flash-overlay-modal').modal();
+</script>
+<script>
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+</script>
 
 </html>

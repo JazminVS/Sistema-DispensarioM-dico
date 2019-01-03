@@ -22,13 +22,13 @@
     </nav>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page">Lista de Medicamentos</li>
+            <li class="breadcrumb-item active" aria-current="page">Agregar medicamentos a botiquines</li>
         </ol>
     </nav>
 
     <div>
         {{Form::open(['route'=>'listamedicamentos','method'=>'GET','class'=>'form-inline'])}}
-        <h5 class="text-primary col-md-4">Lista de Medicamentos</h5>
+        <h5 class="text-primary col-md-4">Agregar medicamento a Botiquines</h5>
         {{Form::text('nombre',null,['class'=>'form-control form-control-sm col-md-4 offset-md-2','placeholder'=>'Por nombre de medicamento'])}}
         <button class="btn btn-azul btn-sm col-md-1 " role="button" aria-pressed="true">
             <span data-feather="search"></span>
@@ -36,8 +36,13 @@
         </button>
         {{Form::close()}}
     </div>
+
+    <div>
+
+
         <!-- /.box --><!-- Tabla Lista de Usuarios -->
             <br>
+        <h6 class="text-primary col-md-4">Lista de medicamentos</h6>
                 <div class="box-body">
                     @if($medicamentos->isEmpty())
                         <p>No existen registros en la tabla de Medicamentos</p>
@@ -83,4 +88,5 @@
                     @endif
                 </div>
                 <!-- /.box-body -->
+    </div>
 @endsection

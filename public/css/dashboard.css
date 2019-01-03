@@ -103,11 +103,6 @@ body {
     background-color: #EE7401;
 }
 
-.btn-dilipa{
-    color: #ffffff;
-    background-color: #EE7401;
-    border-color: #EE7401;
-}
 
 .text-dilipa{
     color:#00447C!important;
@@ -115,8 +110,43 @@ body {
 .border-dilipa {
     border-color:#00447C !important;
 }
+/* SELECCION FONDO COLOR ANARANJADO DE DILIPA*/
+.list-group-mine .list-group-item {
+    background-color: #00447C;
+    border-top: 1px solid #FFFFFF;
+    border-left-color: #fff;
+    border-right-color: #fff;
+}
+
+.list-group-mine .list-group-item:hover {
+    background-color: #EE7401;
+}
+/**/
+/*BOTONES PERSONALIZADOS*/
+.btn-dilipa{
+    color: #ffffff;
+    background-color: #EE7401;
+    border-color: #EE7401;
+}
+.btn-diliazul {
+    color: #ffffff;
+    background-color: #30426a;
+    border-color: #30426a;
+}
+.btn-diliceleste {
+    color: #ffffff;
+    background-color: #0071bd;
+    border-color: #0071bd;
+}
+/**/
+/*PALETA DE COLORES
+1. #30426a
+2. #0071bd
+3. #91bed5
+4. #ffffff
+5. #f26202
+*/
 
 
-
-
-
+/**/
+/**/

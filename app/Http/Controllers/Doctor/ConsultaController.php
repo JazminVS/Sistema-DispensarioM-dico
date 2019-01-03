@@ -43,13 +43,14 @@ class ConsultaController extends Controller
         $indicaciones = $request -> input('indicaciones');
         $consulta = $request -> input('consulta');
         $diagnostico = $request->get('diagnostico');
+        $enfermedad = $request->get('enfermedad');
         //echo "tipo_diagnostico:",$diagnostico;
         DB::table('diagnostico')->insert(
             [
                 'indicaciones'=> $indicaciones,
                 'pk_id_consulta'=> $consulta,
                 'pk_tipo_diagnostico'=> $diagnostico,
-                'pk_cie'=>null,
+                'pk_cie'=>$enfermedad,
             ]);
         echo "datos ingresados correctamente";
 

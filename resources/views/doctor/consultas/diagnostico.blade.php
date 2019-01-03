@@ -31,19 +31,13 @@
             <div class="form-group row ">
                 <h5 class="col-md-4">Enfermedad</h5>
                 <div class="col-md-7">
-                    <select id="" class="form-control col-md-8" name="enfermedades" id="enfermedades">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>Ecuador</option>
-                        <option>Economia</option>
+                    <select class="form-control" id="select" placeholder="Choose one thing" name="enfermedad" data-allow-clear="1">
+                        @foreach($enfermedades as $enfermedad)
+                            <option value="{{$enfermedad->id}}">{{$enfermedad->descripcion." ".$enfermedad->campo}}</option>
+                        @endforeach
                     </select>
-
-                    <script type="text/javascript">
-                        $(document).ready(function () {
-                            $("#enfermedades").select2();
-                        })
-                    </script>
                 </div>
+
             </div>
 
             <div class="form-group row ">

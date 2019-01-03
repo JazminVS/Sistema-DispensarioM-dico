@@ -10,7 +10,7 @@
         </ol>
     </nav>
     <h5 class="text-primary col-md-8">Formulario Nuevo Paciente</h5>
-    <form class="offset-md-1" method="POST" action="{{route('agregarpaciente')}}">
+    <form class="offset-md-1" method="POST" action="{{route('pacientes.agregar')}}">
         {{ csrf_field() }}
         <div class="row">
             <div class="col-md-4 form-group">

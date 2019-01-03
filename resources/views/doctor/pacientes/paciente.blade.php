@@ -1,5 +1,4 @@
 @extends('layouts.dashboard')
-
 @section('content')
     <div class="border-bottom border-dilipa">
         <h3 class="text-center text-dilipa">PACIENTES</h3>
@@ -11,7 +10,7 @@
     </nav>
     <div class="form-inline">
     <h5 class="text-primary">Lista de Pacientes</h5>
-    <a class="btn btn-sm text-dark"  href="creapaciente" role="button">
+    <a class="btn btn-sm text-danger"  href="creapaciente" role="button">
         <span data-feather="plus-circle"></span>
         Crear nuevo
     </a>
@@ -25,14 +24,15 @@
             Buscar
         </button>
         {{Form::close()}}
+
     </div><br>
 
-
+    @include('flash::message')
     <div>
     @if($pacientes->isEmpty())
         <p>No existen registros</p>
     @else
-        <table class="table table-bordered table-responsive-md text-sm">
+        <table class="table table-responsive-md table-sm">
             <thead>
             <tr>
                 <th>Apellidos</th>
@@ -52,8 +52,11 @@
                     <td>{!! $paciente->fecha_nacimiento!!}</td>
                     <td>{!! $paciente->lugar_nacimiento!!}</td>
                     <td>
-                        <a class="btn btn-success btn-sm" href="{!!action('Doctor\PacienteController@editarpaciente',$paciente->id)!!}">Editar</a>
-                        <a class="btn btn-info btn-sm">Eliminar</a>
+                        <a class="btn btn-diliazul btn-sm" href="{!!action('Doctor\PacienteController@editarpaciente',$paciente->id)!!}">Editar</a>
+                        <a class="btn btn-diliceleste btn-sm" href="{{ route('pacientes.eliminar',$paciente->id)}}" onclick="return confirm('¿Seguro que deseas eliminarlo?')">Eliminar
+                            <span aria-hidden="true" class="glyphicon glyphicon-trash">
+                        </span></a>
+
                     </td>
 
                 </tr>
@@ -61,5 +64,6 @@
             </tbody>
         </table>
         @endif
+
     </div>
 @endsection

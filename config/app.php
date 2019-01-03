@@ -162,6 +162,8 @@ return [
         App\Providers\EventServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+        MercurySeries\Flashy\FlashyServiceProvider::class,
     ],
 
     /*
@@ -213,6 +215,8 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Flash'=> Laracasts\Flash\Flash::class,
+        'Flashy' => MercurySeries\Flashy\Flashy::class,
     ],
 
 ];

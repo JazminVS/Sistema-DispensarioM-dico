@@ -14,6 +14,27 @@ class PacienteTableSeeder extends Seeder
     {
         Paciente::create([
             'nombres' => 'Jefferson Andres',
+            'apellido1' => 'Salazar Montero',
+            'CI' => '1966884412',
+            'fecha_nacimiento' => '2018-05-04',
+            'lugar_nacimiento' => 'Quito-Ecuador',
+        ]);
+        Paciente::create([
+            'nombres' => 'Jefferson Andres',
+            'apellidos' => 'Salazar Montero',
+            'CI' => '1966884412',
+            'fecha_nacimiento' => '2018-05-04',
+            'lugar_nacimiento' => 'Quito-Ecuador',
+        ]);
+        Paciente::create([
+            'nombres' => 'Jefferson Andres',
+            'apellidos' => 'Salazar Montero',
+            'CI' => '1966884412',
+            'fecha_nacimiento' => '2018-05-04',
+            'lugar_nacimiento' => 'Quito-Ecuador',
+        ]);
+        Paciente::create([
+            'nombres' => 'Jefferson Andres',
             'apellidos' => 'Salazar Montero',
             'CI' => '1966884412',
             'fecha_nacimiento' => '2018-05-04',

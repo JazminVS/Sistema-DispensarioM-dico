@@ -30,6 +30,14 @@
             </button>
             {{Form::close()}}
         </div>
+        <div class="container">
+
+            <p>Welcome to my website...</p>
+
+        </div>
+        <script src="//code.jquery.com/jquery.js"></script>
+
+        @include('flashy::message')
     </div>
     @if($pacientes->isEmpty())
         <p>NO SE HAN CREADO AÚN PACIENTES EN EL SISTEMA</p>
@@ -80,7 +88,7 @@
                     <td>{!! $estadocivils!!}</td>
                     <td>
                         <a class="badge badge-tomate" href="{{action('asistente\PacienteController@editarpacientes',$paciente->id)}}">Editar</a>
-                        <a class="badge badge-azul" href="">Eliminar</a>
+                        <a class="badge badge-azul" href="{{route('pacientes.eliminar',$paciente->id)}}">Eliminar</a>
                     </td>
                 </tr>
             @endforeach

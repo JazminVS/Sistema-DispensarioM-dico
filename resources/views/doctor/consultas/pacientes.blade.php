@@ -29,7 +29,7 @@
             @if($pacientes->isEmpty())
                 <p>No existen registros</p>
             @else
-                <table class="table table-sm table-info">
+                <table class="table table-sm">
                     <thead class="thead-dark">
                     <tr>
                         <th>Apellidos</th>
@@ -37,6 +37,7 @@
                         <th>Cedula</th>
                         <th>Fecha de nacimiento</th>
                         <th>Lugar de nacimiento</th>
+                        <th>Edad</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -48,8 +49,9 @@
                             <td>{!! $paciente->CI !!}</td>
                             <td>{!! $paciente->fecha_nacimiento!!}</td>
                             <td>{!! $paciente->lugar_nacimiento!!}</td>
+                            <td>{!! $paciente->edad!!}</td>
                             <td>
-                                <a class="btn btn-info btn-xs" href="{!!action('Doctor\PacienteController@show',$paciente->id)!!}">Generar consulta</a>
+                                <a class="btn btn-diliceleste btn-xs" href="{!!action('Doctor\PacienteController@show',$paciente->id)!!}">Generar consulta</a>
                             </td>
                         </tr>
                     @endforeach
