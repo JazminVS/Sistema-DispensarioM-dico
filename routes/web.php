@@ -12,8 +12,10 @@ Route::group(['prefix' => 'doctor'], function() {
     Route::get('paciente/{id_paciente?}', 'Doctor\PacienteController@show')->name('consulta');
     Route::post('registro',  'Doctor\ConsultaController@insertar')->name('registro');
     Route::post('diagnostico',  'Doctor\ConsultaController@diagnostico')->name('insertardiagnostico');
+
     Route::get('citamedica', 'Doctor\ConsultaController@cita');
     Route::get('pacientes', 'Doctor\PacienteController@listapacientes')->name('pacientes');
+
 });
 Route::group(['prefix' => 'doctor'], function() {
     Route::get('editarpaciente/{id_paciente?}',  'Doctor\PacienteController@editarpaciente')->name('doctor_editarpaciente');
@@ -23,6 +25,7 @@ Route::group(['prefix' => 'doctor'], function() {
     Route::get('paciente/{id}/eliminar',['uses' => 'Doctor\PacienteController@eliminar', 'as' => 'pacientes.eliminar']);
     Route::post('pacienteagregado', 'Doctor\PacienteController@crearpaciente')->name('pacientes.agregar');
     Route::post('actualizarpaciente/{id_paciente?}', 'Doctor\PacienteController@actualizarpaciente')->name('pacientes.actualizar');
+
 });
 //Route::get('/importar', 'ExcelController@importar')->name('importar'); //Importar archivos excel a mysql.*/
 /********************************************************************************************************/

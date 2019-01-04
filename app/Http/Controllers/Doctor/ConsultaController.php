@@ -52,7 +52,8 @@ class ConsultaController extends Controller
                 'pk_tipo_diagnostico'=> $diagnostico,
                 'pk_cie'=>$enfermedad,
             ]);
-        echo "datos ingresados correctamente";
+        flash('Transacción exitosa!!')->error();
+        return view('doctor.consultas.resultados');
 
     }
 

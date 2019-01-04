@@ -28,6 +28,8 @@ class PacienteController extends Controller
             ->paginate('4');
         return view('doctor.consultas.pacientes', compact('pacientes'));
     }
+
+
     public function listapacientes(Request $request)
     {
         $pacientes = Paciente::name($request->get('nombre'))
@@ -52,22 +54,11 @@ class PacienteController extends Controller
         return view('doctor.procedimientos.procedimiento',compact('paciente','sucursales','atencion','sanos','vigilancia','morbilidad'));
     }
 
-    public function edit($id_paciente)
-    {
-        $paciente = Paciente::find($id_paciente);
-        //return view('doctor.consulta',compact('paciente'));
-    }
-
-    /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function eliminar($id){
         $paciente= Paciente::find($id);
         $paciente->delete();
-        //flash("Se ha eliminado ".$paciente->nombres."".$paciente->apellido1." de forma exitosa!", 'danger')->important();
 
-        flash('El paciente seleccionado. Ha sido eliminado!')->error();
+        flash('El paciente: '.$paciente->nombres.' '.$paciente->apellido1.'. Ha sido eliminado exitosamente!!')->error();
         return redirect()->route('pacientes');
 
     }
@@ -180,7 +171,7 @@ class PacienteController extends Controller
                 'area'=> $area,
                 'puesto'=> $puesto,
             ]);
-        flash('El paciente ha sido agregado exitosamente!!');
+        flash('El paciente: '.$nombres.' '.$apellido1.'. Ha sido agregado exitosamente!!');
         return redirect()->route('pacientes');
 
     }
@@ -270,7 +261,7 @@ class PacienteController extends Controller
             'area'=> $area,
             'puesto'=> $puesto,
         ));
-        flash('El paciente ha sido actualizado exitosamente!!')->warning();
+        flash('El paciente: '.$nombres.' '.$apellido1.'. Ha sido actualizado exitosamente!!')->warning();
         return redirect()->route('pacientes');
     }
 

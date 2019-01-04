@@ -206,9 +206,13 @@
                     }
                 </script>
             </div>
-        </div>
+        </div><br>
 
-        <button type="submit" class="btn btn-dilipa btn-md" >CREAR PACIENTE</button>
+        <button type="submit" class="btn btn-dilipa btn-md" >ACEPTAR</button>
+        {!! link_to(URL::previous(), 'Cancelar', ['class' => 'btn btn-diliazul btn-md offset-md-1']) !!}
+    </form>
+
+    <br>
         <?php
         $data = array ([
             'Azuay' =>[
@@ -293,5 +297,5 @@
 
         ]);
         ?>
-    </form>
+
 @endsection

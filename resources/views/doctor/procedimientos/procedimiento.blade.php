@@ -6,7 +6,7 @@
     </div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active">Lista de Pacientes</li>
+            <li class="breadcrumb-item"><a href="{{ url()->previous()}}">Lista de Pacientes</a></li>
             <li class="breadcrumb-item active">Datos del Procedimiento</li>
         </ol>
     </nav>
@@ -106,8 +106,9 @@
                 </div>
             </div>
 
-            <div class="form-group offset-md-5">
-                <button class="btn btn-celeste btn-lg">ACEPTAR</button>
+            <div class="form-group offset-md-4">
+                <button class="btn btn-diliceleste btn-md">ACEPTAR</button>
+                {!! link_to(URL::previous(), 'CANCELAR', ['class' => 'btn btn-diliazul btn-md']) !!}
             </div>
         </div>
     </form>

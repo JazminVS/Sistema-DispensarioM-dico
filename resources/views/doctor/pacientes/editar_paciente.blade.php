@@ -6,7 +6,7 @@
     </div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active">Lista de Pacientes</li>
+            <li class="breadcrumb-item"><a href="{{ url()->previous()}}">Lista de Pacientes</a></li>
             <li class="breadcrumb-item active">Editar Paciente</li>
         </ol>
     </nav>
@@ -231,6 +231,7 @@
                 </script>
             </div>
         </div>
-        <button type="submit" class="btn btn-dilipa btn-md" >ACTUALIZAR DATOS DEL PACIENTE</button>
-    </form>
+        <button type="submit" class="btn btn-dilipa btn-md" onclick="return confirm('¿Esta seguro de sus cambios?')">ACEPTAR</button>
+        {!! link_to(URL::previous(), 'Cancelar', ['class' => 'btn btn-diliazul btn-md offset-md-1']) !!}
+    </form><br>
 @endsection

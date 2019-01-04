@@ -7,7 +7,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a >Lista de Pacientes</a></li>
-            <li class="breadcrumb-item" aria-current="page"><a>Consulta Médica</a></li>
+            <li class="breadcrumb-item"><a href="{{ url()->previous()}}">Consulta Médica</a></li>
             <li class="breadcrumb-item active" aria-current="page">Diagnóstico</li>
         </ol>
     </nav>
@@ -53,7 +53,7 @@
                      <textarea type="text" class="form-control" id="indicaciones" name="indicaciones" cols="3"></textarea>
                   </div>
             </div>
-            <button type="sumbit" class="btn btn-primary offset-md-10">Guardar</button>
+            <button type="sumbit" class="btn btn-primary offset-md-10">Finalizar</button>
     </form>
     </div>
 @endsection

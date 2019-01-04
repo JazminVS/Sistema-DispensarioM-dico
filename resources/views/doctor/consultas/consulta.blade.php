@@ -6,7 +6,7 @@
     </div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a >Lista de Pacientes</a></li>
+            <li class="breadcrumb-item"><a href="{{ url()->previous()}}">Lista de Pacientes</a></li>
             <li class="breadcrumb-item active" aria-current="page">Consulta Médica</li>
         </ol>
     </nav>
@@ -48,7 +48,7 @@
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary offset-md-9">Guardar</button>
+    <button type="submit" class="btn btn-primary offset-md-9">Siguiente</button>
     </form>
 </div>
     <br/>
