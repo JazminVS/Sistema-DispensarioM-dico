@@ -33,7 +33,7 @@ class ConsultaController extends Controller
         $diagnosticos=TipoDiagnostico::all();
 
         $enfermedades=cie::all();
-
+        flash('Los datos de la consulta han sido ingresados correctamente. Por favor llene los sihuientes campos para seguir con el proceso!!');
         return view('doctor.consultas.diagnostico', compact('id_consulta','diagnosticos', 'enfermedades','resultado'));
 
     }
@@ -52,7 +52,7 @@ class ConsultaController extends Controller
                 'pk_tipo_diagnostico'=> $diagnostico,
                 'pk_cie'=>$enfermedad,
             ]);
-        flash('Transacción exitosa!!')->error();
+        flash('Transacción exitosa!!');
         return view('doctor.consultas.resultados');
 
     }

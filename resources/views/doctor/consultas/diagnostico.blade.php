@@ -11,8 +11,11 @@
             <li class="breadcrumb-item active" aria-current="page">Diagnóstico</li>
         </ol>
     </nav>
+    @include('flash::message')
     <h5 class="text-primary text-center">Generar diagnóstico</h5><br>
+
     <div class="container offset-1">
+
 
         <form class="form-horizontal" method="POST" action="{{ route('insertardiagnostico') }}">
             {{ csrf_field() }}
@@ -43,17 +46,20 @@
             <div class="form-group row ">
                  <h5 class="col-md-4">Prescripción de medicamento</h5>
                  <div class="col-md-7">
-                     <textarea type="text" class="form-control" id="prescripcion" name="prescripcion" cols="3"></textarea>
+                     <textarea type="text" class="form-control" id="prescripcion" name="prescripcion" cols="3" required></textarea>
                  </div>
             </div>
 
             <div class="form-group row ">
                 <h5 class="col-md-4">Indicaciones</h5>
                   <div class="col-md-7">
-                     <textarea type="text" class="form-control" id="indicaciones" name="indicaciones" cols="3"></textarea>
+                     <textarea type="text" class="form-control" id="indicaciones" name="indicaciones" cols="3" required></textarea>
                   </div>
             </div>
-            <button type="sumbit" class="btn btn-primary offset-md-10">Finalizar</button>
+            <div class="form-group row ">
+                {!! link_to(URL::previous(), 'Atrás', ['class' => 'btn btn-diliazul btn-md col-md-2 offset-md-6']) !!}
+                <button type="submit" class="btn btn-primary col-md-2 offset-md-1">Siguiente</button>
+            </div>
     </form>
     </div>
 @endsection

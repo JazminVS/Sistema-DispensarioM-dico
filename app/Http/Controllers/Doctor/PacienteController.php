@@ -41,6 +41,7 @@ class PacienteController extends Controller
     public function show($id)
     {
         $paciente=Paciente::whereId($id)->firstOrFail();
+        flash('Ud ha seleccionado paciente '.$paciente->nombres.' exitosamente. Por favor llene los siguientes campos para continuar con el proceso.!!');
         return view('doctor.consultas.consulta',compact('paciente'));
     }
     public function ver($id){

@@ -15,7 +15,12 @@
     //echo $id_paciente;
     ?>
     <h5 class="text-primary text-center">Datos de consulta médica</h5><br>
+    @include('flash::message')
+
+
+
 <div class="container offset-md-1">
+
 
     <form class="form-horizontal" method="POST" action="{{ route('registro') }}">
         {{ csrf_field() }}
@@ -23,14 +28,14 @@
         <h5 class="col-md-3">Paciente</h5>
         <input value="{{$paciente->id}}" name="paciente" style="display:none">
         <div class="col-md-7">
-         <input value="{{$paciente->nombres." ".$paciente->apellidos}}" class="form-control" >
+         <input value="{{$paciente->nombres." ".$paciente->apellido1." ".$paciente->apellido2}}" class="form-control" >
         </div>
     </div>
 
     <div class="form-group row ">
         <h5 class="col-sm-3">Motivo de Consulta</h5>
         <div class="col-sm-7">
-            <textarea type="submit" class="form-control" type="text" rows="4" name="motivo"></textarea>
+            <textarea type="submit" class="form-control" type="text" rows="4" name="motivo" required></textarea>
         </div>
     </div>
 
@@ -42,13 +47,15 @@
     </div>
 
     <div class="form-group row ">
-        <h5 class="col-sm-3">Observaciones del doctor</h5>
-        <div class="col-sm-7">
-            <textarea type="submit" class="form-control" type="text" rows="4" name="observaciones"></textarea>
+        <h5 class="col-md-3">Observaciones del doctor</h5>
+        <div class="col-md-7">
+            <textarea type="submit" class="form-control" type="text" rows="4" name="observaciones" required></textarea>
         </div>
     </div>
-
-    <button type="submit" class="btn btn-primary offset-md-9">Siguiente</button>
+    <div class="form-group row ">
+        {!! link_to(URL::previous(), 'Atrás', ['class' => 'btn btn-diliazul btn-md col-md-2 offset-md-5']) !!}
+        <button type="submit" class="btn btn-primary col-md-2 offset-md-1">Siguiente</button>
+    </div>
     </form>
 </div>
     <br/>

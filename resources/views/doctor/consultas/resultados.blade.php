@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('container')
+@section('content')
     <div class="border-bottom border-dilipa">
         <h3 class="text-center text-dilipa">CONSULTA MEDICA</h3>
     </div>
@@ -13,5 +13,13 @@
         </ol>
     </nav>
     <h5 class="text-primary text-center">Resultados</h5><br>
+    @include('flash::message')
+    <div>
+        <div class="form-group">
+            <form method="post">
+            {!! link_to(URL::previous(), 'Salir', ['class' => 'btn btn-diliazul btn-md col-md-2 offset-md-6']) !!}
 
-    @endsection
+            </form>
+        </div>
+    </div>
+@endsection

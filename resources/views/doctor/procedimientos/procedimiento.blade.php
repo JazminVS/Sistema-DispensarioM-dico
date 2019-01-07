@@ -10,7 +10,8 @@
             <li class="breadcrumb-item active">Datos del Procedimiento</li>
         </ol>
     </nav>
-    <form  method="POST" action="{{route('ingreso_procedimiento')}}" class="offset-md-1">
+
+    <form  method="POST" action="{{route('doctor.procedimiento')}}" class="offset-md-1">
         {{ csrf_field() }}
         <div class="row">
             <div class="col-md-6">
@@ -62,7 +63,7 @@
                 </div>
                 <div class="form-group">
                     <label for="nombres" class="col-form-label">Diagnostico</label>
-                    <input type="text" class="form-control col-md-10" id="nombres" name="diagnostico">
+                    <input type="text" class="form-control col-md-10" id="nombres" name="diagnostico" required>
                     <small id="nombres" class="form-text text-muted">Por favor señale en este espacio su diagnóstico.</small>
                 </div>
             </div>
