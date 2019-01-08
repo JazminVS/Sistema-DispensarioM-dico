@@ -18,6 +18,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Laracasts\Flash\Flash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PacienteController extends Controller
 {
@@ -264,6 +265,17 @@ class PacienteController extends Controller
         ));
         flash('El paciente: '.$nombres.' '.$apellido1.'. Ha sido actualizado exitosamente!!')->warning();
         return redirect()->route('pacientes');
+    }
+    public function descargarexcel()
+    {
+        $pacientes = Paciente::all();
+        Excel::create("pacientes", function ($excel) use ($pacientes) {
+            $excel->setTitle("Title");
+            $excel->sheet("Sheet 1", function ($sheet) use ($pacientes) {
+                $sheet->fromArray($pacientes);
+            });
+        })->download('xls');
+        return back();
     }
 
 

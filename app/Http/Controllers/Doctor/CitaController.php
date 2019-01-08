@@ -8,8 +8,8 @@ use App\Http\Controllers\Controller;
 class CitaController extends Controller
 {
     //
-    public function cita()
+    public function index()
     {
-        return view('doctor/cita');
+        return view('doctor.citas.cita');
     }
 }

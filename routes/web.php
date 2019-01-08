@@ -18,6 +18,11 @@ Route::group(['prefix' => 'doctor'], function() {
 
 });
 Route::group(['prefix' => 'doctor'], function() {
+    Route::get('procedimientos',  'Doctor\ProcedimientoController@index')->name('doctor.procedimientos');
+    Route::get('descargarprocedimiento',  'Doctor\ProcedimientoController@descargarexcel')->name('descargar.procedimientos');
+    Route::get('descargarpacientes',  'Doctor\PacienteController@descargarexcel')->name('descargar.pacientes');
+});
+Route::group(['prefix' => 'doctor'], function() {
     Route::get('editarpaciente/{id_paciente?}',  'Doctor\PacienteController@editarpaciente')->name('doctor_editarpaciente');
     Route::get('creapaciente',  'Doctor\PacienteController@verpacientes')->name('crear_paciente');
     Route::get('pacientpro','Doctor\ProcedimientoController@pacientes')->name('pacientpro');
@@ -26,6 +31,11 @@ Route::group(['prefix' => 'doctor'], function() {
     Route::post('pacienteagregado', 'Doctor\PacienteController@crearpaciente')->name('pacientes.agregar');
     Route::post('actualizarpaciente/{id_paciente?}', 'Doctor\PacienteController@actualizarpaciente')->name('pacientes.actualizar');
     Route::post('ingresoprocedimiento', 'Doctor\ProcedimientoController@ingresoprocedimiento')->name('doctor.procedimiento');
+
+});
+//MODULO CITA
+Route::group(['prefix' => 'doctor'], function() {
+    Route::get('citamedica',  'Doctor\CitaController@index')->name('doctor.citamedica');
 
 
 });

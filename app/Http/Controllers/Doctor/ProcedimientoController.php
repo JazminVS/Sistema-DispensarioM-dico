@@ -2,13 +2,22 @@
 
 namespace App\Http\Controllers\Doctor;
 
+use App\Modelos\Procedimientos;
 use App\Paciente;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProcedimientoController extends Controller
 {
+    public function index(Request $request)
+    {
+        $procedimientos = Procedimientos::name($request->get('nombre'))
+            ->orderBy('fecha','desc')
+            ->paginate('15');
+        return view('doctor.procedimientos.procedimientos', compact('procedimientos'));
+    }
     public function pacientes(Request $request)
     {
         $pacientes = Paciente::name($request->get('nombre'))
@@ -42,9 +51,21 @@ class ProcedimientoController extends Controller
                 'pk_atendido_por'=>$atendido,
             ]
         );
-        $procedimientos=DB::table('procedimiento_medico')->get();
+        $procedimientos = Procedimientos::name($request->get('nombre'))
+            ->orderBy('fecha','desc')
+            ->paginate('20');
         flash('Los datos ingresados han sido almacenados correctamente!!');
         return view('doctor.procedimientos.resultados',compact('procedimientos'));
     }
-
+    public function descargarexcel()
+    {
+        $procedimientos = Procedimientos::all();
+        Excel::create("procedimientos", function ($excel) use ($procedimientos) {
+            $excel->setTitle("Title");
+            $excel->sheet("Sheet 1", function ($sheet) use ($procedimientos) {
+                $sheet->fromArray($procedimientos);
+            });
+        })->download('xls');
+        return back();
+    }
 }

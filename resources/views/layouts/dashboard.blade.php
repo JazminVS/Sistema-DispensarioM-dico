@@ -26,7 +26,8 @@
     <!-- select2-bootstrap4-theme -->
     <link href="{{asset('css/select2-bootstrap4.min.css')}}" rel="stylesheet">
 
-
+    <!--botones font-asome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
 </head>
 
@@ -84,11 +85,11 @@
                         <span data-feather="heart"></span>
                         Consulta médica
                     </a>
-                    <a  class="list-group-item list-group-item-action">
+                    <a href="citamedica" class="list-group-item list-group-item-action">
                         <span data-feather="calendar"></span>
                         Cita médica
                     </a>
-                    <a href="pacientpro" class="list-group-item list-group-item-action">
+                    <a href="procedimientos" class="list-group-item list-group-item-action">
                         <span data-feather="folder-plus"></span>
                         PROCEDIMIENTOS
                     </a>
@@ -96,7 +97,7 @@
                         <span data-feather="user-plus"></span>
                         Pacientes
                     </a>
-                    <a class="list-group-item">
+                    <a href="#" class="list-group-item">
                         <span data-feather="briefcase"></span>
                         MEDICAMENTOS
                     </a>

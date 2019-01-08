@@ -25,9 +25,18 @@
         </button>
         {{Form::close()}}
 
-    </div><br>
-
+    </div>
+    <div>
+        <a class="btn btn-success offset-md-5" href="{{ URL::to('doctor/descargarpacientes') }}" role="button">
+            <span class="fas fa-file-excel"></span>
+        </a>
+        <a class="btn btn-danger" href="" role="button">
+            <span class="fas fa-file-pdf"></span>
+        </a>
+    </div>
+    <br>
     @include('flash::message')
+
     <div>
     @if($pacientes->isEmpty())
         <p>No existen registros</p>
@@ -64,6 +73,5 @@
             </tbody>
         </table>
         @endif
-
     </div>
 @endsection
