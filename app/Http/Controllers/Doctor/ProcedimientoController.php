@@ -51,9 +51,8 @@ class ProcedimientoController extends Controller
                 'pk_atendido_por'=>$atendido,
             ]
         );
-        $procedimientos = Procedimientos::name($request->get('nombre'))
-            ->orderBy('fecha','desc')
-            ->paginate('20');
+        $procedimientos = Procedimientos::orderBy('fecha', 'DESC')->get();
+
         flash('Los datos ingresados han sido almacenados correctamente!!');
         return view('doctor.procedimientos.resultados',compact('procedimientos'));
     }

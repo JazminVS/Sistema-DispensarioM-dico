@@ -11,7 +11,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('css/estilo.css')}}" rel="stylesheet">
+    <link href="{{asset('css/inicio.css')}}" rel="stylesheet">
 
 
     <style>

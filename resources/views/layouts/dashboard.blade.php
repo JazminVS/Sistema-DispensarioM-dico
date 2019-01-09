@@ -29,7 +29,10 @@
     <!--botones font-asome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
+
+
 </head>
+
 
 <body>
 <nav class="navbar navbar-expand navbar-dark fixed-top flex-md-nowrap p-0 shadow logo dilipa">
@@ -107,6 +110,12 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 ">
             @yield('content')
+
+
+
+
+
+
         </main>
     </div>
 </div>
