@@ -36,6 +36,7 @@ Route::group(['prefix' => 'doctor'], function() {
 //MODULO CITA
 Route::group(['prefix' => 'doctor'], function() {
     Route::get('citamedica',  'Doctor\CitaController@index')->name('doctor.citamedica');
+    Route::get('consulta',  'Doctor\ConsultaController@index')->name('doctor.consultamedica');
 
 
 });

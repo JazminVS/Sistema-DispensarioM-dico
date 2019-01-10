@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Doctor;
 
 use App\Consulta;
+use App\EstadoCivil;
+use App\Modelos\Diagnosticos;
 use App\Paciente;
 use App\cie;
 use App\TipoDiagnostico;
@@ -16,16 +18,31 @@ class ConsultaController extends Controller
      * @param Request $request
      * @param $id
      */
+    public function index() {
+        $consultas=Consulta::all();
+        $diagnosticos=Diagnosticos::all();
+        $pacientes=Paciente::all();
+        $tipo_diagnostico=TipoDiagnostico::all();
+        $cie=cie::all();
+        return view('doctor.consultas.consultas',compact('consultas','diagnosticos','pacientes','estado_civil','tipo_diagnostico',
+            'cie'
+        ));
+    }
     public function insertar(Request $request) {
         $motivo = $request -> input('motivo');
+        $fecha_consulta = $request -> input('fecha');
+        $hora_consulta = $request -> input('hora');
         $examen = $request -> input('examen');
         $observaciones = $request -> input('observaciones');
         $id_paciente=$request->get('paciente');
+
         //$todos = $request->all();
         //ECHO $motivo,$examen,$observaciones," id: ",$id;
         $id_consulta=DB::table('consulta')->insertGetId(
             [
                 'motivo_consulta'=> $motivo,
+                'fecha_consulta'=> $fecha_consulta,
+                'hora_consulta'=> $hora_consulta,
                 'observaciones'=> $observaciones,
                 'pk_id_examen'=> null,
                 'pk_id_paciente'=> $id_paciente,

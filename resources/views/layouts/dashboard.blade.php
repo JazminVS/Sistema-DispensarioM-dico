@@ -84,7 +84,7 @@
                         <span data-feather="home"></span>
                         Dashboard
                     </a>
-                    <a href="consultapaciente" class="list-group-item list-group-item-action">
+                    <a href="consulta" class="list-group-item list-group-item-action">
                         <span data-feather="heart"></span>
                         Consulta médica
                     </a>
