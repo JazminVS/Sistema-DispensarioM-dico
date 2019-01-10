@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-12-2018 a las 23:07:46
+-- Tiempo de generación: 10-01-2019 a las 22:24:04
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.2.5
 
@@ -31,13 +31,19 @@ USE `dilimedi`;
 --
 
 CREATE TABLE `atendido_por` (
-  `id_atendido_por` int(11) NOT NULL,
-  `descripcion` varchar(10) NOT NULL
+  `id` int(11) NOT NULL,
+  `descripcion` varchar(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELACIONES PARA LA TABLA `atendido_por`:
+-- Volcado de datos para la tabla `atendido_por`
 --
+
+INSERT INTO `atendido_por` (`id`, `descripcion`) VALUES
+(1, 'IESS'),
+(2, 'Médico Empresa'),
+(3, 'Seguro AIG'),
+(4, 'Enfermería');
 
 -- --------------------------------------------------------
 
@@ -46,23 +52,39 @@ CREATE TABLE `atendido_por` (
 --
 
 CREATE TABLE `botiquin` (
-  `id_botiquin` int(11) NOT NULL,
-  `stock` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `fecha_entrega` date NOT NULL,
-  `cantidad_entrega` int(11) NOT NULL,
-  `nombre_entrega` varchar(25) NOT NULL,
-  `nombre_recibe` varchar(25) NOT NULL,
-  `pk_id_sucusal` int(11) NOT NULL,
+  `fecha_medicamento` date DEFAULT NULL,
+  `stock` int(11) NOT NULL,
+  `cantidad_entrega` int(11) DEFAULT NULL,
+  `nombre_entrega` varchar(25) DEFAULT NULL,
+  `nombre_recibe` varchar(25) DEFAULT NULL,
+  `pk_id_sucursal` int(11) NOT NULL,
   `pk_farmacia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELACIONES PARA LA TABLA `botiquin`:
---   `pk_id_sucusal`
---       `sucursal` -> `id_sucursal`
---   `pk_farmacia`
---       `farmacia` -> `id_farmacia`
+-- Volcado de datos para la tabla `botiquin`
 --
+
+INSERT INTO `botiquin` (`id`, `fecha_entrega`, `fecha_medicamento`, `stock`, `cantidad_entrega`, `nombre_entrega`, `nombre_recibe`, `pk_id_sucursal`, `pk_farmacia`) VALUES
+(23, '2018-12-12', '0000-00-00', 15, NULL, NULL, NULL, 8, 5),
+(24, '2018-12-12', '0000-00-00', 5, NULL, NULL, NULL, 10, 5),
+(25, '2018-12-12', '0000-00-00', 0, NULL, NULL, NULL, 9, 5),
+(26, '2018-12-12', '0000-00-00', 10, NULL, NULL, NULL, 1, 1),
+(27, '2018-12-12', '0000-00-00', 10, NULL, NULL, NULL, 7, 2),
+(28, '2018-12-12', '0000-00-00', 0, NULL, NULL, NULL, 1, 3),
+(29, '2018-12-12', '0000-00-00', 0, NULL, NULL, NULL, 8, 1),
+(30, '2018-12-12', '0000-00-00', 2, NULL, NULL, NULL, 1, 4),
+(31, '2018-12-12', '0000-00-00', 9, NULL, NULL, NULL, 1, 2),
+(32, '2018-12-12', '0000-00-00', 56, NULL, NULL, NULL, 1, 6),
+(33, '2018-12-12', '0000-00-00', 51, NULL, NULL, NULL, 1, 6),
+(34, '2018-12-13', '0000-00-00', 10, NULL, NULL, NULL, 1, 2),
+(35, '2018-12-19', '0000-00-00', 5, NULL, NULL, NULL, 4, 2),
+(36, '2018-12-04', '0000-00-00', 0, NULL, NULL, NULL, 1, 1),
+(37, '2018-12-13', NULL, 5, NULL, NULL, NULL, 1, 1),
+(38, '2018-12-13', NULL, 2, NULL, NULL, NULL, 1, 2),
+(39, '2018-12-14', NULL, 37, NULL, NULL, NULL, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -74,10 +96,6 @@ CREATE TABLE `canton` (
   `id` int(11) NOT NULL,
   `descripcion` varchar(15) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- RELACIONES PARA LA TABLA `canton`:
---
 
 -- --------------------------------------------------------
 
@@ -93,10 +111,6 @@ CREATE TABLE `cie` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- RELACIONES PARA LA TABLA `cie`:
---
 
 --
 -- Volcado de datos para la tabla `cie`
@@ -529,7 +543,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (424, 'A91', 'Fiebre del dengue hemorragico', NULL, '2018-11-05 22:00:46', '2018-11-05 22:00:46'),
 (425, 'A92', 'Otras fiebres virales transmitidas por mosquitos', NULL, '2018-11-05 22:00:46', '2018-11-05 22:00:46'),
 (426, 'A920', 'Enfermedad por virus chikungunya', NULL, '2018-11-05 22:00:46', '2018-11-05 22:00:46'),
-(427, 'A921', 'Fiebre de oÃ‚Â´nyong', NULL, '2018-11-05 22:00:46', '2018-11-05 22:00:46'),
+(427, 'A921', 'Fiebre de oÃƒâ€šÃ‚Â´nyong', NULL, '2018-11-05 22:00:46', '2018-11-05 22:00:46'),
 (428, 'A922', 'Fiebre equina venezolana', NULL, '2018-11-05 22:00:46', '2018-11-05 22:00:46'),
 (429, 'A923', 'Fiebre del oeste del nilo', NULL, '2018-11-05 22:00:46', '2018-11-05 22:00:46'),
 (430, 'A924', 'Fiebre del valle del rift', NULL, '2018-11-05 22:00:46', '2018-11-05 22:00:46'),
@@ -1733,7 +1747,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (1625, 'D297', 'Tumor benigno de otros organos genitales masculinos', NULL, '2018-11-05 22:01:39', '2018-11-05 22:01:39'),
 (1626, 'D299', 'Tumor benigno de organo genital masculino', ' sitio no especificado', '2018-11-05 22:01:40', '2018-11-05 22:01:40'),
 (1627, 'D30', 'Tumor benigno de los organos urinarios', NULL, '2018-11-05 22:01:40', '2018-11-05 22:01:40'),
-(1628, 'D300', 'Tumor benigno del riÃ±on', NULL, '2018-11-05 22:01:40', '2018-11-05 22:01:40'),
+(1628, 'D300', 'Tumor benigno del riÃƒÂ±on', NULL, '2018-11-05 22:01:40', '2018-11-05 22:01:40'),
 (1629, 'D301', 'Tumor benigno de la pelvis renal', NULL, '2018-11-05 22:01:40', '2018-11-05 22:01:40'),
 (1630, 'D302', 'Tumor benigno del ureter', NULL, '2018-11-05 22:01:40', '2018-11-05 22:01:40'),
 (1631, 'D303', 'Tumor benigno de la vejiga', NULL, '2018-11-05 22:01:40', '2018-11-05 22:01:40'),
@@ -1808,7 +1822,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (1700, 'D407', 'Tumor de comportamiento incierto o desconocido de otros organos genitales masculinos', NULL, '2018-11-05 22:01:42', '2018-11-05 22:01:42'),
 (1701, 'D409', 'Tumor de comportamiento incierto o desconocido de organo genital masculino no especificado', NULL, '2018-11-05 22:01:42', '2018-11-05 22:01:42'),
 (1702, 'D41', 'Tumor de comportamiento incierto de los organos urinarios', NULL, '2018-11-05 22:01:42', '2018-11-05 22:01:42'),
-(1703, 'D410', 'Tumor de comportamiento incierto o desconocido del riÃ±on', NULL, '2018-11-05 22:01:42', '2018-11-05 22:01:42'),
+(1703, 'D410', 'Tumor de comportamiento incierto o desconocido del riÃƒÂ±on', NULL, '2018-11-05 22:01:42', '2018-11-05 22:01:42'),
 (1704, 'D411', 'Tumor de comportamiento incierto o desconocido dec la pelvis renal', NULL, '2018-11-05 22:01:42', '2018-11-05 22:01:42'),
 (1705, 'D412', 'Tumor de comportamiento incierto o desconocido del ureter', NULL, '2018-11-05 22:01:42', '2018-11-05 22:01:42'),
 (1706, 'D413', 'Tumor de comportamiento incierto o desconocido de la uretra', NULL, '2018-11-05 22:01:42', '2018-11-05 22:01:42'),
@@ -2757,12 +2771,12 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (2646, 'F51', 'Trastornos no organicos del sueno', NULL, '2018-11-05 22:02:10', '2018-11-05 22:02:10'),
 (2647, 'F510', 'Insomnio no organico', NULL, '2018-11-05 22:02:10', '2018-11-05 22:02:10'),
 (2648, 'F511', 'Hipersomnio no organico', NULL, '2018-11-05 22:02:10', '2018-11-05 22:02:10'),
-(2649, 'F512', 'Trastorno no organico del ciclo sueÃ±o', NULL, '2018-11-05 22:02:10', '2018-11-05 22:02:10'),
+(2649, 'F512', 'Trastorno no organico del ciclo sueÃƒÂ±o', NULL, '2018-11-05 22:02:10', '2018-11-05 22:02:10'),
 (2650, 'F513', 'Sonambulismo', NULL, '2018-11-05 22:02:10', '2018-11-05 22:02:10'),
-(2651, 'F514', 'Terrores del sueÃ±o [terrores nocturnos]', NULL, '2018-11-05 22:02:10', '2018-11-05 22:02:10'),
+(2651, 'F514', 'Terrores del sueÃƒÂ±o [terrores nocturnos]', NULL, '2018-11-05 22:02:10', '2018-11-05 22:02:10'),
 (2652, 'F515', 'Pesadillas', NULL, '2018-11-05 22:02:10', '2018-11-05 22:02:10'),
-(2653, 'F518', 'Otros trastornos no organicos del sueÃ±o', NULL, '2018-11-05 22:02:10', '2018-11-05 22:02:10'),
-(2654, 'F519', 'Trastorno no organico del sueÃ±o', ' no especificado', '2018-11-05 22:02:11', '2018-11-05 22:02:11'),
+(2653, 'F518', 'Otros trastornos no organicos del sueÃƒÂ±o', NULL, '2018-11-05 22:02:10', '2018-11-05 22:02:10'),
+(2654, 'F519', 'Trastorno no organico del sueÃƒÂ±o', ' no especificado', '2018-11-05 22:02:11', '2018-11-05 22:02:11'),
 (2655, 'F52', 'Disfuncion sexual no ocasionada por trastornos ni enfermedades organicos', NULL, '2018-11-05 22:02:11', '2018-11-05 22:02:11'),
 (2656, 'F520', 'Falta o perdida del deseo sexual', NULL, '2018-11-05 22:02:11', '2018-11-05 22:02:11'),
 (2657, 'F521', 'Aversion al sexo y falta de goce sexual', NULL, '2018-11-05 22:02:11', '2018-11-05 22:02:11'),
@@ -4404,7 +4418,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (4290, 'J632', 'Beriliosis', NULL, '2018-11-05 22:04:13', '2018-11-05 22:04:13'),
 (4291, 'J633', 'Fibrosis (del pulmon) debida a grafito', NULL, '2018-11-05 22:04:13', '2018-11-05 22:04:13'),
 (4292, 'J634', 'Siderosis', NULL, '2018-11-05 22:04:13', '2018-11-05 22:04:13'),
-(4293, 'J635', 'EstaÃ±osis', NULL, '2018-11-05 22:04:13', '2018-11-05 22:04:13'),
+(4293, 'J635', 'EstaÃƒÂ±osis', NULL, '2018-11-05 22:04:13', '2018-11-05 22:04:13'),
 (4294, 'J638', 'Neumoconiosis debida a otros polvos inorganicos especificados', NULL, '2018-11-05 22:04:14', '2018-11-05 22:04:14'),
 (4295, 'J64', 'Neumoconiosis no especificada', NULL, '2018-11-05 22:04:14', '2018-11-05 22:04:14'),
 (4296, 'J65', 'Neumoconiosis asociada con tuberculosis', NULL, '2018-11-05 22:04:14', '2018-11-05 22:04:14'),
@@ -4506,7 +4520,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (4392, 'K00', 'Trastornos del desarrollo y de la erupcion de los dientes', NULL, '2018-11-05 22:04:16', '2018-11-05 22:04:16'),
 (4393, 'K000', 'Anodoncia', NULL, '2018-11-05 22:04:16', '2018-11-05 22:04:16'),
 (4394, 'K001', 'Dientes supernumerarios', NULL, '2018-11-05 22:04:16', '2018-11-05 22:04:16'),
-(4395, 'K002', 'Anomalias del tamaÃ±o y de la forma del diente', NULL, '2018-11-05 22:04:16', '2018-11-05 22:04:16'),
+(4395, 'K002', 'Anomalias del tamaÃƒÂ±o y de la forma del diente', NULL, '2018-11-05 22:04:16', '2018-11-05 22:04:16'),
 (4396, 'K003', 'Dientes moteados', NULL, '2018-11-05 22:04:16', '2018-11-05 22:04:16'),
 (4397, 'K004', 'Alteraciones en la formacion dentaria', NULL, '2018-11-05 22:04:16', '2018-11-05 22:04:16'),
 (4398, 'K005', 'Alteraciones hereditarias de la estructura dentaria', ' no clasificadas en otra parte', '2018-11-05 22:04:16', '2018-11-05 22:04:16'),
@@ -4563,7 +4577,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (4448, 'K068', 'Otros trastornos especificados de la encia y de la zona edentula', NULL, '2018-11-05 22:04:17', '2018-11-05 22:04:17'),
 (4449, 'K069', 'Trastorno no especificado de la encia y de la zona edentula', NULL, '2018-11-05 22:04:17', '2018-11-05 22:04:17'),
 (4450, 'K07', 'Anomalias dentofaciales [inclusola maloclusion]', NULL, '2018-11-05 22:04:17', '2018-11-05 22:04:17'),
-(4451, 'K070', 'Anomalias evidentes del tamaÃ±o de los maxilares', NULL, '2018-11-05 22:04:17', '2018-11-05 22:04:17'),
+(4451, 'K070', 'Anomalias evidentes del tamaÃƒÂ±o de los maxilares', NULL, '2018-11-05 22:04:17', '2018-11-05 22:04:17'),
 (4452, 'K071', 'Anomalias de la relacion maxilobasilar', NULL, '2018-11-05 22:04:18', '2018-11-05 22:04:18'),
 (4453, 'K072', 'Anomalias de la relacion entre los arcos dentarios', NULL, '2018-11-05 22:04:18', '2018-11-05 22:04:18'),
 (4454, 'K073', 'Anomalias de la posicion del diente', NULL, '2018-11-05 22:04:18', '2018-11-05 22:04:18'),
@@ -5022,7 +5036,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (4906, 'L100', 'Penfigo vulgar', NULL, '2018-11-05 22:04:52', '2018-11-05 22:04:52'),
 (4907, 'L101', 'Penfigo vegetante', NULL, '2018-11-05 22:04:52', '2018-11-05 22:04:52'),
 (4908, 'L102', 'Penfigo foliaceo', NULL, '2018-11-05 22:04:52', '2018-11-05 22:04:52'),
-(4909, 'L103', 'Penfigo brasileÃ±o [fogo selvagem]', NULL, '2018-11-05 22:04:52', '2018-11-05 22:04:52'),
+(4909, 'L103', 'Penfigo brasileÃƒÂ±o [fogo selvagem]', NULL, '2018-11-05 22:04:52', '2018-11-05 22:04:52'),
 (4910, 'L104', 'Penfigo eritematoso', NULL, '2018-11-05 22:04:52', '2018-11-05 22:04:52'),
 (4911, 'L105', 'Penfigo inducido por drogas', NULL, '2018-11-05 22:04:52', '2018-11-05 22:04:52'),
 (4912, 'L108', 'Otros penfigos', NULL, '2018-11-05 22:04:52', '2018-11-05 22:04:52'),
@@ -5125,7 +5139,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (5009, 'L410', 'Pitiriasis linquenoide y varioliforme aguda', NULL, '2018-11-05 22:04:55', '2018-11-05 22:04:55'),
 (5010, 'L411', 'Pitiriasis linquenoide cronica', NULL, '2018-11-05 22:04:55', '2018-11-05 22:04:55'),
 (5011, 'L412', 'Papulosis linfomatoide', NULL, '2018-11-05 22:04:55', '2018-11-05 22:04:55'),
-(5012, 'L413', 'Parapsoriasis en placas pequeÃ±as', NULL, '2018-11-05 22:04:55', '2018-11-05 22:04:55'),
+(5012, 'L413', 'Parapsoriasis en placas pequeÃƒÂ±as', NULL, '2018-11-05 22:04:55', '2018-11-05 22:04:55'),
 (5013, 'L414', 'Parapsoriasis en placas grandes', NULL, '2018-11-05 22:04:55', '2018-11-05 22:04:55'),
 (5014, 'L415', 'Parapsoriasis retiforme', NULL, '2018-11-05 22:04:55', '2018-11-05 22:04:55'),
 (5015, 'L418', 'Otras parapsoriasis', NULL, '2018-11-05 22:04:55', '2018-11-05 22:04:55'),
@@ -5205,18 +5219,18 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (5089, 'L590', 'Eritema ab igne [dermatitis ab igne]', NULL, '2018-11-05 22:04:57', '2018-11-05 22:04:57'),
 (5090, 'L598', 'Otros trastornos especificados de la piel y del tejido subcutaneo relacionados con radiacion', NULL, '2018-11-05 22:04:57', '2018-11-05 22:04:57'),
 (5091, 'L599', 'Trastornos no especificados de la piel y del tejido subcutaneo relacionados con radiacion', NULL, '2018-11-05 22:04:57', '2018-11-05 22:04:57'),
-(5092, 'L60', 'Trastornos de las uÃ±as', NULL, '2018-11-05 22:04:57', '2018-11-05 22:04:57'),
-(5093, 'L600', 'UÃ±a encarnada', NULL, '2018-11-05 22:04:57', '2018-11-05 22:04:57'),
+(5092, 'L60', 'Trastornos de las uÃƒÂ±as', NULL, '2018-11-05 22:04:57', '2018-11-05 22:04:57'),
+(5093, 'L600', 'UÃƒÂ±a encarnada', NULL, '2018-11-05 22:04:57', '2018-11-05 22:04:57'),
 (5094, 'L601', 'Onicolisis', NULL, '2018-11-05 22:04:57', '2018-11-05 22:04:57'),
 (5095, 'L602', 'Onicogriposis', NULL, '2018-11-05 22:04:57', '2018-11-05 22:04:57'),
 (5096, 'L603', 'Distrofia ungueal', NULL, '2018-11-05 22:04:57', '2018-11-05 22:04:57'),
 (5097, 'L604', 'Lineas de beau', NULL, '2018-11-05 22:04:57', '2018-11-05 22:04:57'),
-(5098, 'L605', 'Sindrome de la uÃ±a amarilla', NULL, '2018-11-05 22:04:58', '2018-11-05 22:04:58'),
-(5099, 'L608', 'Otros trastornos de las uÃ±as', NULL, '2018-11-05 22:04:58', '2018-11-05 22:04:58'),
-(5100, 'L609', 'Trastorno de la uÃ±a', ' no especificado', '2018-11-05 22:04:58', '2018-11-05 22:04:58'),
-(5101, 'L62', 'Trastornos uÃ±as en enfermedades clasificadas en otra parte', NULL, '2018-11-05 22:04:58', '2018-11-05 22:04:58'),
-(5102, 'L620', 'UÃ±a deforme de la paquidermoperiostosis (m89.4)', NULL, '2018-11-05 22:04:58', '2018-11-05 22:04:58'),
-(5103, 'L628', 'Trastornos de las uÃ±as en otras enfermedades clasificadas en otra parte', NULL, '2018-11-05 22:04:58', '2018-11-05 22:04:58'),
+(5098, 'L605', 'Sindrome de la uÃƒÂ±a amarilla', NULL, '2018-11-05 22:04:58', '2018-11-05 22:04:58'),
+(5099, 'L608', 'Otros trastornos de las uÃƒÂ±as', NULL, '2018-11-05 22:04:58', '2018-11-05 22:04:58'),
+(5100, 'L609', 'Trastorno de la uÃƒÂ±a', ' no especificado', '2018-11-05 22:04:58', '2018-11-05 22:04:58'),
+(5101, 'L62', 'Trastornos uÃƒÂ±as en enfermedades clasificadas en otra parte', NULL, '2018-11-05 22:04:58', '2018-11-05 22:04:58'),
+(5102, 'L620', 'UÃƒÂ±a deforme de la paquidermoperiostosis (m89.4)', NULL, '2018-11-05 22:04:58', '2018-11-05 22:04:58'),
+(5103, 'L628', 'Trastornos de las uÃƒÂ±as en otras enfermedades clasificadas en otra parte', NULL, '2018-11-05 22:04:58', '2018-11-05 22:04:58'),
 (5104, 'L63', 'Alopecia areata', NULL, '2018-11-05 22:04:58', '2018-11-05 22:04:58'),
 (5105, 'L630', 'Alopecia (capitis) total', NULL, '2018-11-05 22:04:58', '2018-11-05 22:04:58'),
 (5106, 'L631', 'Alopecia universal', NULL, '2018-11-05 22:04:58', '2018-11-05 22:04:58'),
@@ -5342,7 +5356,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (5226, 'L920', 'Granuloma anular', NULL, '2018-11-05 22:05:01', '2018-11-05 22:05:01'),
 (5227, 'L921', 'Necrobiosis lipidica', ' no clasificada en otra parte', '2018-11-05 22:05:01', '2018-11-05 22:05:01'),
 (5228, 'L922', 'Granuloma facial [granuloma eosinofilo de la piel]', NULL, '2018-11-05 22:05:01', '2018-11-05 22:05:01'),
-(5229, 'L923', 'Granuloma por cuerpo extraÃ±o de la piel y en el tejido subcutaneo', NULL, '2018-11-05 22:05:01', '2018-11-05 22:05:01'),
+(5229, 'L923', 'Granuloma por cuerpo extraÃƒÂ±o de la piel y en el tejido subcutaneo', NULL, '2018-11-05 22:05:01', '2018-11-05 22:05:01'),
 (5230, 'L928', 'Otros trastornos granulomatosos de la piel y del tejido subcutaneo', NULL, '2018-11-05 22:05:01', '2018-11-05 22:05:01'),
 (5231, 'L929', 'Trastorno granulomatoso de la piel y del tejido subcutaneo', ' no especificado', '2018-11-05 22:05:01', '2018-11-05 22:05:01'),
 (5232, 'L93', 'Lupus eritematoso', NULL, '2018-11-05 22:05:01', '2018-11-05 22:05:01'),
@@ -5476,9 +5490,9 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (5360, 'M145', 'Artropatia en otros trastornos endocrinos', ' metabolicos y nutricionales', '2018-11-05 22:05:04', '2018-11-05 22:05:04'),
 (5361, 'M146', 'Artropatia neuropatica', NULL, '2018-11-05 22:05:04', '2018-11-05 22:05:04'),
 (5362, 'M148', 'Artropatia en otras enfermedades especificadas', ' clasificadas en otra parte', '2018-11-05 22:05:04', '2018-11-05 22:05:04'),
-(5363, 'M15', 'Poliartrosis', NULL, '2018-11-05 22:05:04', '2018-11-05 22:05:04'),
-(5364, 'M150', '(osteo)artrosis primaria generalizada', NULL, '2018-11-05 22:05:04', '2018-11-05 22:05:04');
+(5363, 'M15', 'Poliartrosis', NULL, '2018-11-05 22:05:04', '2018-11-05 22:05:04');
 INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(5364, 'M150', '(osteo)artrosis primaria generalizada', NULL, '2018-11-05 22:05:04', '2018-11-05 22:05:04'),
 (5365, 'M151', 'Nodulos de heberden (con artropatia)', NULL, '2018-11-05 22:05:04', '2018-11-05 22:05:04'),
 (5366, 'M152', 'Nodulos de bouchard (con artropatia)', NULL, '2018-11-05 22:05:04', '2018-11-05 22:05:04'),
 (5367, 'M153', 'Artrosis secundaria multiple', NULL, '2018-11-05 22:05:04', '2018-11-05 22:05:04'),
@@ -5529,7 +5543,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (5412, 'M210', 'Deformidad en valgo', ' no clasificada en otra parte', '2018-11-05 22:05:06', '2018-11-05 22:05:06'),
 (5413, 'M211', 'Deformidad en varo', ' no clasificada en otra', '2018-11-05 22:05:06', '2018-11-05 22:05:06'),
 (5414, 'M212', 'Deformidad en flexion', NULL, '2018-11-05 22:05:06', '2018-11-05 22:05:06'),
-(5415, 'M213', 'MuÃ±eca o pie en pendulo (adquirido)', NULL, '2018-11-05 22:05:06', '2018-11-05 22:05:06'),
+(5415, 'M213', 'MuÃƒÂ±eca o pie en pendulo (adquirido)', NULL, '2018-11-05 22:05:06', '2018-11-05 22:05:06'),
 (5416, 'M214', 'Pie plano [pes planus] (adquirido)', NULL, '2018-11-05 22:05:06', '2018-11-05 22:05:06'),
 (5417, 'M215', 'Mano o pie en garra o en talipes', ' pie equinovaro o zambo adquiridos', '2018-11-05 22:05:06', '2018-11-05 22:05:06'),
 (5418, 'M216', 'Otras deformidades adquiridas del tobillo y del pie', NULL, '2018-11-05 22:05:06', '2018-11-05 22:05:06'),
@@ -5609,7 +5623,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (5492, 'M348', 'Otras formas de esclerosis sistemica', NULL, '2018-11-05 22:05:08', '2018-11-05 22:05:08'),
 (5493, 'M349', 'Esclerosis sistemica', ' no especificada', '2018-11-05 22:05:08', '2018-11-05 22:05:08'),
 (5494, 'M35', 'Otro compromiso sistemico del tejido conjuntivo', NULL, '2018-11-05 22:05:08', '2018-11-05 22:05:08'),
-(5495, 'M350', 'Sindrome seco [sjÃƒÆ’Ã¢â‚¬â€œgren]', NULL, '2018-11-05 22:05:08', '2018-11-05 22:05:08'),
+(5495, 'M350', 'Sindrome seco [sjÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“gren]', NULL, '2018-11-05 22:05:08', '2018-11-05 22:05:08'),
 (5496, 'M351', 'Otros sindromes superpuestos', NULL, '2018-11-05 22:05:08', '2018-11-05 22:05:08'),
 (5497, 'M352', 'Enfermedad de behcet', NULL, '2018-11-05 22:05:08', '2018-11-05 22:05:08'),
 (5498, 'M353', 'Polimialgia reumatica', NULL, '2018-11-05 22:05:08', '2018-11-05 22:05:08'),
@@ -5724,7 +5738,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (5607, 'M60', 'Miositis', NULL, '2018-11-05 22:05:11', '2018-11-05 22:05:11'),
 (5608, 'M600', 'Miositis infecciosa', NULL, '2018-11-05 22:05:11', '2018-11-05 22:05:11'),
 (5609, 'M601', 'Miositis intersticial', NULL, '2018-11-05 22:05:11', '2018-11-05 22:05:11'),
-(5610, 'M602', 'Granuloma por cuerpo extraÃ±o en tejido blando', ' no clasificado en otra parte', '2018-11-05 22:05:11', '2018-11-05 22:05:11'),
+(5610, 'M602', 'Granuloma por cuerpo extraÃƒÂ±o en tejido blando', ' no clasificado en otra parte', '2018-11-05 22:05:11', '2018-11-05 22:05:11'),
 (5611, 'M608', 'Otras miositis', NULL, '2018-11-05 22:05:11', '2018-11-05 22:05:11'),
 (5612, 'M609', 'Miositis', ' no especificada', '2018-11-05 22:05:11', '2018-11-05 22:05:11'),
 (5613, 'M61', 'Calcificacion y osificacion del musculo', NULL, '2018-11-05 22:05:11', '2018-11-05 22:05:11'),
@@ -5778,7 +5792,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (5661, 'M680', 'Sinovitis y tenosinovitis en enfermedades bacterianas clasificadas en otra parte', NULL, '2018-11-05 22:05:12', '2018-11-05 22:05:12'),
 (5662, 'M688', 'Otros trastornos sinoviales y tendinosos en enfermedades clasificadas en otra parte', NULL, '2018-11-05 22:05:12', '2018-11-05 22:05:12'),
 (5663, 'M70', 'Trastornos del tejido blando relacionados con el uso', ' el uso excesivo y la presion', '2018-11-05 22:05:12', '2018-11-05 22:05:12'),
-(5664, 'M700', 'Sinovitis crepitante cronica de la mano y de la muÃ±eca', NULL, '2018-11-05 22:05:12', '2018-11-05 22:05:12'),
+(5664, 'M700', 'Sinovitis crepitante cronica de la mano y de la muÃƒÂ±eca', NULL, '2018-11-05 22:05:12', '2018-11-05 22:05:12'),
 (5665, 'M701', 'Bursitis de la mano', NULL, '2018-11-05 22:05:12', '2018-11-05 22:05:12'),
 (5666, 'M702', 'Bursitis del olecranon', NULL, '2018-11-05 22:05:12', '2018-11-05 22:05:12'),
 (5667, 'M703', 'Otras bursitis del codo', NULL, '2018-11-05 22:05:12', '2018-11-05 22:05:12'),
@@ -5833,7 +5847,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (5716, 'M77', 'Otras entesopatias', NULL, '2018-11-05 22:05:13', '2018-11-05 22:05:13'),
 (5717, 'M770', 'Epicondilitis media', NULL, '2018-11-05 22:05:13', '2018-11-05 22:05:13'),
 (5718, 'M771', 'Epicondilitis lateral', NULL, '2018-11-05 22:05:13', '2018-11-05 22:05:13'),
-(5719, 'M772', 'Periartritis de la muÃ±eca', NULL, '2018-11-05 22:05:13', '2018-11-05 22:05:13'),
+(5719, 'M772', 'Periartritis de la muÃƒÂ±eca', NULL, '2018-11-05 22:05:13', '2018-11-05 22:05:13'),
 (5720, 'M773', 'Espolon calcaneo', NULL, '2018-11-05 22:05:14', '2018-11-05 22:05:14'),
 (5721, 'M774', 'Metatarsalgia', NULL, '2018-11-05 22:05:14', '2018-11-05 22:05:14'),
 (5722, 'M775', 'Otras entesopatias del pie', NULL, '2018-11-05 22:05:14', '2018-11-05 22:05:14'),
@@ -5845,7 +5859,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (5728, 'M792', 'Neuralgia y neuritis', ' no especificadas', '2018-11-05 22:05:14', '2018-11-05 22:05:14'),
 (5729, 'M793', 'Paniculitis', ' no especificada', '2018-11-05 22:05:14', '2018-11-05 22:05:14'),
 (5730, 'M794', 'Hipertrofia de paquete adiposo (infrarrotuliano)', NULL, '2018-11-05 22:05:14', '2018-11-05 22:05:14'),
-(5731, 'M795', 'Cuerpo extraÃ±o residual en tejido blando', NULL, '2018-11-05 22:05:14', '2018-11-05 22:05:14'),
+(5731, 'M795', 'Cuerpo extraÃƒÂ±o residual en tejido blando', NULL, '2018-11-05 22:05:14', '2018-11-05 22:05:14'),
 (5732, 'M796', 'Dolor en miembro', NULL, '2018-11-05 22:05:14', '2018-11-05 22:05:14'),
 (5733, 'M798', 'Otros trastornos especificados de los tejidos blandos', NULL, '2018-11-05 22:05:14', '2018-11-05 22:05:14'),
 (5734, 'M799', 'Trastorno de los tejidos blandos', ' no especificado', '2018-11-05 22:05:14', '2018-11-05 22:05:14'),
@@ -5943,9 +5957,9 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (5826, 'M91', 'Osteocondrosis juvenil de la cadera y de la pelvis', NULL, '2018-11-05 22:05:16', '2018-11-05 22:05:16'),
 (5827, 'M910', 'Osteocondrosis juvenil de la pelvis', NULL, '2018-11-05 22:05:16', '2018-11-05 22:05:16'),
 (5828, 'M911', 'Osteocondrosis juvenil de la cabeza del femur [legg', NULL, '2018-11-05 22:05:16', '2018-11-05 22:05:16'),
-(5829, 'M912', 'Coxa plana', NULL, '2018-11-05 22:05:16', '2018-11-05 22:05:16'),
-(5830, 'M913', 'Pseudocoxalgia', NULL, '2018-11-05 22:05:16', '2018-11-05 22:05:16');
+(5829, 'M912', 'Coxa plana', NULL, '2018-11-05 22:05:16', '2018-11-05 22:05:16');
 INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(5830, 'M913', 'Pseudocoxalgia', NULL, '2018-11-05 22:05:16', '2018-11-05 22:05:16'),
 (5831, 'M918', 'Otras osteocondrosis juveniles de la cadera y de la pelvis', NULL, '2018-11-05 22:05:16', '2018-11-05 22:05:16'),
 (5832, 'M919', 'Osteocondrosis juvenil de la cadera y de la pelvis', ' sin otra especificacion', '2018-11-05 22:05:16', '2018-11-05 22:05:16'),
 (5833, 'M92', 'Otras osteocondrosis juveniles', NULL, '2018-11-05 22:05:16', '2018-11-05 22:05:16'),
@@ -5961,7 +5975,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (5843, 'M929', 'Osteocondrosis juvenil', ' no especificada', '2018-11-05 22:05:16', '2018-11-05 22:05:16'),
 (5844, 'M93', 'Otras osteocondropatias', NULL, '2018-11-05 22:05:16', '2018-11-05 22:05:16'),
 (5845, 'M930', 'Deslizamiento de la epifisis femoral superior (no traumatico)', NULL, '2018-11-05 22:05:16', '2018-11-05 22:05:16'),
-(5846, 'M931', 'Enfermedad de kienbÃƒÆ’Ã¢â‚¬â€œck del adulto', NULL, '2018-11-05 22:05:17', '2018-11-05 22:05:17'),
+(5846, 'M931', 'Enfermedad de kienbÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ck del adulto', NULL, '2018-11-05 22:05:17', '2018-11-05 22:05:17'),
 (5847, 'M932', 'Osteocondrosis disecante', NULL, '2018-11-05 22:05:17', '2018-11-05 22:05:17'),
 (5848, 'M938', 'Otras osteocondropatias especificadas', NULL, '2018-11-05 22:05:17', '2018-11-05 22:05:17'),
 (5849, 'M939', 'Osteocondropatia', ' no especificada', '2018-11-05 22:05:17', '2018-11-05 22:05:17'),
@@ -6108,7 +6122,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (5990, 'N13', 'Uropatia obstructiva y por reflujo', NULL, '2018-11-05 22:07:53', '2018-11-05 22:07:53'),
 (5991, 'N130', 'Hidronefrosis con obstruccion de la union uretero', NULL, '2018-11-05 22:07:53', '2018-11-05 22:07:53'),
 (5992, 'N131', 'Hidronefrosis con estrechez ureteral', ' no clasificada en otra parte', '2018-11-05 22:07:53', '2018-11-05 22:07:53'),
-(5993, 'N132', 'Hidronefrosis con obstruccion por calculos del riÃ±on y del ureter', NULL, '2018-11-05 22:07:53', '2018-11-05 22:07:53'),
+(5993, 'N132', 'Hidronefrosis con obstruccion por calculos del riÃƒÂ±on y del ureter', NULL, '2018-11-05 22:07:53', '2018-11-05 22:07:53'),
 (5994, 'N133', 'Otras hidronefrosis y las no especificadas', NULL, '2018-11-05 22:07:53', '2018-11-05 22:07:53'),
 (5995, 'N134', 'Hidroureter', NULL, '2018-11-05 22:07:53', '2018-11-05 22:07:53'),
 (5996, 'N135', 'Torsion y estrechez del ureter sin hidronefrosis', NULL, '2018-11-05 22:07:53', '2018-11-05 22:07:53'),
@@ -6147,9 +6161,9 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (6029, 'N189', 'Insuficiencia renal cronica', ' no especificada', '2018-11-05 22:07:54', '2018-11-05 22:07:54'),
 (6030, 'N19', 'Insuficiencia renal no especificada', NULL, '2018-11-05 22:07:54', '2018-11-05 22:07:54'),
 (6031, 'N20', 'Calculo del rinon y del ureter', NULL, '2018-11-05 22:07:54', '2018-11-05 22:07:54'),
-(6032, 'N200', 'Calculo del riÃ±on', NULL, '2018-11-05 22:07:54', '2018-11-05 22:07:54'),
+(6032, 'N200', 'Calculo del riÃƒÂ±on', NULL, '2018-11-05 22:07:54', '2018-11-05 22:07:54'),
 (6033, 'N201', 'Calculo del ureter', NULL, '2018-11-05 22:07:54', '2018-11-05 22:07:54'),
-(6034, 'N202', 'Calculo del riÃ±on con calculo del ureter', NULL, '2018-11-05 22:07:54', '2018-11-05 22:07:54'),
+(6034, 'N202', 'Calculo del riÃƒÂ±on con calculo del ureter', NULL, '2018-11-05 22:07:54', '2018-11-05 22:07:54'),
 (6035, 'N209', 'Calculo urinario', ' no especificado', '2018-11-05 22:07:54', '2018-11-05 22:07:54'),
 (6036, 'N21', 'Calculo de las vias urinarias inferiores', NULL, '2018-11-05 22:07:54', '2018-11-05 22:07:54'),
 (6037, 'N210', 'Calculo en la vejiga', NULL, '2018-11-05 22:07:54', '2018-11-05 22:07:54'),
@@ -6167,18 +6181,18 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (6049, 'N259', 'Trastorno no especificado', ' resultante de la funcion tubular renal alterada', '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
 (6050, 'N26', 'Rinon contraido no especificado', NULL, '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
 (6051, 'N27', 'Rinon pequeno de causa desconocida', NULL, '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
-(6052, 'N270', 'RiÃ±on pequeÃ±o', ' unilateral', '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
-(6053, 'N271', 'RiÃ±on pequeÃ±o', ' bilateral', '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
-(6054, 'N279', 'RiÃ±on pequeÃ±o', ' no especificado', '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
+(6052, 'N270', 'RiÃƒÂ±on pequeÃƒÂ±o', ' unilateral', '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
+(6053, 'N271', 'RiÃƒÂ±on pequeÃƒÂ±o', ' bilateral', '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
+(6054, 'N279', 'RiÃƒÂ±on pequeÃƒÂ±o', ' no especificado', '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
 (6055, 'N28', 'Otros trastornos del rinon y del ureter no clasificadas en otra parte', NULL, '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
-(6056, 'N280', 'Isquemia e infarto del riÃ±on', NULL, '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
-(6057, 'N281', 'Quiste de riÃ±on', ' adquirido', '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
-(6058, 'N288', 'Otros trastornos especificados del riÃ±on y del ureter', NULL, '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
-(6059, 'N289', 'Trastorno del riÃ±on y del ureter', ' no especificado', '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
+(6056, 'N280', 'Isquemia e infarto del riÃƒÂ±on', NULL, '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
+(6057, 'N281', 'Quiste de riÃƒÂ±on', ' adquirido', '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
+(6058, 'N288', 'Otros trastornos especificados del riÃƒÂ±on y del ureter', NULL, '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
+(6059, 'N289', 'Trastorno del riÃƒÂ±on y del ureter', ' no especificado', '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
 (6060, 'N29', 'Otros trastornos del rinon y del ureter en enfermedades clasificadas en otra parte', NULL, '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
 (6061, 'N290', 'Sifilis renal tardia (a52.7)', NULL, '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
-(6062, 'N291', 'Otros trastornos del riÃ±on y del ureter en enfermedades infecciosas y parasitarias clasificadas en otra parte', NULL, '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
-(6063, 'N298', 'Otros trastornos del riÃ±on y del ureter en otras enfermedades clasificadas en otra parte', NULL, '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
+(6062, 'N291', 'Otros trastornos del riÃƒÂ±on y del ureter en enfermedades infecciosas y parasitarias clasificadas en otra parte', NULL, '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
+(6063, 'N298', 'Otros trastornos del riÃƒÂ±on y del ureter en otras enfermedades clasificadas en otra parte', NULL, '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
 (6064, 'N30', 'Cistitis', NULL, '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
 (6065, 'N300', 'Cistitis agudas', NULL, '2018-11-05 22:07:55', '2018-11-05 22:07:55'),
 (6066, 'N301', 'Cistitis intersticial (cronica)', NULL, '2018-11-05 22:07:56', '2018-11-05 22:07:56'),
@@ -6370,9 +6384,9 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (6252, 'N819', 'Prolapso genital femenino', ' no especificado', '2018-11-05 22:08:03', '2018-11-05 22:08:03'),
 (6253, 'N82', 'Fistulas que afectan el tracto genital femenino', NULL, '2018-11-05 22:08:03', '2018-11-05 22:08:03'),
 (6254, 'N820', 'Fistula vesicovaginal', NULL, '2018-11-05 22:08:03', '2018-11-05 22:08:03'),
-(6255, 'N821', 'Otras fistulas de las vias genitourinarias femeninas', NULL, '2018-11-05 22:08:03', '2018-11-05 22:08:03'),
-(6256, 'N822', 'Fistula de la vagina al intestino delgado', NULL, '2018-11-05 22:08:03', '2018-11-05 22:08:03');
+(6255, 'N821', 'Otras fistulas de las vias genitourinarias femeninas', NULL, '2018-11-05 22:08:03', '2018-11-05 22:08:03');
 INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(6256, 'N822', 'Fistula de la vagina al intestino delgado', NULL, '2018-11-05 22:08:03', '2018-11-05 22:08:03'),
 (6257, 'N823', 'Fistula de la vagina al intestino grueso', NULL, '2018-11-05 22:08:03', '2018-11-05 22:08:03'),
 (6258, 'N824', 'Otras fistulas del tracto genital femenino al tracto intestinal', NULL, '2018-11-05 22:08:03', '2018-11-05 22:08:03'),
 (6259, 'N825', 'Fistula del tracto genital femenino a la piel', NULL, '2018-11-05 22:08:03', '2018-11-05 22:08:03'),
@@ -6628,7 +6642,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (6509, 'O228', 'Otras complicaciones venosas en el embarazo', NULL, '2018-11-05 22:08:12', '2018-11-05 22:08:12'),
 (6510, 'O229', 'Complicacion venosa no especificada en el embarazo', NULL, '2018-11-05 22:08:12', '2018-11-05 22:08:12'),
 (6511, 'O23', 'Infeccionesion de las vias genitourinarias en el embarazo', NULL, '2018-11-05 22:08:12', '2018-11-05 22:08:12'),
-(6512, 'O230', 'Infeccion del riÃ±on en el embarazo', NULL, '2018-11-05 22:08:12', '2018-11-05 22:08:12'),
+(6512, 'O230', 'Infeccion del riÃƒÂ±on en el embarazo', NULL, '2018-11-05 22:08:12', '2018-11-05 22:08:12'),
 (6513, 'O231', 'Infeccion de la vejiga urinaria en el embarazo', NULL, '2018-11-05 22:08:12', '2018-11-05 22:08:12'),
 (6514, 'O232', 'Infeccion de la uretra en el embarazo', NULL, '2018-11-05 22:08:12', '2018-11-05 22:08:12'),
 (6515, 'O233', 'Infeccion de otras partes de las vias urinarias en el embarazo', NULL, '2018-11-05 22:08:12', '2018-11-05 22:08:12'),
@@ -6645,7 +6659,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (6526, 'O25', 'Desnutricion en el embarazo', NULL, '2018-11-05 22:08:12', '2018-11-05 22:08:12'),
 (6527, 'O26', 'Atencion materna por otras complicaciones relacionadas con el embarazo', NULL, '2018-11-05 22:08:13', '2018-11-05 22:08:13'),
 (6528, 'O260', 'Aumento excesivo de peso en el embarazo', NULL, '2018-11-05 22:08:13', '2018-11-05 22:08:13'),
-(6529, 'O261', 'Aumento pequeÃ±o de peso en el embarazo', NULL, '2018-11-05 22:08:13', '2018-11-05 22:08:13'),
+(6529, 'O261', 'Aumento pequeÃƒÂ±o de peso en el embarazo', NULL, '2018-11-05 22:08:13', '2018-11-05 22:08:13'),
 (6530, 'O262', 'Atencion del embarazo en una abortadora habitual', NULL, '2018-11-05 22:08:13', '2018-11-05 22:08:13'),
 (6531, 'O263', 'Retencion de dispositivo anticonceptivo intrauterino en el embarazo', NULL, '2018-11-05 22:08:13', '2018-11-05 22:08:13'),
 (6532, 'O264', 'Herpes gestacional', NULL, '2018-11-05 22:08:13', '2018-11-05 22:08:13'),
@@ -6784,9 +6798,9 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (6665, 'O624', 'Contracciones uterinas hipertonicas', ' incoordinadas y prolongadas', '2018-11-05 22:08:17', '2018-11-05 22:08:17'),
 (6666, 'O628', 'Otras anomalias dinamicas del trabajo de parto', NULL, '2018-11-05 22:08:17', '2018-11-05 22:08:17'),
 (6667, 'O629', 'Anomalia dinamica del trabajo de parto', ' no especificada', '2018-11-05 22:08:18', '2018-11-05 22:08:18'),
-(6668, 'O63', 'Trabajo de parto prolongado', NULL, '2018-11-05 22:08:18', '2018-11-05 22:08:18'),
-(6669, 'O630', 'Prolongacion del primer periodo (del trabajo de parto)', NULL, '2018-11-05 22:08:18', '2018-11-05 22:08:18');
+(6668, 'O63', 'Trabajo de parto prolongado', NULL, '2018-11-05 22:08:18', '2018-11-05 22:08:18');
 INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(6669, 'O630', 'Prolongacion del primer periodo (del trabajo de parto)', NULL, '2018-11-05 22:08:18', '2018-11-05 22:08:18'),
 (6670, 'O631', 'Prolongacion del segundo periodo (del trabajo de parto)', NULL, '2018-11-05 22:08:18', '2018-11-05 22:08:18'),
 (6671, 'O632', 'Retraso de la expulsion del segundo gemelo', ' del tercero', '2018-11-05 22:08:18', '2018-11-05 22:08:18'),
 (6672, 'O639', 'Trabajo de parto prolongado', ' no especificado', '2018-11-05 22:08:18', '2018-11-05 22:08:18'),
@@ -6971,7 +6985,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (6851, 'O927', 'Otros trastornos y los no especificados de la lactancia', NULL, '2018-11-05 22:08:24', '2018-11-05 22:08:24'),
 (6852, 'O93', 'Muerte materna de causa basica especificada en otro capitulo relacionada con el embarazo', NULL, '2018-11-05 22:08:24', '2018-11-05 22:08:24'),
 (6853, 'O95', 'Muerte obstetrica de causa no especificada', NULL, '2018-11-05 22:08:24', '2018-11-05 22:08:24'),
-(6854, 'O96', 'Muerte materna debida a cualquier causa obstetrica que ocurre despues de 42 dias pero antes de un aÃ±o del parto', NULL, '2018-11-05 22:08:24', '2018-11-05 22:08:24'),
+(6854, 'O96', 'Muerte materna debida a cualquier causa obstetrica que ocurre despues de 42 dias pero antes de un aÃƒÂ±o del parto', NULL, '2018-11-05 22:08:24', '2018-11-05 22:08:24'),
 (6855, 'O97', 'Muerte por secuelas de causas obstetricas directas', NULL, '2018-11-05 22:08:24', '2018-11-05 22:08:24'),
 (6856, 'O98', 'Enfermedades maternas infecciosas y parasitarias clasificables en otra parte', ' pero que complican el embarazo', '2018-11-05 22:08:24', '2018-11-05 22:08:24'),
 (6857, 'O980', 'Tuberculosis que complica el embarazo', ' el parto y el puerperio', '2018-11-05 22:08:24', '2018-11-05 22:08:24'),
@@ -7048,7 +7062,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (6928, 'P049', 'Feto y recien nacido afectados por influencias nocivas de la madre', ' no especificadas', '2018-11-05 22:08:27', '2018-11-05 22:08:27'),
 (6929, 'P05', 'Retardo del crecimiento fetal y desnutricion fetal', NULL, '2018-11-05 22:08:27', '2018-11-05 22:08:27'),
 (6930, 'P050', 'Bajo peso para la edad gestacional', NULL, '2018-11-05 22:08:27', '2018-11-05 22:08:27'),
-(6931, 'P051', 'PequeÃ±o para edad gestacional', NULL, '2018-11-05 22:08:27', '2018-11-05 22:08:27'),
+(6931, 'P051', 'PequeÃƒÂ±o para edad gestacional', NULL, '2018-11-05 22:08:27', '2018-11-05 22:08:27'),
 (6932, 'P052', 'Desnutricion fetal', ' sin mencion de peso o talla bajos para la edad gestacional', '2018-11-05 22:08:27', '2018-11-05 22:08:27'),
 (6933, 'P059', 'Retardo del crecimiento fetal', ' no especificado', '2018-11-05 22:08:27', '2018-11-05 22:08:27'),
 (6934, 'P07', 'Trastornos relacionados con la duracion corta de la gestacion y con bajo peso al nacer', ' no clasificados en otra parte', '2018-11-05 22:08:27', '2018-11-05 22:08:27'),
@@ -7159,7 +7173,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (7039, 'P280', 'Atelectasia primaria del recien nacido', NULL, '2018-11-05 22:08:30', '2018-11-05 22:08:30'),
 (7040, 'P281', 'Otras atelectasias del recien nacido y las no especificadas', NULL, '2018-11-05 22:08:30', '2018-11-05 22:08:30'),
 (7041, 'P282', 'Ataque cianotico del recien nacido', NULL, '2018-11-05 22:08:30', '2018-11-05 22:08:30'),
-(7042, 'P283', 'Apnea primaria del sueÃ±o del recien nacido', NULL, '2018-11-05 22:08:30', '2018-11-05 22:08:30'),
+(7042, 'P283', 'Apnea primaria del sueÃƒÂ±o del recien nacido', NULL, '2018-11-05 22:08:30', '2018-11-05 22:08:30'),
 (7043, 'P284', 'Otras apneas del recien nacido', NULL, '2018-11-05 22:19:00', '2018-11-05 22:19:00'),
 (7044, 'P285', 'Insuficiencia respiratoria del recien nacido', NULL, '2018-11-05 22:19:00', '2018-11-05 22:19:00'),
 (7045, 'P288', 'Otros problemas respiratorios especificados del recien nacido', NULL, '2018-11-05 22:19:00', '2018-11-05 22:19:00'),
@@ -7175,9 +7189,9 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (7055, 'P35', 'Enfermedades virales congenitas', NULL, '2018-11-05 22:19:00', '2018-11-05 22:19:00'),
 (7056, 'P350', 'Sindrome de rubeola congenita', NULL, '2018-11-05 22:19:00', '2018-11-05 22:19:00'),
 (7057, 'P351', 'Infeccion citomegalovirica congenita', NULL, '2018-11-05 22:19:00', '2018-11-05 22:19:00'),
-(7058, 'P352', 'Infecciones congenitas por virus del herpes simple', NULL, '2018-11-05 22:19:00', '2018-11-05 22:19:00'),
-(7059, 'P353', 'Hepatitis viral congenita', NULL, '2018-11-05 22:19:00', '2018-11-05 22:19:00');
+(7058, 'P352', 'Infecciones congenitas por virus del herpes simple', NULL, '2018-11-05 22:19:00', '2018-11-05 22:19:00');
 INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(7059, 'P353', 'Hepatitis viral congenita', NULL, '2018-11-05 22:19:00', '2018-11-05 22:19:00'),
 (7060, 'P358', 'Otras enfermedades virales congenitas', NULL, '2018-11-05 22:19:00', '2018-11-05 22:19:00'),
 (7061, 'P359', 'Enfermedad viral congenita', ' sin otra especificacion', '2018-11-05 22:19:00', '2018-11-05 22:19:00'),
 (7062, 'P36', 'Sepsis bacteriana del recien nacido', NULL, '2018-11-05 22:19:00', '2018-11-05 22:19:00'),
@@ -7616,9 +7630,9 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (7495, 'Q340', 'Anomalia de la pleura', NULL, '2018-11-05 22:19:13', '2018-11-05 22:19:13'),
 (7496, 'Q341', 'Quiste congenito del mediastino', NULL, '2018-11-05 22:19:13', '2018-11-05 22:19:13'),
 (7497, 'Q348', 'Otras malformaciones congenitas especificadas del sistema respiratorio', NULL, '2018-11-05 22:19:13', '2018-11-05 22:19:13'),
-(7498, 'Q349', 'Malformacion congenita del sistema respiratorio', ' no especificada', '2018-11-05 22:19:13', '2018-11-05 22:19:13'),
-(7499, 'Q35', 'Fisura del paladar', NULL, '2018-11-05 22:19:13', '2018-11-05 22:19:13');
+(7498, 'Q349', 'Malformacion congenita del sistema respiratorio', ' no especificada', '2018-11-05 22:19:13', '2018-11-05 22:19:13');
 INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(7499, 'Q35', 'Fisura del paladar', NULL, '2018-11-05 22:19:13', '2018-11-05 22:19:13'),
 (7500, 'Q351', 'Fisura del paladar duro', NULL, '2018-11-05 22:19:14', '2018-11-05 22:19:14'),
 (7501, 'Q353', 'Fisura del paladar blando', NULL, '2018-11-05 22:19:14', '2018-11-05 22:19:14'),
 (7502, 'Q355', 'Fisura del paladar duro y del paladar blando', NULL, '2018-11-05 22:19:14', '2018-11-05 22:19:14'),
@@ -7773,13 +7787,13 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (7651, 'Q606', 'Sindrome de potter', NULL, '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
 (7652, 'Q61', 'Enfermedad quistica del rinon', NULL, '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
 (7653, 'Q610', 'Quiste renal solitario congenito', NULL, '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
-(7654, 'Q611', 'RiÃ±on poliquistico', ' autosomico recesivo', '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
-(7655, 'Q612', 'RiÃ±on poliquistico', ' autosomico dominante', '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
-(7656, 'Q613', 'RiÃ±on poliquistico', ' tipo no especificado', '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
+(7654, 'Q611', 'RiÃƒÂ±on poliquistico', ' autosomico recesivo', '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
+(7655, 'Q612', 'RiÃƒÂ±on poliquistico', ' autosomico dominante', '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
+(7656, 'Q613', 'RiÃƒÂ±on poliquistico', ' tipo no especificado', '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
 (7657, 'Q614', 'Displasia renal', NULL, '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
-(7658, 'Q615', 'RiÃ±on quistico medular', NULL, '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
+(7658, 'Q615', 'RiÃƒÂ±on quistico medular', NULL, '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
 (7659, 'Q618', 'Otras enfermedades renales quisticas', NULL, '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
-(7660, 'Q619', 'Enfermedad quistica del riÃ±on', ' no especificada', '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
+(7660, 'Q619', 'Enfermedad quistica del riÃƒÂ±on', ' no especificada', '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
 (7661, 'Q62', 'Defectos obstructivos congenitos de la pelvis renal y malformaciones congenitas del ureter', NULL, '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
 (7662, 'Q620', 'Hidronefrosis congenita', NULL, '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
 (7663, 'Q621', 'Atresia y estenosis del ureter', NULL, '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
@@ -7790,13 +7804,13 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (7668, 'Q626', 'Mala posicion del ureter', NULL, '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
 (7669, 'Q627', 'Reflujo vesico', NULL, '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
 (7670, 'Q628', 'Otras malformaciones congenitas del ureter', NULL, '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
-(7671, 'Q63', 'Otras malformaciones congenitas del riÃ±on', NULL, '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
-(7672, 'Q630', 'RiÃ±on supernumerario', NULL, '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
-(7673, 'Q631', 'RiÃ±on lobulado', ' fusionado y en herradura', '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
-(7674, 'Q632', 'RiÃ±on ectopico', NULL, '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
-(7675, 'Q633', 'Hiperplasia renal y riÃ±on gigante', NULL, '2018-11-05 22:19:20', '2018-11-05 22:19:20'),
-(7676, 'Q638', 'Otras malformaciones congenitas del riÃ±on', ' especificadas', '2018-11-05 22:19:20', '2018-11-05 22:19:20'),
-(7677, 'Q639', 'Malformacion congenita del riÃ±on', ' no especificada', '2018-11-05 22:19:20', '2018-11-05 22:19:20'),
+(7671, 'Q63', 'Otras malformaciones congenitas del riÃƒÂ±on', NULL, '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
+(7672, 'Q630', 'RiÃƒÂ±on supernumerario', NULL, '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
+(7673, 'Q631', 'RiÃƒÂ±on lobulado', ' fusionado y en herradura', '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
+(7674, 'Q632', 'RiÃƒÂ±on ectopico', NULL, '2018-11-05 22:19:19', '2018-11-05 22:19:19'),
+(7675, 'Q633', 'Hiperplasia renal y riÃƒÂ±on gigante', NULL, '2018-11-05 22:19:20', '2018-11-05 22:19:20'),
+(7676, 'Q638', 'Otras malformaciones congenitas del riÃƒÂ±on', ' especificadas', '2018-11-05 22:19:20', '2018-11-05 22:19:20'),
+(7677, 'Q639', 'Malformacion congenita del riÃƒÂ±on', ' no especificada', '2018-11-05 22:19:20', '2018-11-05 22:19:20'),
 (7678, 'Q64', 'Otras malformaciones congenitas del sistema urinario', NULL, '2018-11-05 22:19:20', '2018-11-05 22:19:20'),
 (7679, 'Q640', 'Epispadias', NULL, '2018-11-05 22:19:20', '2018-11-05 22:19:20'),
 (7680, 'Q641', 'Extrofia de la vejiga urinaria', NULL, '2018-11-05 22:19:20', '2018-11-05 22:19:20'),
@@ -7978,8 +7992,8 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (7856, 'Q842', 'Otras malformaciones congenitas del pelo', NULL, '2018-11-05 22:19:27', '2018-11-05 22:19:27'),
 (7857, 'Q843', 'Anoniquia', NULL, '2018-11-05 22:19:27', '2018-11-05 22:19:27'),
 (7858, 'Q844', 'Leuconiquia congenita', NULL, '2018-11-05 22:19:27', '2018-11-05 22:19:27'),
-(7859, 'Q845', 'Agrandamiento e hipertrofia de las uÃ±as', NULL, '2018-11-05 22:19:27', '2018-11-05 22:19:27'),
-(7860, 'Q846', 'Otras malformaciones congenitas de las uÃ±as', NULL, '2018-11-05 22:19:27', '2018-11-05 22:19:27'),
+(7859, 'Q845', 'Agrandamiento e hipertrofia de las uÃƒÂ±as', NULL, '2018-11-05 22:19:27', '2018-11-05 22:19:27'),
+(7860, 'Q846', 'Otras malformaciones congenitas de las uÃƒÂ±as', NULL, '2018-11-05 22:19:27', '2018-11-05 22:19:27'),
 (7861, 'Q848', 'Otras malformaciones congenitas de las faneras', ' especificadas', '2018-11-05 22:19:27', '2018-11-05 22:19:27'),
 (7862, 'Q849', 'Malformacion congenita de las faneras', ' no especificada', '2018-11-05 22:19:27', '2018-11-05 22:19:27'),
 (7863, 'Q85', 'Facomatosis no clasificadas en otra parte', NULL, '2018-11-05 22:19:28', '2018-11-05 22:19:28'),
@@ -8247,8 +8261,8 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (8124, 'R458', 'Otros sintomas y signos que involucran el estado emocional', NULL, '2018-11-05 22:19:38', '2018-11-05 22:19:38'),
 (8125, 'R46', 'Sintomas y signos que involucran la apariencia y el comportamiento', NULL, '2018-11-05 22:19:38', '2018-11-05 22:19:38'),
 (8126, 'R460', 'Muy bajo nivel de higiene personal', NULL, '2018-11-05 22:19:38', '2018-11-05 22:19:38'),
-(8127, 'R461', 'Apariencia personal extraÃ±a', NULL, '2018-11-05 22:19:38', '2018-11-05 22:19:38'),
-(8128, 'R462', 'Conducta extraÃ±a e inexplicable', NULL, '2018-11-05 22:19:38', '2018-11-05 22:19:38'),
+(8127, 'R461', 'Apariencia personal extraÃƒÂ±a', NULL, '2018-11-05 22:19:38', '2018-11-05 22:19:38'),
+(8128, 'R462', 'Conducta extraÃƒÂ±a e inexplicable', NULL, '2018-11-05 22:19:38', '2018-11-05 22:19:38'),
 (8129, 'R463', 'Hiperactividad', NULL, '2018-11-05 22:19:38', '2018-11-05 22:19:38'),
 (8130, 'R464', 'Lentitud y pobre respuesta', NULL, '2018-11-05 22:19:38', '2018-11-05 22:19:38'),
 (8131, 'R465', 'Suspicacia y evasividad marcadas', NULL, '2018-11-05 22:25:58', '2018-11-05 22:25:58'),
@@ -8462,7 +8476,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (8339, 'R941', 'Resultados anormales en estudios funcionales del sistema nervioso periferico y sentidos especiales', NULL, '2018-11-05 22:26:07', '2018-11-05 22:26:07'),
 (8340, 'R942', 'Resultados anormales en estudios funcionales del pulmon', NULL, '2018-11-05 22:26:07', '2018-11-05 22:26:07'),
 (8341, 'R943', 'Resultados anormales en estudios funcionales cardiovasculares', NULL, '2018-11-05 22:26:07', '2018-11-05 22:26:07'),
-(8342, 'R944', 'Resultados anormales en estudios funcionales del riÃ±on', NULL, '2018-11-05 22:26:07', '2018-11-05 22:26:07'),
+(8342, 'R944', 'Resultados anormales en estudios funcionales del riÃƒÂ±on', NULL, '2018-11-05 22:26:07', '2018-11-05 22:26:07'),
 (8343, 'R945', 'Resultados anormales en estudios funcionales del higado', NULL, '2018-11-05 22:26:07', '2018-11-05 22:26:07'),
 (8344, 'R946', 'Resultados anormales en estudios funcionales de la tiroides', NULL, '2018-11-05 22:26:07', '2018-11-05 22:26:07'),
 (8345, 'R947', 'Resultados anormales en otros estudios funcionales endocrinos', NULL, '2018-11-05 22:26:07', '2018-11-05 22:26:07'),
@@ -8524,13 +8538,13 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (8400, 'S048', 'Traumatismo de otros nervios craneales', NULL, '2018-11-05 22:26:09', '2018-11-05 22:26:09'),
 (8401, 'S049', 'Traumatismo del nervios craneales', ' no especificado', '2018-11-05 22:26:09', '2018-11-05 22:26:09'),
 (8402, 'S05', 'Traumatismo del ojo y de la orbita', NULL, '2018-11-05 22:26:09', '2018-11-05 22:26:09'),
-(8403, 'S050', 'Traumatismo de la conjuntiva y abrasion corneal sin mencion de cuerpo extraÃ±o', NULL, '2018-11-05 22:26:09', '2018-11-05 22:26:09'),
+(8403, 'S050', 'Traumatismo de la conjuntiva y abrasion corneal sin mencion de cuerpo extraÃƒÂ±o', NULL, '2018-11-05 22:26:09', '2018-11-05 22:26:09'),
 (8404, 'S051', 'Contusion del globo ocular y del tejido orbitario', NULL, '2018-11-05 22:26:09', '2018-11-05 22:26:09'),
 (8405, 'S052', 'Laceracion y ruptura ocular con prolapso o perdida del tejido intraocular', NULL, '2018-11-05 22:26:09', '2018-11-05 22:26:09'),
 (8406, 'S053', 'Laceracion ocular sin prolapso o perdida del tejido intraocular', NULL, '2018-11-05 22:26:09', '2018-11-05 22:26:09'),
-(8407, 'S054', 'Herida penetrante de la orbita con o sin cuerpo extraÃ±o', NULL, '2018-11-05 22:26:09', '2018-11-05 22:26:09'),
-(8408, 'S055', 'Herida penetrante del globo ocular con cuerpo extraÃ±o', NULL, '2018-11-05 22:26:09', '2018-11-05 22:26:09'),
-(8409, 'S056', 'Herida penetrante del globo ocular sin cuerpo extraÃ±o', NULL, '2018-11-05 22:26:09', '2018-11-05 22:26:09'),
+(8407, 'S054', 'Herida penetrante de la orbita con o sin cuerpo extraÃƒÂ±o', NULL, '2018-11-05 22:26:09', '2018-11-05 22:26:09'),
+(8408, 'S055', 'Herida penetrante del globo ocular con cuerpo extraÃƒÂ±o', NULL, '2018-11-05 22:26:09', '2018-11-05 22:26:09'),
+(8409, 'S056', 'Herida penetrante del globo ocular sin cuerpo extraÃƒÂ±o', NULL, '2018-11-05 22:26:09', '2018-11-05 22:26:09'),
 (8410, 'S057', 'Avulsion del ojo', NULL, '2018-11-05 22:26:09', '2018-11-05 22:26:09'),
 (8411, 'S058', 'Otros traumatismos del ojo y de la orbita', NULL, '2018-11-05 22:26:09', '2018-11-05 22:26:09'),
 (8412, 'S059', 'Traumatismo del ojo y de la orbita', ' no especificado', '2018-11-05 22:26:09', '2018-11-05 22:26:09'),
@@ -8753,7 +8767,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (8629, 'S368', 'Traumatismo de otros organos intraabdominales', NULL, '2018-11-05 22:26:18', '2018-11-05 22:26:18'),
 (8630, 'S369', 'Traumatismo de organo intraabdominal no especificado', NULL, '2018-11-05 22:26:18', '2018-11-05 22:26:18'),
 (8631, 'S37', 'Traumatismo del aparato urinario y de los organos pelvicos', NULL, '2018-11-05 22:26:18', '2018-11-05 22:26:18'),
-(8632, 'S370', 'Traumatismo del riÃ±on', NULL, '2018-11-05 22:26:18', '2018-11-05 22:26:18'),
+(8632, 'S370', 'Traumatismo del riÃƒÂ±on', NULL, '2018-11-05 22:26:18', '2018-11-05 22:26:18'),
 (8633, 'S371', 'Traumatismo del ureter', NULL, '2018-11-05 22:26:18', '2018-11-05 22:26:18'),
 (8634, 'S372', 'Traumatismo de la vejiga', NULL, '2018-11-05 22:26:18', '2018-11-05 22:26:18'),
 (8635, 'S373', 'Traumatismo de la uretra', NULL, '2018-11-05 22:26:18', '2018-11-05 22:26:18'),
@@ -8895,26 +8909,26 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (8771, 'S579', 'Traumatismo por aplastamiento del antebrazo', ' parte no especificada', '2018-11-05 22:26:22', '2018-11-05 22:26:22'),
 (8772, 'S58', 'Amputacion traumatica del antebrazo', NULL, '2018-11-05 22:26:22', '2018-11-05 22:26:22'),
 (8773, 'S580', 'Amputacion traumatica a nivel del codo', NULL, '2018-11-05 22:26:22', '2018-11-05 22:26:22'),
-(8774, 'S581', 'Amputacion traumatica a nivel entre el codo y la muÃ±eca', NULL, '2018-11-05 22:26:22', '2018-11-05 22:26:22'),
+(8774, 'S581', 'Amputacion traumatica a nivel entre el codo y la muÃƒÂ±eca', NULL, '2018-11-05 22:26:22', '2018-11-05 22:26:22'),
 (8775, 'S589', 'Amputacion traumatica del antebrazo', ' nivel no especificado', '2018-11-05 22:26:22', '2018-11-05 22:26:22'),
 (8776, 'S59', 'Otros traumatismos y los no especificados del antebrazo', NULL, '2018-11-05 22:26:22', '2018-11-05 22:26:22'),
 (8777, 'S597', 'Traumatismos multiples del antebrazo', NULL, '2018-11-05 22:26:22', '2018-11-05 22:26:22'),
 (8778, 'S598', 'Otros traumatismos especificados del antebrazo', NULL, '2018-11-05 22:26:22', '2018-11-05 22:26:22'),
 (8779, 'S599', 'Traumatismos no especificados del antebrazo', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
 (8780, 'S60', 'Traumatismo superficial de la muneca y de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
-(8781, 'S600', 'Contusion de dedo(s) de la mano', ' sin daÃ±o de la(s) uÃ±a(s)', '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
-(8782, 'S601', 'Contusion de dedo(s) de la mano', ' con daÃ±o de la(s) uÃ±a(s)', '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
-(8783, 'S602', 'Contusion de otras partes de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
-(8784, 'S607', 'Traumatismos superficiales multiples de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
-(8785, 'S608', 'Otros traumatismos superficiales de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
-(8786, 'S609', 'Traumatismo superficial de la muÃ±eca y de la mano', ' no especificado', '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
+(8781, 'S600', 'Contusion de dedo(s) de la mano', ' sin daÃƒÂ±o de la(s) uÃƒÂ±a(s)', '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
+(8782, 'S601', 'Contusion de dedo(s) de la mano', ' con daÃƒÂ±o de la(s) uÃƒÂ±a(s)', '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
+(8783, 'S602', 'Contusion de otras partes de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
+(8784, 'S607', 'Traumatismos superficiales multiples de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
+(8785, 'S608', 'Otros traumatismos superficiales de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
+(8786, 'S609', 'Traumatismo superficial de la muÃƒÂ±eca y de la mano', ' no especificado', '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
 (8787, 'S61', 'Herida de la muneca y de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
-(8788, 'S610', 'Herida de dedo(s) de la mano', ' sin daÃ±o de la(s) uÃ±a(s)', '2018-11-05 22:26:23', '2018-11-05 22:26:23');
+(8788, 'S610', 'Herida de dedo(s) de la mano', ' sin daÃƒÂ±o de la(s) uÃƒÂ±a(s)', '2018-11-05 22:26:23', '2018-11-05 22:26:23');
 INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
-(8789, 'S611', 'Herida de dedo(s) de la mano', ' con daÃ±o de la(s) uÃ±a(s)', '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
-(8790, 'S617', 'Heridas multiples de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
-(8791, 'S618', 'Heridas de otras partes de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
-(8792, 'S619', 'Herida de la muÃ±eca y de la mano', ' parte no especificada', '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
+(8789, 'S611', 'Herida de dedo(s) de la mano', ' con daÃƒÂ±o de la(s) uÃƒÂ±a(s)', '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
+(8790, 'S617', 'Heridas multiples de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
+(8791, 'S618', 'Heridas de otras partes de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
+(8792, 'S619', 'Herida de la muÃƒÂ±eca y de la mano', ' parte no especificada', '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
 (8793, 'S62', 'Fractura a nivel de la muneca y de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
 (8794, 'S620', 'Fractura del hueso escafoides [navicular] de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
 (8795, 'S621', 'Fractura de otro(s) hueso(s) del carpo', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
@@ -8924,61 +8938,61 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (8799, 'S625', 'Fractura del pulgar', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
 (8800, 'S626', 'Fractura de otro dedo de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
 (8801, 'S627', 'Fracturas multiples de los dedos de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
-(8802, 'S628', 'Fractura de otras partes y de las no especificadas de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
+(8802, 'S628', 'Fractura de otras partes y de las no especificadas de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
 (8803, 'S63', 'Luxacion', ' esguince y torcedura de articulaciones y ligamentos a nivel de la muneca y de la mano', '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
-(8804, 'S630', 'Luxacion de la muÃ±eca', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
+(8804, 'S630', 'Luxacion de la muÃƒÂ±eca', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
 (8805, 'S631', 'Luxacion de dedos de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
 (8806, 'S632', 'Luxaciones multiples de dedos de la mano', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
-(8807, 'S633', 'Ruptura traumatica de ligamentos de la muÃ±eca y del carpo', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
+(8807, 'S633', 'Ruptura traumatica de ligamentos de la muÃƒÂ±eca y del carpo', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
 (8808, 'S634', 'Ruptura traumatica de ligamentos del dedo de la mano en la(s) articulacion(es) metacarpofalangica e interfalangica', NULL, '2018-11-05 22:26:23', '2018-11-05 22:26:23'),
-(8809, 'S635', 'Esguinces y torceduras de la muÃ±eca', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
+(8809, 'S635', 'Esguinces y torceduras de la muÃƒÂ±eca', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
 (8810, 'S636', 'Esguinces y torceduras de dedo(s) de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
-(8811, 'S637', 'Esguinces y torceduras de otras partes y de las no especificadas de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
+(8811, 'S637', 'Esguinces y torceduras de otras partes y de las no especificadas de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
 (8812, 'S64', 'Traumatismo de nervios a nivel de la muneca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
-(8813, 'S640', 'Traumatismo del nervio cubital a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
-(8814, 'S641', 'Traumatismo del nervio mediano a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
-(8815, 'S642', 'Traumatismo del nervio radial a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
+(8813, 'S640', 'Traumatismo del nervio cubital a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
+(8814, 'S641', 'Traumatismo del nervio mediano a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
+(8815, 'S642', 'Traumatismo del nervio radial a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
 (8816, 'S643', 'Traumatismo del nervio digital del pulgar', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
 (8817, 'S644', 'Traumatismo del nervio digital de otro dedo', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
-(8818, 'S647', 'Traumatismo de multiples nervios a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
-(8819, 'S648', 'Traumatismo de otros nervios a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
-(8820, 'S649', 'Traumatismo de nervio no especificado a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
+(8818, 'S647', 'Traumatismo de multiples nervios a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
+(8819, 'S648', 'Traumatismo de otros nervios a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
+(8820, 'S649', 'Traumatismo de nervio no especificado a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
 (8821, 'S65', 'Traumatismo de los vasos sanguineos a nivel de la muneca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
-(8822, 'S650', 'Traumatismo de la arteria cubital a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
-(8823, 'S651', 'Traumatismo de la arteria radial a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
+(8822, 'S650', 'Traumatismo de la arteria cubital a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
+(8823, 'S651', 'Traumatismo de la arteria radial a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
 (8824, 'S652', 'Traumatismo del arco palmar superficial', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
 (8825, 'S653', 'Traumatismo del arco palmar profundo', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
 (8826, 'S654', 'Traumatismo de vaso(s) sanguineo(s) del pulgar', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
 (8827, 'S655', 'Traumatismo de vaso(s) sanguineo(s) de otro dedo', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
-(8828, 'S657', 'Traumatismo de multiples vasos sanguineos a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
-(8829, 'S658', 'Traumatismo de otros vasos sanguineos a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
-(8830, 'S659', 'Traumatismo de vaso sanguineo no especificado a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
+(8828, 'S657', 'Traumatismo de multiples vasos sanguineos a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
+(8829, 'S658', 'Traumatismo de otros vasos sanguineos a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
+(8830, 'S659', 'Traumatismo de vaso sanguineo no especificado a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
 (8831, 'S66', 'Traumatismo de tendon y musculo a nivel de la muneca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
-(8832, 'S660', 'Traumatismo del tendon y musculo flexor largo del pulgar a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
-(8833, 'S661', 'Traumatismo del tendon y musculo flexor de otro dedo a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
-(8834, 'S662', 'Traumatismo del tendon y musculo extensor del pulgar a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
-(8835, 'S663', 'Traumatismo del tendon y musculo extensor de otro(s) dedo(s) a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
-(8836, 'S664', 'Traumatismo del musculo y tendon intrinseco del pulgar a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
-(8837, 'S665', 'Traumatismo del musculo y tendon intrinseco de otro(s) dedo(s) a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
-(8838, 'S666', 'Traumatismo de multiples tendones y musculos flexores a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
-(8839, 'S667', 'Traumatismo de multiples tendones y musculos extensores a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
-(8840, 'S668', 'Traumatismo de otros tendones y musculos a nivel de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
-(8841, 'S669', 'Traumatismo de tendon y musculo no especificado', ' a nivel de la muÃ±eca y de la mano', '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
+(8832, 'S660', 'Traumatismo del tendon y musculo flexor largo del pulgar a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
+(8833, 'S661', 'Traumatismo del tendon y musculo flexor de otro dedo a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
+(8834, 'S662', 'Traumatismo del tendon y musculo extensor del pulgar a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
+(8835, 'S663', 'Traumatismo del tendon y musculo extensor de otro(s) dedo(s) a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
+(8836, 'S664', 'Traumatismo del musculo y tendon intrinseco del pulgar a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
+(8837, 'S665', 'Traumatismo del musculo y tendon intrinseco de otro(s) dedo(s) a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:24', '2018-11-05 22:26:24'),
+(8838, 'S666', 'Traumatismo de multiples tendones y musculos flexores a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
+(8839, 'S667', 'Traumatismo de multiples tendones y musculos extensores a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
+(8840, 'S668', 'Traumatismo de otros tendones y musculos a nivel de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
+(8841, 'S669', 'Traumatismo de tendon y musculo no especificado', ' a nivel de la muÃƒÂ±eca y de la mano', '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
 (8842, 'S67', 'Traumatismo por aplastamiento de la muneca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
 (8843, 'S670', 'Traumatismo por aplastamiento del pulgar y otro(s) dedo(s)', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
-(8844, 'S678', 'Traumatismo por aplastamiento de otras partes y de las no especificadas de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
+(8844, 'S678', 'Traumatismo por aplastamiento de otras partes y de las no especificadas de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
 (8845, 'S68', 'Amputacion traumatica de la muneca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
 (8846, 'S680', 'Amputacion traumatica del pulgar (completa) (parcial)', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
 (8847, 'S681', 'Amputacion traumatica de otro dedo unico (completa) (parcial)', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
 (8848, 'S682', 'Amputacion traumatica de dos o mas dedos solamente (completa) (parcial)', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
-(8849, 'S683', 'Amputacion traumatica combinada (de parte) de dedo(s) con otras partes de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
-(8850, 'S684', 'Amputacion traumatica de la mano a nivel de la muÃ±eca', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
-(8851, 'S688', 'Amputacion traumatica de otras partes de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
-(8852, 'S689', 'Amputacion traumatica de la muÃ±eca y de la mano', ' nivel no especificado', '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
+(8849, 'S683', 'Amputacion traumatica combinada (de parte) de dedo(s) con otras partes de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
+(8850, 'S684', 'Amputacion traumatica de la mano a nivel de la muÃƒÂ±eca', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
+(8851, 'S688', 'Amputacion traumatica de otras partes de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
+(8852, 'S689', 'Amputacion traumatica de la muÃƒÂ±eca y de la mano', ' nivel no especificado', '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
 (8853, 'S69', 'Otros traumatismo y no especificados de la muneca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
-(8854, 'S697', 'Traumatismos multiples de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
-(8855, 'S698', 'Otros traumatismos especificados de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
-(8856, 'S699', 'Traumatismo no especificado de la muÃ±eca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
+(8854, 'S697', 'Traumatismos multiples de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
+(8855, 'S698', 'Otros traumatismos especificados de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
+(8856, 'S699', 'Traumatismo no especificado de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
 (8857, 'S70', 'Traumatismo superficial de la cadera y del muslo', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
 (8858, 'S700', 'Contusion de la cadera', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
 (8859, 'S701', 'Contusion del muslo', NULL, '2018-11-05 22:26:25', '2018-11-05 22:26:25'),
@@ -9104,16 +9118,16 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (8979, 'S899', 'Traumatismo de la pierna', ' no especificado', '2018-11-05 22:26:29', '2018-11-05 22:26:29'),
 (8980, 'S90', 'Traumatismo superficial del tobillo y del pie', NULL, '2018-11-05 22:26:29', '2018-11-05 22:26:29'),
 (8981, 'S900', 'Contusion del tobillo', NULL, '2018-11-05 22:26:29', '2018-11-05 22:26:29'),
-(8982, 'S901', 'Contusion de dedo(s) del pie', ' sin daÃ±o de la(s) uÃ±a(s)', '2018-11-05 22:26:29', '2018-11-05 22:26:29'),
-(8983, 'S902', 'Contusion de dedo(s) del pie', ' con daÃ±o de la(s) uÃ±a(s)', '2018-11-05 22:26:29', '2018-11-05 22:26:29'),
+(8982, 'S901', 'Contusion de dedo(s) del pie', ' sin daÃƒÂ±o de la(s) uÃƒÂ±a(s)', '2018-11-05 22:26:29', '2018-11-05 22:26:29'),
+(8983, 'S902', 'Contusion de dedo(s) del pie', ' con daÃƒÂ±o de la(s) uÃƒÂ±a(s)', '2018-11-05 22:26:29', '2018-11-05 22:26:29'),
 (8984, 'S903', 'Contusion de otras partes y de las no especificadas del pie', NULL, '2018-11-05 22:26:29', '2018-11-05 22:26:29'),
 (8985, 'S907', 'Traumatismos superficiales multiples del pie y del tobillo', NULL, '2018-11-05 22:26:29', '2018-11-05 22:26:29'),
 (8986, 'S908', 'Otros traumatismos superficiales del pie y del tobillo', NULL, '2018-11-05 22:26:29', '2018-11-05 22:26:29'),
 (8987, 'S909', 'Traumatismo superficial del pie y del tobillo', ' no especificado', '2018-11-05 22:26:30', '2018-11-05 22:26:30'),
 (8988, 'S91', 'Herida del tobillo y del pie', NULL, '2018-11-05 22:26:30', '2018-11-05 22:26:30'),
 (8989, 'S910', 'Herida del tobillo', NULL, '2018-11-05 22:26:30', '2018-11-05 22:26:30'),
-(8990, 'S911', 'Herida de dedo(s) del pie sin daÃ±o de la(s) uÃ±a(s)', NULL, '2018-11-05 22:26:30', '2018-11-05 22:26:30'),
-(8991, 'S912', 'Herida de dedo(s) del pie con daÃ±o de la(s) uÃ±a(s)', NULL, '2018-11-05 22:26:30', '2018-11-05 22:26:30'),
+(8990, 'S911', 'Herida de dedo(s) del pie sin daÃƒÂ±o de la(s) uÃƒÂ±a(s)', NULL, '2018-11-05 22:26:30', '2018-11-05 22:26:30'),
+(8991, 'S912', 'Herida de dedo(s) del pie con daÃƒÂ±o de la(s) uÃƒÂ±a(s)', NULL, '2018-11-05 22:26:30', '2018-11-05 22:26:30'),
 (8992, 'S913', 'Heridas de otras partes del pie', NULL, '2018-11-05 22:26:30', '2018-11-05 22:26:30'),
 (8993, 'S917', 'Heridas multiples del tobillo y del pie', NULL, '2018-11-05 22:26:30', '2018-11-05 22:26:30'),
 (8994, 'S92', 'Fractura del pie', ' excepto del tobillo', '2018-11-05 22:26:30', '2018-11-05 22:26:30'),
@@ -9311,9 +9325,9 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (9186, 'T200', 'Quemadura de la cabeza y del cuello', ' grado no especificado', '2018-11-05 22:44:28', '2018-11-05 22:44:28'),
 (9187, 'T201', 'Quemadura de la cabeza y del cuello', ' de primer grado', '2018-11-05 22:44:28', '2018-11-05 22:44:28'),
 (9188, 'T202', 'Quemadura de la cabeza y del cuello', ' de segundo grado', '2018-11-05 22:44:28', '2018-11-05 22:44:28'),
-(9189, 'T203', 'Quemadura de la cabeza y del cuello', ' de tercer grado', '2018-11-05 22:44:28', '2018-11-05 22:44:28'),
-(9190, 'T204', 'Corrosion de la cabeza y del cuello', ' grado no especificado', '2018-11-05 22:44:28', '2018-11-05 22:44:28');
+(9189, 'T203', 'Quemadura de la cabeza y del cuello', ' de tercer grado', '2018-11-05 22:44:28', '2018-11-05 22:44:28');
 INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(9190, 'T204', 'Corrosion de la cabeza y del cuello', ' grado no especificado', '2018-11-05 22:44:28', '2018-11-05 22:44:28'),
 (9191, 'T205', 'Corrosion de la cabeza y del cuello', ' de primer grado', '2018-11-05 22:44:28', '2018-11-05 22:44:28'),
 (9192, 'T206', 'Corrosion de la cabeza y del cuello', ' de segundo grado', '2018-11-05 22:44:28', '2018-11-05 22:44:28'),
 (9193, 'T207', 'Corrosion de la cabeza y del cuello', ' de tercer grado', '2018-11-05 22:44:28', '2018-11-05 22:44:28'),
@@ -9342,8 +9356,8 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (9216, 'T233', '0', ' de tercer grado', '2018-11-05 22:44:29', '2018-11-05 22:44:29'),
 (9217, 'T234', '0', ' grado no especificado', '2018-11-05 22:44:30', '2018-11-05 22:44:30'),
 (9218, 'T235', '0', ' de primer grado', '2018-11-05 22:44:30', '2018-11-05 22:44:30'),
-(9219, 'T236', 'Corrosion de la muÃ±eca y de la mano', ' de segundo grado', '2018-11-05 22:45:25', '2018-11-05 22:45:25'),
-(9220, 'T237', 'Corrosion de la muÃ±eca y de la mano', ' de tercer grado', '2018-11-05 22:45:25', '2018-11-05 22:45:25'),
+(9219, 'T236', 'Corrosion de la muÃƒÂ±eca y de la mano', ' de segundo grado', '2018-11-05 22:45:25', '2018-11-05 22:45:25'),
+(9220, 'T237', 'Corrosion de la muÃƒÂ±eca y de la mano', ' de tercer grado', '2018-11-05 22:45:25', '2018-11-05 22:45:25'),
 (9221, 'T24', 'Quemadura y corrosion de la cadera y miembro inferior', ' excepto tobillo y pie', '2018-11-05 22:45:25', '2018-11-05 22:45:25'),
 (9222, 'T240', 'Quemadura de la cadera y del miembro inferior', ' grado no especificado', '2018-11-05 22:45:25', '2018-11-05 22:45:25'),
 (9223, 'T241', 'Quemadura de la cadera y del miembro inferior', ' de primer grado', '2018-11-05 22:45:25', '2018-11-05 22:45:25'),
@@ -9439,7 +9453,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (9313, 'T332', 'Congelamiento superficial del torax', NULL, '2018-11-05 22:45:28', '2018-11-05 22:45:28'),
 (9314, 'T333', 'Congelamiento superficial de la pared abdominal', ' region lumbosacra y pelvis', '2018-11-05 22:45:28', '2018-11-05 22:45:28'),
 (9315, 'T334', 'Congelamiento superficial del brazo', NULL, '2018-11-05 22:45:28', '2018-11-05 22:45:28'),
-(9316, 'T335', 'Congelamiento superficial de la muÃ±eca y de la mano', NULL, '2018-11-05 22:45:28', '2018-11-05 22:45:28'),
+(9316, 'T335', 'Congelamiento superficial de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:45:28', '2018-11-05 22:45:28'),
 (9317, 'T336', 'Congelamiento superficial de la cadera y del muslo', NULL, '2018-11-05 22:45:28', '2018-11-05 22:45:28'),
 (9318, 'T337', 'Congelamiento superficial de la rodilla y de la pierna', NULL, '2018-11-05 22:45:28', '2018-11-05 22:45:28'),
 (9319, 'T338', 'Congelamiento superficial del tobillo y del pie', NULL, '2018-11-05 22:45:28', '2018-11-05 22:45:28'),
@@ -9450,7 +9464,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (9324, 'T342', 'Congelamiento con necrosis tisular del torax', NULL, '2018-11-05 22:45:28', '2018-11-05 22:45:28'),
 (9325, 'T343', 'Congelamiento con necrosis tisular de la pared abdominal', ' region lumbosacra y pelvis', '2018-11-05 22:45:28', '2018-11-05 22:45:28'),
 (9326, 'T344', 'Congelamiento con necrosis tisular del brazo', NULL, '2018-11-05 22:45:28', '2018-11-05 22:45:28'),
-(9327, 'T345', 'Congelamiento con necrosis tisular de la muÃ±eca y de la mano', NULL, '2018-11-05 22:45:28', '2018-11-05 22:45:28'),
+(9327, 'T345', 'Congelamiento con necrosis tisular de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 22:45:28', '2018-11-05 22:45:28'),
 (9328, 'T346', 'Congelamiento con necrosis tisular de la cadera y del muslo', NULL, '2018-11-05 22:45:28', '2018-11-05 22:45:28'),
 (9329, 'T347', 'Congelamiento con necrosis tisular de la rodilla y de la pierna', NULL, '2018-11-05 22:45:28', '2018-11-05 22:45:28'),
 (9330, 'T348', 'Congelamiento con necrosis tisular del tobillo y del pie', NULL, '2018-11-05 22:45:28', '2018-11-05 22:45:28'),
@@ -9639,9 +9653,9 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (9513, 'T534', 'Efecto toxico de los derivados halogenados de los hidrocarburos alifaticos y aromaticos: dicloroetano', NULL, '2018-11-05 22:50:03', '2018-11-05 22:50:03'),
 (9514, 'T535', 'Efecto toxico de los derivados halogenados de los hidrocarburos alifaticos y aromaticos: clorofluorcarburos', NULL, '2018-11-05 22:50:03', '2018-11-05 22:50:03'),
 (9515, 'T536', 'Efecto toxico de los derivados halogenados de los hidrocarburos alifaticos y aromaticos: otros derivados halogenados de los hidrocarburos alifaticos', NULL, '2018-11-05 22:50:04', '2018-11-05 22:50:04'),
-(9516, 'T537', 'Efecto toxico de los derivados halogenados de los hidrocarburos alifaticos y aromaticos: otros derivados halogenados de los hidrocarburos aromaticos', NULL, '2018-11-05 22:50:04', '2018-11-05 22:50:04'),
-(9517, 'T539', 'Efecto toxico de los derivados halogenados de los hidrocarburos alifaticos y aromaticos: derivados halogenados de hidrocarburos alifaticos y aromaticos', ' no especificados', '2018-11-05 22:50:04', '2018-11-05 22:50:04');
+(9516, 'T537', 'Efecto toxico de los derivados halogenados de los hidrocarburos alifaticos y aromaticos: otros derivados halogenados de los hidrocarburos aromaticos', NULL, '2018-11-05 22:50:04', '2018-11-05 22:50:04');
 INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(9517, 'T539', 'Efecto toxico de los derivados halogenados de los hidrocarburos alifaticos y aromaticos: derivados halogenados de hidrocarburos alifaticos y aromaticos', ' no especificados', '2018-11-05 22:50:04', '2018-11-05 22:50:04'),
 (9518, 'T54', 'Efecto toxico de sustancias corrosivas', NULL, '2018-11-05 22:50:04', '2018-11-05 22:50:04'),
 (9519, 'T540', 'Efecto toxico de sustancias corrosivas: fenol y homologos del fenol', NULL, '2018-11-05 22:50:04', '2018-11-05 22:50:04'),
 (9520, 'T541', 'Efecto toxico de sustancias corrosivas: otros compuestos organicos corrosivos', NULL, '2018-11-05 22:50:04', '2018-11-05 22:50:04'),
@@ -10011,10 +10025,10 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (9884, 'V140', 'Ciclista lesionado por colision con vehiculo de transporte pesado o autobus: conductor lesionado en accidente no de transito', NULL, '2018-11-05 22:50:15', '2018-11-05 22:50:15'),
 (9885, 'V141', 'Ciclista lesionado por colision con vehiculo de transporte pesado o autobus: pasajero lesionado en accidente no de transito', NULL, '2018-11-05 22:50:15', '2018-11-05 22:50:15'),
 (9886, 'V142', 'Ciclista lesionado por colision con vehiculo de transporte pesado o autobus: ciclista no especificado', ' lesionado en accidente no de transito', '2018-11-05 22:50:15', '2018-11-05 22:50:15'),
-(9887, 'V143', 'Ciclista lesionado por colision con vehiculo de transporte pesado o autobus: persona lesionada al subir o bajar del vehiculo', NULL, '2018-11-05 22:50:15', '2018-11-05 22:50:15'),
-(9888, 'V144', 'Ciclista lesionado por colision con vehiculo de transporte pesado o autobus: conductor lesionado en accidente de transito', NULL, '2018-11-05 22:50:15', '2018-11-05 22:50:15'),
-(9889, 'V145', 'Ciclista lesionado por colision con vehiculo de transporte pesado o autobus: pasajero lesionado en accidente de transito', NULL, '2018-11-05 22:50:15', '2018-11-05 22:50:15');
+(9887, 'V143', 'Ciclista lesionado por colision con vehiculo de transporte pesado o autobus: persona lesionada al subir o bajar del vehiculo', NULL, '2018-11-05 22:50:15', '2018-11-05 22:50:15');
 INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(9888, 'V144', 'Ciclista lesionado por colision con vehiculo de transporte pesado o autobus: conductor lesionado en accidente de transito', NULL, '2018-11-05 22:50:15', '2018-11-05 22:50:15'),
+(9889, 'V145', 'Ciclista lesionado por colision con vehiculo de transporte pesado o autobus: pasajero lesionado en accidente de transito', NULL, '2018-11-05 22:50:15', '2018-11-05 22:50:15'),
 (9890, 'V149', 'Ciclista lesionado por colision con vehiculo de transporte pesado o autobus: ciclista no especificado', ' lesionado en accidente de transito', '2018-11-05 22:50:15', '2018-11-05 22:50:15'),
 (9891, 'V15', 'Ciclista lesionado por colision con tren o vehiculo de rieles', NULL, '2018-11-05 22:50:16', '2018-11-05 22:50:16'),
 (9892, 'V150', 'Ciclista lesionado por colision con tren o vehiculo de rieles: conductor lesionado en accidente no de transito', NULL, '2018-11-05 22:50:16', '2018-11-05 22:50:16'),
@@ -10265,9 +10279,9 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (10137, 'V421', 'Ocupante de automovil lesionado por colision con vehiculo de motor de dos o tres ruedas: pasajero lesionado en accidente no de transito', NULL, '2018-11-05 22:50:23', '2018-11-05 22:50:23'),
 (10138, 'V422', 'Ocupante de automovil lesionado por colision con vehiculo de motor de dos o tres ruedas: persona que viaja fuera del vehiculo', ' lesionada en accidente no de transito', '2018-11-05 22:50:23', '2018-11-05 22:50:23'),
 (10139, 'V423', 'Ocupante de automovil lesionado por colision con vehiculo de motor de dos o tres ruedas: ocupante no especificado de automovil', ' lesionado en accidente no de transito', '2018-11-05 22:50:23', '2018-11-05 22:50:23'),
-(10140, 'V424', 'Ocupante de automovil lesionado por colision con vehiculo de motor de dos o tres ruedas: persona lesionada al subir o bajar del vehiculo', NULL, '2018-11-05 22:50:23', '2018-11-05 22:50:23'),
-(10141, 'V425', 'Ocupante de automovil lesionado por colision con vehiculo de motor de dos o tres ruedas: conductor lesionado en accidente de transito', NULL, '2018-11-05 22:50:23', '2018-11-05 22:50:23');
+(10140, 'V424', 'Ocupante de automovil lesionado por colision con vehiculo de motor de dos o tres ruedas: persona lesionada al subir o bajar del vehiculo', NULL, '2018-11-05 22:50:23', '2018-11-05 22:50:23');
 INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(10141, 'V425', 'Ocupante de automovil lesionado por colision con vehiculo de motor de dos o tres ruedas: conductor lesionado en accidente de transito', NULL, '2018-11-05 22:50:23', '2018-11-05 22:50:23'),
 (10142, 'V426', 'Ocupante de automovil lesionado por colision con vehiculo de motor de dos o tres ruedas: pasajero lesionado en accidente de transito', NULL, '2018-11-05 22:50:23', '2018-11-05 22:50:23'),
 (10143, 'V427', 'Ocupante de automovil lesionado por colision con vehiculo de motor de dos o tres ruedas: persona que viaja fuera del vehiculo', ' lesionada en accidente de transito', '2018-11-05 22:50:23', '2018-11-05 22:50:23'),
 (10144, 'V429', 'Ocupante de automovil lesionado por colision con vehiculo de motor de dos o tres ruedas: ocupante no especificado de automovil', ' lesionado en accidente de transito', '2018-11-05 22:50:23', '2018-11-05 22:50:23'),
@@ -10505,9 +10519,9 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (10376, 'V660', 'Ocupante de vehiculo de transporte pesado lesionado por colision con otros vehiculos sin motor: conductor lesionado en accidente no de transito', NULL, '2018-11-05 22:54:47', '2018-11-05 22:54:47'),
 (10377, 'V661', 'Ocupante de vehiculo de transporte pesado lesionado por colision con otros vehiculos sin motor: pasajero lesionado en accidente no de transito', NULL, '2018-11-05 22:54:47', '2018-11-05 22:54:47'),
 (10378, 'V662', 'Ocupante de vehiculo de transporte pesado lesionado por colision con otros vehiculos sin motor: persona que viaja fuera del vehiculo', ' lesionada en accidente no de transito', '2018-11-05 22:54:47', '2018-11-05 22:54:47'),
-(10379, 'V663', 'Ocupante de vehiculo de transporte pesado lesionado por colision con otros vehiculos sin motor: ocupante no especificado de vehiculo de transporte pesado lesionado en accidente no de transito', NULL, '2018-11-05 22:54:47', '2018-11-05 22:54:47'),
-(10380, 'V664', 'Ocupante de vehiculo de transporte pesado lesionado por colision con otros vehiculos sin motor: persona lesionada al subir o bajar del vehiculo', NULL, '2018-11-05 22:54:47', '2018-11-05 22:54:47');
+(10379, 'V663', 'Ocupante de vehiculo de transporte pesado lesionado por colision con otros vehiculos sin motor: ocupante no especificado de vehiculo de transporte pesado lesionado en accidente no de transito', NULL, '2018-11-05 22:54:47', '2018-11-05 22:54:47');
 INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(10380, 'V664', 'Ocupante de vehiculo de transporte pesado lesionado por colision con otros vehiculos sin motor: persona lesionada al subir o bajar del vehiculo', NULL, '2018-11-05 22:54:47', '2018-11-05 22:54:47'),
 (10381, 'V665', 'Ocupante de vehiculo de transporte pesado lesionado por colision con otros vehiculos sin motor: conductor lesionado en accidente de transito', NULL, '2018-11-05 22:54:47', '2018-11-05 22:54:47'),
 (10382, 'V666', 'Ocupante de vehiculo de transporte pesado lesionado por colision con otros vehiculos sin motor: pasajero lesionado en accidente de transito', NULL, '2018-11-05 22:54:47', '2018-11-05 22:54:47'),
 (10383, 'V667', 'Ocupante de vehiculo de transporte pesado lesionado por colision con otros vehiculos sin motor: persona que viaja fuera del vehiculo', ' lesionada en accidente de transito', '2018-11-05 22:54:47', '2018-11-05 22:54:47'),
@@ -10786,10 +10800,10 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (10656, 'V936', 'Accidente en una embarcacion', ' sin accidente a la embarcacion', '2018-11-05 22:54:55', '2018-11-05 22:54:55'),
 (10657, 'V937', 'Accidente en una embarcacion', ' sin accidente a la embarcacion', '2018-11-05 22:54:55', '2018-11-05 22:54:55'),
 (10658, 'V938', 'Accidente en una embarcacion', ' sin accidente a la embarcacion', '2018-11-05 22:54:55', '2018-11-05 22:54:55'),
-(10659, 'V939', 'Accidente en una embarcacion', ' sin accidente a la embarcacion', '2018-11-05 22:54:55', '2018-11-05 22:54:55'),
-(10660, 'V94', 'Otros accidentes de transporte por agua', ' y los no especificados', '2018-11-05 22:54:55', '2018-11-05 22:54:55'),
-(10661, 'V940', 'Otros accidentes de transporte por agua', ' y los no especificados: barco mercante', '2018-11-05 22:54:55', '2018-11-05 22:54:55');
+(10659, 'V939', 'Accidente en una embarcacion', ' sin accidente a la embarcacion', '2018-11-05 22:54:55', '2018-11-05 22:54:55');
 INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(10660, 'V94', 'Otros accidentes de transporte por agua', ' y los no especificados', '2018-11-05 22:54:55', '2018-11-05 22:54:55'),
+(10661, 'V940', 'Otros accidentes de transporte por agua', ' y los no especificados: barco mercante', '2018-11-05 22:54:55', '2018-11-05 22:54:55'),
 (10662, 'V941', 'Otros accidentes de transporte por agua', ' y los no especificados: barco de pasajeros', '2018-11-05 22:54:55', '2018-11-05 22:54:55'),
 (10663, 'V942', 'Otros accidentes de transporte por agua', ' y los no especificados: bote de pesca', '2018-11-05 22:54:55', '2018-11-05 22:54:55'),
 (10664, 'V943', 'Otros accidentes de transporte por agua', ' y los no especificados: otro vehiculo acuatico con motor', '2018-11-05 22:54:55', '2018-11-05 22:54:55'),
@@ -11160,10 +11174,10 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (11029, 'W302', 'Contacto traumatico con maquinaria agricola: escuelas', ' otras instituciones y areas administrativas publicas', '2018-11-05 22:55:06', '2018-11-05 22:55:06'),
 (11030, 'W303', 'Contacto traumatico con maquinaria agricola: areas de deporte y atletismo', NULL, '2018-11-05 22:55:06', '2018-11-05 22:55:06'),
 (11031, 'W304', 'Contacto traumatico con maquinaria agricola: calles y carreteras', NULL, '2018-11-05 22:55:06', '2018-11-05 22:55:06'),
-(11032, 'W305', 'Contacto traumatico con maquinaria agricola: comercio y area de servicios', NULL, '2018-11-05 22:55:06', '2018-11-05 22:55:06'),
-(11033, 'W306', 'Contacto traumatico con maquinaria agricola: area industrial y de la construccion', NULL, '2018-11-05 22:55:06', '2018-11-05 22:55:06'),
-(11034, 'W307', 'Contacto traumatico con maquinaria agricola: granja', NULL, '2018-11-05 22:55:06', '2018-11-05 22:55:06');
+(11032, 'W305', 'Contacto traumatico con maquinaria agricola: comercio y area de servicios', NULL, '2018-11-05 22:55:06', '2018-11-05 22:55:06');
 INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(11033, 'W306', 'Contacto traumatico con maquinaria agricola: area industrial y de la construccion', NULL, '2018-11-05 22:55:06', '2018-11-05 22:55:06'),
+(11034, 'W307', 'Contacto traumatico con maquinaria agricola: granja', NULL, '2018-11-05 22:55:06', '2018-11-05 22:55:06'),
 (11035, 'W308', 'Contacto traumatico con maquinaria agricola: otro lugar especificado', NULL, '2018-11-05 22:55:06', '2018-11-05 22:55:06'),
 (11036, 'W309', 'Contacto traumatico con maquinaria agricola: lugar no especificado', NULL, '2018-11-05 22:55:06', '2018-11-05 22:55:06'),
 (11037, 'W31', 'Contacto traumatico con otras maquinarias y las no especificadas', NULL, '2018-11-05 22:55:06', '2018-11-05 22:55:06'),
@@ -11541,10 +11555,10 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (11409, 'W708', 'Ahogamiento y sumersion posterior a caida en aguas naturales: otro lugar especificado', NULL, '2018-11-05 22:56:10', '2018-11-05 22:56:10'),
 (11410, 'W709', 'Ahogamiento y sumersion posterior a caida en aguas naturales: lugar no especificado', NULL, '2018-11-05 22:56:10', '2018-11-05 22:56:10'),
 (11411, 'W73', 'Otros ahogamientos y sumersiones especificados', NULL, '2018-11-05 22:56:10', '2018-11-05 22:56:10'),
-(11412, 'W730', 'Otros ahogamientos y sumersiones especificados: vivienda', NULL, '2018-11-05 22:56:10', '2018-11-05 22:56:10'),
-(11413, 'W731', 'Otros ahogamientos y sumersiones especificados: institucion residencial', NULL, '2018-11-05 22:56:10', '2018-11-05 22:56:10'),
-(11414, 'W732', 'Otros ahogamientos y sumersiones especificados: escuelas', ' otras instituciones y areas administrativas publicas', '2018-11-05 22:56:10', '2018-11-05 22:56:10');
+(11412, 'W730', 'Otros ahogamientos y sumersiones especificados: vivienda', NULL, '2018-11-05 22:56:10', '2018-11-05 22:56:10');
 INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(11413, 'W731', 'Otros ahogamientos y sumersiones especificados: institucion residencial', NULL, '2018-11-05 22:56:10', '2018-11-05 22:56:10'),
+(11414, 'W732', 'Otros ahogamientos y sumersiones especificados: escuelas', ' otras instituciones y areas administrativas publicas', '2018-11-05 22:56:10', '2018-11-05 22:56:10'),
 (11415, 'W733', 'Otros ahogamientos y sumersiones especificados: areas de deporte y atletismo', NULL, '2018-11-05 22:56:10', '2018-11-05 22:56:10'),
 (11416, 'W734', 'Otros ahogamientos y sumersiones especificados: calles y carreteras', NULL, '2018-11-05 22:56:10', '2018-11-05 22:56:10'),
 (11417, 'W735', 'Otros ahogamientos y sumersiones especificados: comercio y areas de servicio', NULL, '2018-11-05 22:56:10', '2018-11-05 22:56:10'),
@@ -11868,11 +11882,11 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (11735, 'X083', 'Exposicion a otros humos', ' fuegos o llamas especificados: areas de deporte y atletismo', '2018-11-05 22:56:21', '2018-11-05 22:56:21'),
 (11736, 'X084', 'Exposicion a otros humos', ' fuegos o llamas especificados: calles y carreteras', '2018-11-05 22:56:21', '2018-11-05 22:56:21'),
 (11737, 'X085', 'Exposicion a otros humos', ' fuegos o llamas especificados: comercio y areas de servicio', '2018-11-05 22:56:21', '2018-11-05 22:56:21'),
-(11738, 'X086', 'Exposicion a otros humos', ' fuegos o llamas especificados: area industrial y de la construccion', '2018-11-05 22:56:21', '2018-11-05 22:56:21'),
+(11738, 'X086', 'Exposicion a otros humos', ' fuegos o llamas especificados: area industrial y de la construccion', '2018-11-05 22:56:21', '2018-11-05 22:56:21');
+INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
 (11739, 'X087', 'Exposicion a otros humos', ' fuegos o llamas especificados: granja', '2018-11-05 22:56:21', '2018-11-05 22:56:21'),
 (11740, 'X088', 'Exposicion a otros humos', ' fuegos o llamas especificados: otro lugar especificado', '2018-11-05 22:56:22', '2018-11-05 22:56:22'),
-(11741, 'X089', 'Exposicion a otros humos', ' fuegos o llamas especificados: lugar no especificado', '2018-11-05 22:56:22', '2018-11-05 22:56:22');
-INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(11741, 'X089', 'Exposicion a otros humos', ' fuegos o llamas especificados: lugar no especificado', '2018-11-05 22:56:22', '2018-11-05 22:56:22'),
 (11742, 'X09', 'Exposicion a humos fuegos llamas no especificados', NULL, '2018-11-05 22:56:22', '2018-11-05 22:56:22'),
 (11743, 'X090', 'Exposicion a humos', ' fuegos o llamas no especificados: vivienda', '2018-11-05 22:56:22', '2018-11-05 22:56:22'),
 (11744, 'X091', 'Exposicion a humos', ' fuegos o llamas no especificados: institucion residencial', '2018-11-05 22:56:22', '2018-11-05 22:56:22'),
@@ -11950,17 +11964,17 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (11816, 'X157', 'Contacto con utensilios domesticos calientes: granja', NULL, '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
 (11817, 'X158', 'Contacto con utensilios domesticos calientes otro lugar especificado:', NULL, '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
 (11818, 'X159', 'Contacto con utensilios domesticos calientes: lugar no especificado', NULL, '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
-(11819, 'X16', 'Contacto con radiadores', ' caÃ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
-(11820, 'X160', 'Contacto con radiadores', ' caÃ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
-(11821, 'X161', 'Contacto con radiadores', ' caÃ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
-(11822, 'X162', 'Contacto con radiadores', ' caÃ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
-(11823, 'X163', 'Contacto con radiadores', ' caÃ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
-(11824, 'X164', 'Contacto con radiadores', ' caÃ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
-(11825, 'X165', 'Contacto con radiadores', ' caÃ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
-(11826, 'X166', 'Contacto con radiadores', ' caÃ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
-(11827, 'X167', 'Contacto con radiadores', ' caÃ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
-(11828, 'X168', 'Contacto con radiadores', ' caÃ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
-(11829, 'X169', 'Contacto con radiadores', ' caÃ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
+(11819, 'X16', 'Contacto con radiadores', ' caÃƒÂ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
+(11820, 'X160', 'Contacto con radiadores', ' caÃƒÂ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
+(11821, 'X161', 'Contacto con radiadores', ' caÃƒÂ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
+(11822, 'X162', 'Contacto con radiadores', ' caÃƒÂ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
+(11823, 'X163', 'Contacto con radiadores', ' caÃƒÂ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
+(11824, 'X164', 'Contacto con radiadores', ' caÃƒÂ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
+(11825, 'X165', 'Contacto con radiadores', ' caÃƒÂ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
+(11826, 'X166', 'Contacto con radiadores', ' caÃƒÂ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
+(11827, 'X167', 'Contacto con radiadores', ' caÃƒÂ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
+(11828, 'X168', 'Contacto con radiadores', ' caÃƒÂ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
+(11829, 'X169', 'Contacto con radiadores', ' caÃƒÂ±erias y artefactos para calefaccion', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
 (11830, 'X17', 'Contacto con maquinas', ' motores y herramientas calientes', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
 (11831, 'X170', 'Contacto con maquinas', ' motores y herramientas calientes: vivienda', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
 (11832, 'X171', 'Contacto con maquinas', ' motores y herramientas calientes: institucion residencial', '2018-11-05 22:56:24', '2018-11-05 22:56:24'),
@@ -12005,17 +12019,17 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (11871, 'X207', 'Contacto traumatico con serpientes y lagartos venenosos: granja', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
 (11872, 'X208', 'Contacto traumatico con serpientes y lagartos venenosos: otro lugar especificado', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
 (11873, 'X209', 'Contacto traumatico con serpientes y lagartos venenosos: lugar no especificado', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
-(11874, 'X21', 'Contacto traumatico con araÃ±as venenosas', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
-(11875, 'X210', 'Contacto traumatico con araÃ±as venenosas: vivienda', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
-(11876, 'X211', 'Contacto traumatico con araÃ±as venenosas: institucion residencial', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
-(11877, 'X212', 'Contacto traumatico con araÃ±as venenosas: escuelas', ' otras instituciones y areas administrativas publicas', '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
-(11878, 'X213', 'Contacto traumatico con araÃ±as venenosas: areas de deporte y atletismo', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
-(11879, 'X214', 'Contacto traumatico con araÃ±as venenosas: calles y carreteras', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
-(11880, 'X215', 'Contacto traumatico con araÃ±as venenosas: comercio y areas de servicio', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
-(11881, 'X216', 'Contacto traumatico con araÃ±as venenosas: area industrial y de la construccion', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
-(11882, 'X217', 'Contacto traumatico con araÃ±as venenosas: granja', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
-(11883, 'X218', 'Contacto traumatico con araÃ±as venenosas: otro lugar especificado', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
-(11884, 'X219', 'Contacto traumatico con araÃ±as venenosas: lugar no especificado', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
+(11874, 'X21', 'Contacto traumatico con araÃƒÂ±as venenosas', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
+(11875, 'X210', 'Contacto traumatico con araÃƒÂ±as venenosas: vivienda', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
+(11876, 'X211', 'Contacto traumatico con araÃƒÂ±as venenosas: institucion residencial', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
+(11877, 'X212', 'Contacto traumatico con araÃƒÂ±as venenosas: escuelas', ' otras instituciones y areas administrativas publicas', '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
+(11878, 'X213', 'Contacto traumatico con araÃƒÂ±as venenosas: areas de deporte y atletismo', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
+(11879, 'X214', 'Contacto traumatico con araÃƒÂ±as venenosas: calles y carreteras', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
+(11880, 'X215', 'Contacto traumatico con araÃƒÂ±as venenosas: comercio y areas de servicio', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
+(11881, 'X216', 'Contacto traumatico con araÃƒÂ±as venenosas: area industrial y de la construccion', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
+(11882, 'X217', 'Contacto traumatico con araÃƒÂ±as venenosas: granja', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
+(11883, 'X218', 'Contacto traumatico con araÃƒÂ±as venenosas: otro lugar especificado', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
+(11884, 'X219', 'Contacto traumatico con araÃƒÂ±as venenosas: lugar no especificado', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
 (11885, 'X22', 'Contacto traumatico con escorpion', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
 (11886, 'X220', 'Contacto traumatico con escorpion: vivienda', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
 (11887, 'X221', 'Contacto traumatico con escorpion: institucion residencial', NULL, '2018-11-05 22:56:26', '2018-11-05 22:56:26'),
@@ -12230,12 +12244,12 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (12096, 'X411', 'Envenenamiento accidental por', ' y exposicion a drogas antiepilepticas', '2018-11-05 22:56:33', '2018-11-05 22:56:33'),
 (12097, 'X412', 'Envenenamiento accidental por', ' y exposicion a drogas antiepilepticas', '2018-11-05 22:56:33', '2018-11-05 22:56:33'),
 (12098, 'X413', 'Envenenamiento accidental por', ' y exposicion a drogas antiepilepticas', '2018-11-05 22:56:33', '2018-11-05 22:56:33'),
-(12099, 'X414', 'Envenenamiento accidental por', ' y exposicion a drogas antiepilepticas', '2018-11-05 22:56:33', '2018-11-05 22:56:33'),
+(12099, 'X414', 'Envenenamiento accidental por', ' y exposicion a drogas antiepilepticas', '2018-11-05 22:56:33', '2018-11-05 22:56:33');
+INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
 (12100, 'X415', 'Envenenamiento accidental por', ' y exposicion a drogas antiepilepticas', '2018-11-05 22:56:33', '2018-11-05 22:56:33'),
 (12101, 'X416', 'Envenenamiento accidental por', ' y exposicion a drogas antiepilepticas', '2018-11-05 22:56:33', '2018-11-05 22:56:33'),
 (12102, 'X417', 'Envenenamiento accidental por', ' y exposicion a drogas antiepilepticas', '2018-11-05 22:56:33', '2018-11-05 22:56:33'),
-(12103, 'X418', 'Envenenamiento accidental por', ' y exposicion a drogas antiepilepticas', '2018-11-05 22:56:33', '2018-11-05 22:56:33');
-INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(12103, 'X418', 'Envenenamiento accidental por', ' y exposicion a drogas antiepilepticas', '2018-11-05 22:56:33', '2018-11-05 22:56:33'),
 (12104, 'X419', 'Envenenamiento accidental por', ' y exposicion a drogas antiepilepticas', '2018-11-05 22:56:33', '2018-11-05 22:56:33'),
 (12105, 'X42', 'Envenenamiento accidental por', ' y exposicion a narcoticos y psicodislepticos [alucinogenos] no clasificados en otra parte', '2018-11-05 22:56:33', '2018-11-05 22:56:33'),
 (12106, 'X420', 'Envenenamiento accidental por', ' y exposicion a narcoticos y psicodislepticos [alucinogenos]', '2018-11-05 22:56:33', '2018-11-05 22:56:33'),
@@ -12524,11 +12538,11 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (12389, 'X698', 'Envenenamiento autoinfligido intencionalmente por/y exposicion a otros productos quimicos y sustancias nocivas', ' y los no especificados: otro lugar especificado', '2018-11-05 23:00:09', '2018-11-05 23:00:09'),
 (12390, 'X699', 'Envenenamiento autoinfligido intencionalmente por/y exposicion a otros productos quimicos y sustancias nocivas', ' y los no especificados: lugar no especificado', '2018-11-05 23:00:09', '2018-11-05 23:00:09'),
 (12391, 'X70', 'Lesion autoinflingida intencionalmente por ahorcamiento', ' estrangulamiento o sofocacion', '2018-11-05 23:00:09', '2018-11-05 23:00:09'),
-(12392, 'X700', 'Lesion autoinfligida intencionalmente por ahorcamiento', ' estrangulamiento o sofocacion: vivienda', '2018-11-05 23:00:09', '2018-11-05 23:00:09'),
+(12392, 'X700', 'Lesion autoinfligida intencionalmente por ahorcamiento', ' estrangulamiento o sofocacion: vivienda', '2018-11-05 23:00:09', '2018-11-05 23:00:09');
+INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
 (12393, 'X701', 'Lesion autoinfligida intencionalmente por ahorcamiento', ' estrangulamiento o sofocacion: institucion residencial', '2018-11-05 23:00:09', '2018-11-05 23:00:09'),
 (12394, 'X702', 'Lesion autoinfligida intencionalmente por ahorcamiento', ' estrangulamiento o sofocacion: escuelas', '2018-11-05 23:00:09', '2018-11-05 23:00:09'),
-(12395, 'X703', 'Lesion autoinfligida intencionalmente por ahorcamiento', ' estrangulamiento o sofocacion: areas de deporte y atletismo', '2018-11-05 23:00:09', '2018-11-05 23:00:09');
-INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(12395, 'X703', 'Lesion autoinfligida intencionalmente por ahorcamiento', ' estrangulamiento o sofocacion: areas de deporte y atletismo', '2018-11-05 23:00:09', '2018-11-05 23:00:09'),
 (12396, 'X704', 'Lesion autoinfligida intencionalmente por ahorcamiento', ' estrangulamiento o sofocacion: calles y carreteras', '2018-11-05 23:00:09', '2018-11-05 23:00:09'),
 (12397, 'X705', 'Lesion autoinfligida intencionalmente por ahorcamiento', ' estrangulamiento o sofocacion: comercio y areas de servicio', '2018-11-05 23:00:09', '2018-11-05 23:00:09'),
 (12398, 'X706', 'Lesion autoinfligida intencionalmente por ahorcamiento', ' estrangulamiento o sofocacion: area industrial y de la construccion', '2018-11-05 23:00:09', '2018-11-05 23:00:09'),
@@ -12855,12 +12869,12 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (12719, 'X998', 'Agresion con objeto cortante: otro lugar especificado', NULL, '2018-11-05 23:01:20', '2018-11-05 23:01:20'),
 (12720, 'X999', 'Agresion con objeto cortante: lugar no especificado', NULL, '2018-11-05 23:01:20', '2018-11-05 23:01:20'),
 (12721, 'XI', 'Enfermedades del aparato digestivo', NULL, '2018-11-05 23:01:20', '2018-11-05 23:01:20'),
-(12722, 'XII', 'Enfermedades de la piel y el tejido subcutaneo', NULL, '2018-11-05 23:01:20', '2018-11-05 23:01:20'),
+(12722, 'XII', 'Enfermedades de la piel y el tejido subcutaneo', NULL, '2018-11-05 23:01:20', '2018-11-05 23:01:20');
+INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
 (12723, 'XIII', 'Enfermedades del sistema osteomuscular y del tejido conectivo', NULL, '2018-11-05 23:01:20', '2018-11-05 23:01:20'),
 (12724, 'XIV', 'Enfermedades del aparato genitourinario', NULL, '2018-11-05 23:01:20', '2018-11-05 23:01:20'),
 (12725, 'XIX', 'Traumatismos', ' envenenamientos y algunas otras consecuencias de causa externa', '2018-11-05 23:01:20', '2018-11-05 23:01:20'),
-(12726, 'XV', 'Embarazo', ' parto y puerperio', '2018-11-05 23:01:20', '2018-11-05 23:01:20');
-INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(12726, 'XV', 'Embarazo', ' parto y puerperio', '2018-11-05 23:01:20', '2018-11-05 23:01:20'),
 (12727, 'XVI', 'Ciertas afecciones originadas en el periodo perinatal', NULL, '2018-11-05 23:01:20', '2018-11-05 23:01:20'),
 (12728, 'XVII', 'Malformaciones congenitas', ' deformidades y anomalias cromosomicas', '2018-11-05 23:01:20', '2018-11-05 23:01:20'),
 (12729, 'XVIII', 'Sintomas', ' signos y hallazgos anormales clinicos y de laboratorio', '2018-11-05 23:01:20', '2018-11-05 23:01:20'),
@@ -13230,11 +13244,11 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (13093, 'Y335', 'Otros eventos especificados', ' de intencion no determinada: comercio y area de servicios', '2018-11-05 23:01:30', '2018-11-05 23:01:30'),
 (13094, 'Y336', 'Otros eventos especificados', ' de intencion no determinada: area industrial y de la construccion', '2018-11-05 23:01:30', '2018-11-05 23:01:30'),
 (13095, 'Y337', 'Otros eventos especificados', ' de intencion no determinada: granja', '2018-11-05 23:01:30', '2018-11-05 23:01:30'),
-(13096, 'Y338', 'Otros eventos especificados', ' de intencion no determinada: otro lugar especificado', '2018-11-05 23:01:30', '2018-11-05 23:01:30'),
+(13096, 'Y338', 'Otros eventos especificados', ' de intencion no determinada: otro lugar especificado', '2018-11-05 23:01:30', '2018-11-05 23:01:30');
+INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
 (13097, 'Y339', 'Otros eventos especificados', ' de intencion no determinada: lugar no especificado', '2018-11-05 23:01:30', '2018-11-05 23:01:30'),
 (13098, 'Y34', 'Evento no especificado de intencion no determinada', NULL, '2018-11-05 23:01:30', '2018-11-05 23:01:30'),
-(13099, 'Y340', 'Evento no especificado', ' de intencion no determinada: vivienda', '2018-11-05 23:01:30', '2018-11-05 23:01:30');
-INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(13099, 'Y340', 'Evento no especificado', ' de intencion no determinada: vivienda', '2018-11-05 23:01:30', '2018-11-05 23:01:30'),
 (13100, 'Y341', 'Evento no especificado', ' de intencion no determinada: institucion residencial', '2018-11-05 23:01:30', '2018-11-05 23:01:30'),
 (13101, 'Y342', 'Evento no especificado', ' de intencion no determinada: escuelas', '2018-11-05 23:01:30', '2018-11-05 23:01:30'),
 (13102, 'Y343', 'Evento no especificado', ' de intencion no determinada: areas de deporte y atletismo', '2018-11-05 23:01:30', '2018-11-05 23:01:30'),
@@ -13470,17 +13484,17 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (13332, 'Y607', 'Incidente durante administracion de enema', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
 (13333, 'Y608', 'Incidente durante otras atenciones medicas y quirurgicas', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
 (13334, 'Y609', 'Incidente durante atencion medica y quirurgica no especificada', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
-(13335, 'Y61', 'Objeto extraÃ±o dejado accidentalmente en el cuerpo durante la atencion medica y quirurgica', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
-(13336, 'Y610', 'Objeto extraÃ±o dejado accidentalmente en el cuerpo durante operacion quirurgica', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
-(13337, 'Y611', 'Objeto extraÃ±o dejado accidentalmente en el cuerpo durante infusion o transfusion', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
-(13338, 'Y612', 'Objeto extraÃ±o dejado accidentalmente en el cuerpo durante dialisis renal u otra perfusion', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
-(13339, 'Y613', 'Objeto extraÃ±o dejado accidentalmente en el cuerpo durante inyeccion o inmunizacion', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
-(13340, 'Y614', 'Objeto extraÃ±o dejado accidentalmente en el cuerpo durante examen endoscopico', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
-(13341, 'Y615', 'Objeto extraÃ±o dejado accidentalmente en el cuerpo durante cateterizacion cardiaca', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
-(13342, 'Y616', 'Objeto extraÃ±o dejado accidentalmente en el cuerpo durante aspiracion', ' puncion y otra cateterizacion', '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
-(13343, 'Y617', 'Objeto extraÃ±o dejado accidentalmente en el cuerpo durante remocion de cateter o taponamiento', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
-(13344, 'Y618', 'Objeto extraÃ±o dejado accidentalmente en el cuerpo durante otras atenciones medicas y quirurgicas', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
-(13345, 'Y619', 'Objeto extraÃ±o dejado accidentalmente en el cuerpo durante atencion medica y quirurgica no especificada', NULL, '2018-11-05 23:01:37', '2018-11-05 23:01:37'),
+(13335, 'Y61', 'Objeto extraÃƒÂ±o dejado accidentalmente en el cuerpo durante la atencion medica y quirurgica', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
+(13336, 'Y610', 'Objeto extraÃƒÂ±o dejado accidentalmente en el cuerpo durante operacion quirurgica', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
+(13337, 'Y611', 'Objeto extraÃƒÂ±o dejado accidentalmente en el cuerpo durante infusion o transfusion', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
+(13338, 'Y612', 'Objeto extraÃƒÂ±o dejado accidentalmente en el cuerpo durante dialisis renal u otra perfusion', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
+(13339, 'Y613', 'Objeto extraÃƒÂ±o dejado accidentalmente en el cuerpo durante inyeccion o inmunizacion', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
+(13340, 'Y614', 'Objeto extraÃƒÂ±o dejado accidentalmente en el cuerpo durante examen endoscopico', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
+(13341, 'Y615', 'Objeto extraÃƒÂ±o dejado accidentalmente en el cuerpo durante cateterizacion cardiaca', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
+(13342, 'Y616', 'Objeto extraÃƒÂ±o dejado accidentalmente en el cuerpo durante aspiracion', ' puncion y otra cateterizacion', '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
+(13343, 'Y617', 'Objeto extraÃƒÂ±o dejado accidentalmente en el cuerpo durante remocion de cateter o taponamiento', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
+(13344, 'Y618', 'Objeto extraÃƒÂ±o dejado accidentalmente en el cuerpo durante otras atenciones medicas y quirurgicas', NULL, '2018-11-05 23:01:36', '2018-11-05 23:01:36'),
+(13345, 'Y619', 'Objeto extraÃƒÂ±o dejado accidentalmente en el cuerpo durante atencion medica y quirurgica no especificada', NULL, '2018-11-05 23:01:37', '2018-11-05 23:01:37'),
 (13346, 'Y62', 'Fallas en la esterilizacion durante la atencion medica y quirurgica', NULL, '2018-11-05 23:01:37', '2018-11-05 23:01:37'),
 (13347, 'Y620', 'Fallas en la esterilizacion durante operacion quirurgica', NULL, '2018-11-05 23:01:37', '2018-11-05 23:01:37'),
 (13348, 'Y621', 'Fallas en la esterilizacion durante infusion o transfusion', NULL, '2018-11-05 23:01:37', '2018-11-05 23:01:37'),
@@ -13583,10 +13597,10 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (13445, 'Y803', 'Aparatos de medicina fisica asociados con incidentes adversos: instrumentos quirurgicos', ' dispositivos y materiales (inclusive suturas)', '2018-11-05 23:01:39', '2018-11-05 23:01:39'),
 (13446, 'Y808', 'Aparatos de medicina fisica asociados con incidentes adversos: dispositivos diversos', ' no clasificados en otra parte', '2018-11-05 23:01:39', '2018-11-05 23:01:39'),
 (13447, 'Y81', 'Dispositivos de cirugia general y plastica', ' asociados con incidentes adversos', '2018-11-05 23:01:39', '2018-11-05 23:01:39'),
-(13448, 'Y810', 'Dispositivos de cirugia general y plastica asociados con incidentes adversos: dispositivos de diagnostico y monitoreo', NULL, '2018-11-05 23:01:39', '2018-11-05 23:01:39'),
-(13449, 'Y811', 'Dispositivos de cirugia general y plastica asociados con incidentes adversos: dispositivos terapeuticos (no quirurgicos) y de rehabilitacion', NULL, '2018-11-05 23:01:39', '2018-11-05 23:01:39'),
-(13450, 'Y812', 'Dispositivos de cirugia general y plastica asociados con incidentes adversos: dispositivos protesicos y otros implantes', ' materiales y accesorios', '2018-11-05 23:01:39', '2018-11-05 23:01:39');
+(13448, 'Y810', 'Dispositivos de cirugia general y plastica asociados con incidentes adversos: dispositivos de diagnostico y monitoreo', NULL, '2018-11-05 23:01:39', '2018-11-05 23:01:39');
 INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(13449, 'Y811', 'Dispositivos de cirugia general y plastica asociados con incidentes adversos: dispositivos terapeuticos (no quirurgicos) y de rehabilitacion', NULL, '2018-11-05 23:01:39', '2018-11-05 23:01:39'),
+(13450, 'Y812', 'Dispositivos de cirugia general y plastica asociados con incidentes adversos: dispositivos protesicos y otros implantes', ' materiales y accesorios', '2018-11-05 23:01:39', '2018-11-05 23:01:39'),
 (13451, 'Y813', 'Dispositivos de cirugia general y plastica asociados con incidentes adversos: instrumentos quirurgicos', ' dispositivos y materiales (inclusive suturas)', '2018-11-05 23:01:39', '2018-11-05 23:01:39'),
 (13452, 'Y818', 'Dispositivos de cirugia general y plastica asociados con incidentes adversos: dispositivos diversos', ' no clasificados en otra parte', '2018-11-05 23:01:40', '2018-11-05 23:01:40'),
 (13453, 'Y82', 'Otros dispositivos medicos y los no especificados', ' asociados con incidentes adversos', '2018-11-05 23:01:40', '2018-11-05 23:01:40'),
@@ -13656,7 +13670,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (13517, 'Y98', 'Afeccion relacionada con el estilo de vida', NULL, '2018-11-05 23:01:41', '2018-11-05 23:01:41'),
 (13518, 'Z00', 'Examen general e investigacion de personas sin quejas o sin diagnostico informado', NULL, '2018-11-05 23:01:41', '2018-11-05 23:01:41'),
 (13519, 'Z000', 'Examen medico general', NULL, '2018-11-05 23:01:41', '2018-11-05 23:01:41'),
-(13520, 'Z001', 'Control de salud de rutina del niÃ±o', NULL, '2018-11-05 23:01:41', '2018-11-05 23:01:41'),
+(13520, 'Z001', 'Control de salud de rutina del niÃƒÂ±o', NULL, '2018-11-05 23:01:41', '2018-11-05 23:01:41'),
 (13521, 'Z002', 'Examen durante el periodo de crecimiento rapido en la infancia', NULL, '2018-11-05 23:01:41', '2018-11-05 23:01:41'),
 (13522, 'Z003', 'Examen del estado de desarrollo del adolescente', NULL, '2018-11-05 23:01:41', '2018-11-05 23:01:41'),
 (13523, 'Z004', 'Examen psiquiatrico general', ' no clasificado en otra parte', '2018-11-05 23:01:41', '2018-11-05 23:01:41'),
@@ -13752,7 +13766,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (13613, 'Z131', 'Examen de pesquisa especial para diabetes mellitus', NULL, '2018-11-05 23:02:21', '2018-11-05 23:02:21'),
 (13614, 'Z132', 'Examen de pesquisa especial para trastornos de la nutricion', NULL, '2018-11-05 23:02:21', '2018-11-05 23:02:21'),
 (13615, 'Z133', 'Examen de pesquisa especial para trastornos mentales y del comportamiento', NULL, '2018-11-05 23:02:21', '2018-11-05 23:02:21'),
-(13616, 'Z134', 'Examen de pesquisa especial para ciertos trastornos del desarrollo en el niÃ±o', NULL, '2018-11-05 23:02:21', '2018-11-05 23:02:21'),
+(13616, 'Z134', 'Examen de pesquisa especial para ciertos trastornos del desarrollo en el niÃƒÂ±o', NULL, '2018-11-05 23:02:21', '2018-11-05 23:02:21'),
 (13617, 'Z135', 'Examen de pesquisa especial para trastornos del ojo y del oido', NULL, '2018-11-05 23:02:21', '2018-11-05 23:02:21'),
 (13618, 'Z136', 'Examen de pesquisa especial para trastornos cardiovasculares', NULL, '2018-11-05 23:02:21', '2018-11-05 23:02:21'),
 (13619, 'Z137', 'Examen de pesquisa especial para malformaciones congenitas', ' deformidades y anomalias cromosomicas', '2018-11-05 23:02:21', '2018-11-05 23:02:21'),
@@ -13859,7 +13873,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (13720, 'Z352', 'Supervision de embarazo con otro riesgo en la historia obstetrica o reproductiva', NULL, '2018-11-05 23:02:23', '2018-11-05 23:02:23'),
 (13721, 'Z353', 'Supervision de embarazo con historia de insuficiente atencion prenatal', NULL, '2018-11-05 23:02:23', '2018-11-05 23:02:23'),
 (13722, 'Z354', 'Supervision de embarazo con gran multiparidad', NULL, '2018-11-05 23:02:23', '2018-11-05 23:02:23'),
-(13723, 'Z355', 'Supervision de primigesta aÃ±osa', NULL, '2018-11-05 23:02:23', '2018-11-05 23:02:23'),
+(13723, 'Z355', 'Supervision de primigesta aÃƒÂ±osa', NULL, '2018-11-05 23:02:23', '2018-11-05 23:02:23'),
 (13724, 'Z356', 'Supervision de primigesta muy joven', NULL, '2018-11-05 23:02:23', '2018-11-05 23:02:23'),
 (13725, 'Z357', 'Supervision de embarazo de alto riesgo debido a problemas sociales', NULL, '2018-11-05 23:02:23', '2018-11-05 23:02:23'),
 (13726, 'Z358', 'Supervision de otros embarazos de alto riesgo', NULL, '2018-11-05 23:02:23', '2018-11-05 23:02:23'),
@@ -13990,17 +14004,17 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (13851, 'Z521', 'Donante de piel', NULL, '2018-11-05 23:02:26', '2018-11-05 23:02:26'),
 (13852, 'Z522', 'Donante de hueso', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13853, 'Z523', 'Donante de medula osea', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
-(13854, 'Z524', 'Donante de riÃ±on', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
+(13854, 'Z524', 'Donante de riÃƒÂ±on', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13855, 'Z525', 'Donante de cornea', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13856, 'Z526', 'Donante de higado', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13857, 'Z527', 'Donante de corazon', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13858, 'Z528', 'Donante de otros organos o tejidos', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13859, 'Z529', 'Donante de organo o tejido no especificado', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
-(13860, 'Z53', 'Persona en contacto con los servicios de salud para procedimientos especiales no realizados', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
+(13860, 'Z53', 'Persona en contacto con los servicios de salud para procedimientos especiales no realizados', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27');
+INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
 (13861, 'Z530', 'Procedimiento no realizado por contraindicacion', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13862, 'Z531', 'Procedimiento no realizado por decision del paciente', ' por razones de creencia o presion del grupo', '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
-(13863, 'Z532', 'Procedimiento no realizado por decision del paciente', ' por otras razones y las no especificadas', '2018-11-05 23:02:27', '2018-11-05 23:02:27');
-INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
+(13863, 'Z532', 'Procedimiento no realizado por decision del paciente', ' por otras razones y las no especificadas', '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13864, 'Z538', 'Procedimiento no realizado por otras razones', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13865, 'Z539', 'Procedimiento no realizado por razon no especificada', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13866, 'Z54', 'Convalecencia', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
@@ -14017,7 +14031,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (13877, 'Z551', 'Problemas relacionados con la educacion no disponible o inaccesible', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13878, 'Z552', 'Problemas relacionados con la falla en los examenes', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13879, 'Z553', 'Problemas relacionados con el bajo rendimiento escolar', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
-(13880, 'Z554', 'Problemas relacionados con la inadaptacion educacional y desavenencias con maestros y compaÃ±eros', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
+(13880, 'Z554', 'Problemas relacionados con la inadaptacion educacional y desavenencias con maestros y compaÃƒÂ±eros', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13881, 'Z558', 'Otros problemas relacionados con la educacion y la alfabetizacion', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13882, 'Z559', 'Problema no especificado relacionado con la educacion y la alfabetizacion', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13883, 'Z56', 'Problemas relacionados con el empleo y el desempleo', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
@@ -14025,7 +14039,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (13885, 'Z561', 'Problemas relacionados con el cambio de empleo', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13886, 'Z562', 'Problemas relacionados con amenaza de perdida del empleo', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13887, 'Z563', 'Problemas relacionados con horario estresante de trabajo', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
-(13888, 'Z564', 'Problemas relacionados con desavenencias con el jefe y los compaÃ±eros de trabajo', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
+(13888, 'Z564', 'Problemas relacionados con desavenencias con el jefe y los compaÃƒÂ±eros de trabajo', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13889, 'Z565', 'Problemas relacionados con el trabajo incompatible', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13890, 'Z566', 'Otros problemas de tension fisica o mental relacionadas con el trabajo', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
 (13891, 'Z567', 'Otros problemas y los no especificados relacionados con el empleo', NULL, '2018-11-05 23:02:27', '2018-11-05 23:02:27'),
@@ -14075,9 +14089,9 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (13935, 'Z611', 'Problemas relacionados con el alejamiento del hogar en la infancia', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
 (13936, 'Z612', 'Problemas relacionados con alteracion en el patron de la relacion familiar en la infancia', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
 (13937, 'Z613', 'Problemas relacionados con eventos que llevaron a la perdida de la autoestima en la infancia', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
-(13938, 'Z614', 'Problemas relacionados con el abuso sexual del niÃ±o por persona dentro del grupo de apoyo primario', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
-(13939, 'Z615', 'Problemas relacionados con el abuso sexual del niÃ±o por persona ajena al grupo de apoyo primario', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
-(13940, 'Z616', 'Problemas relacionados con abuso fisico del niÃ±o', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
+(13938, 'Z614', 'Problemas relacionados con el abuso sexual del niÃƒÂ±o por persona dentro del grupo de apoyo primario', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
+(13939, 'Z615', 'Problemas relacionados con el abuso sexual del niÃƒÂ±o por persona ajena al grupo de apoyo primario', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
+(13940, 'Z616', 'Problemas relacionados con abuso fisico del niÃƒÂ±o', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
 (13941, 'Z617', 'Problemas relacionados con experiencias personales atemorizantes en la infancia', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
 (13942, 'Z618', 'Problemas relacionados con otras experiencias negativas en la infancia', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
 (13943, 'Z619', 'Problemas relacionados con experiencia negativa no especificada en la infancia', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
@@ -14085,12 +14099,12 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (13945, 'Z620', 'Problemas relacionados con la supervision o el control inadecuados de los padres', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
 (13946, 'Z621', 'Problemas relacionados con la sobreproteccion de los padres', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
 (13947, 'Z622', 'Problemas relacionados con la crianza en institucion', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
-(13948, 'Z623', 'Problemas relacionados con hostilidad y reprobacion al niÃ±o', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
-(13949, 'Z624', 'Problemas relacionados con el abandono emocional del niÃ±o', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
-(13950, 'Z625', 'Otros problemas relacionados con negligencia en la crianza del niÃ±o', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
+(13948, 'Z623', 'Problemas relacionados con hostilidad y reprobacion al niÃƒÂ±o', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
+(13949, 'Z624', 'Problemas relacionados con el abandono emocional del niÃƒÂ±o', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
+(13950, 'Z625', 'Otros problemas relacionados con negligencia en la crianza del niÃƒÂ±o', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
 (13951, 'Z626', 'Problemas relacionados con presiones inapropiadas de los padres y otras anormalidades en la calidad de la crianza', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
-(13952, 'Z628', 'Otros problemas especificados y relacionados con la crianza del niÃ±o', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
-(13953, 'Z629', 'Problema no especificado relacionado con la crianza del niÃ±o', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
+(13952, 'Z628', 'Otros problemas especificados y relacionados con la crianza del niÃƒÂ±o', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
+(13953, 'Z629', 'Problema no especificado relacionado con la crianza del niÃƒÂ±o', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
 (13954, 'Z63', 'Problemas relacionados con el grupo primario de apoyo', ' inclusive circunstancias familiares', '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
 (13955, 'Z630', 'Problemas en la relacion entre esposos o pareja', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
 (13956, 'Z631', 'Problemas en la relacion con los padres y los familiares politicos', NULL, '2018-11-05 23:02:29', '2018-11-05 23:02:29'),
@@ -14173,9 +14187,9 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (14033, 'Z759', 'Problema no especificado relacionado con servicios medicos y de salud', NULL, '2018-11-05 23:02:32', '2018-11-05 23:02:32'),
 (14034, 'Z76', 'Persona en contacto con los servicios de salud por otras circunstancias', NULL, '2018-11-05 23:02:32', '2018-11-05 23:02:32'),
 (14035, 'Z760', 'Consulta para repeticion de receta', NULL, '2018-11-05 23:02:32', '2018-11-05 23:02:32'),
-(14036, 'Z761', 'Consulta para atencion y supervision de la salud del niÃ±o', NULL, '2018-11-05 23:02:32', '2018-11-05 23:02:32'),
-(14037, 'Z762', 'Consulta para atencion y supervision de la salud de otros niÃ±os o lactantes sanos', NULL, '2018-11-05 23:02:32', '2018-11-05 23:02:32'),
-(14038, 'Z763', 'Persona sana que acompaÃ±a al enfermo', NULL, '2018-11-05 23:02:32', '2018-11-05 23:02:32'),
+(14036, 'Z761', 'Consulta para atencion y supervision de la salud del niÃƒÂ±o', NULL, '2018-11-05 23:02:32', '2018-11-05 23:02:32'),
+(14037, 'Z762', 'Consulta para atencion y supervision de la salud de otros niÃƒÂ±os o lactantes sanos', NULL, '2018-11-05 23:02:32', '2018-11-05 23:02:32'),
+(14038, 'Z763', 'Persona sana que acompaÃƒÂ±a al enfermo', NULL, '2018-11-05 23:02:32', '2018-11-05 23:02:32'),
 (14039, 'Z764', 'Otro huesped en servicios de salud', NULL, '2018-11-05 23:02:32', '2018-11-05 23:02:32'),
 (14040, 'Z765', 'Persona que consulta con simulacion consciente [simulador]', NULL, '2018-11-05 23:02:32', '2018-11-05 23:02:32'),
 (14041, 'Z768', 'Persona en contacto con los servicios de salud en otras circunstancias especificadas', NULL, '2018-11-05 23:02:32', '2018-11-05 23:02:32'),
@@ -14219,7 +14233,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (14079, 'Z837', 'Historia familiar de enfermedades del sistema digestivo', NULL, '2018-11-05 23:02:33', '2018-11-05 23:02:33'),
 (14080, 'Z84', 'Historia familiar de otras afecciones', NULL, '2018-11-05 23:02:33', '2018-11-05 23:02:33'),
 (14081, 'Z840', 'Historia familiar de enfermedades de la piel y del tejido subcutaneo', NULL, '2018-11-05 23:02:33', '2018-11-05 23:02:33'),
-(14082, 'Z841', 'Historia familiar de trastornos del riÃ±on y del ureter', NULL, '2018-11-05 23:02:33', '2018-11-05 23:02:33'),
+(14082, 'Z841', 'Historia familiar de trastornos del riÃƒÂ±on y del ureter', NULL, '2018-11-05 23:02:33', '2018-11-05 23:02:33'),
 (14083, 'Z842', 'Historia familiar de otras enfermedades del sistema genitourinario', NULL, '2018-11-05 23:02:33', '2018-11-05 23:02:33'),
 (14084, 'Z843', 'Historia familiar de consanguinidad', NULL, '2018-11-05 23:02:33', '2018-11-05 23:02:33'),
 (14085, 'Z848', 'Historia familiar de otras afecciones especificadas', NULL, '2018-11-05 23:02:33', '2018-11-05 23:02:33'),
@@ -14266,8 +14280,8 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (14126, 'Z889', 'Historia personal de alergia a otras drogas', ' medicamentos y sustancias biologicas no especificadas', '2018-11-05 23:02:35', '2018-11-05 23:02:35'),
 (14127, 'Z89', 'Ausencia adquirida de miembros', NULL, '2018-11-05 23:02:35', '2018-11-05 23:02:35'),
 (14128, 'Z890', 'Ausencia adquirida de dedo(s)', ' [incluido el pulgar]', '2018-11-05 23:02:35', '2018-11-05 23:02:35'),
-(14129, 'Z891', 'Ausencia adquirida de mano y muÃ±eca', NULL, '2018-11-05 23:02:35', '2018-11-05 23:02:35'),
-(14130, 'Z892', 'Ausencia adquirida de miembro superior por arriba de la muÃ±eca', NULL, '2018-11-05 23:02:35', '2018-11-05 23:02:35'),
+(14129, 'Z891', 'Ausencia adquirida de mano y muÃƒÂ±eca', NULL, '2018-11-05 23:02:35', '2018-11-05 23:02:35'),
+(14130, 'Z892', 'Ausencia adquirida de miembro superior por arriba de la muÃƒÂ±eca', NULL, '2018-11-05 23:02:35', '2018-11-05 23:02:35'),
 (14131, 'Z893', 'Ausencia adquirida de ambos miembros superiores [cualquier nivel]', NULL, '2018-11-05 23:02:35', '2018-11-05 23:02:35'),
 (14132, 'Z894', 'Ausencia adquirida de pie y tobillo', NULL, '2018-11-05 23:02:35', '2018-11-05 23:02:35'),
 (14133, 'Z895', 'Ausencia adquirida de pierna a nivel de o debajo de la rodilla', NULL, '2018-11-05 23:02:35', '2018-11-05 23:02:35'),
@@ -14281,7 +14295,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (14141, 'Z902', 'Ausencia adquirida (de parte) del pulmon', NULL, '2018-11-05 23:02:36', '2018-11-05 23:02:36'),
 (14142, 'Z903', 'Ausencia adquirida de parte del estomago', NULL, '2018-11-05 23:02:36', '2018-11-05 23:02:36'),
 (14143, 'Z904', 'Ausencia adquirida de otras partes del tubo digestivo', NULL, '2018-11-05 23:02:36', '2018-11-05 23:02:36'),
-(14144, 'Z905', 'Ausencia adquirida de riÃ±on', NULL, '2018-11-05 23:02:36', '2018-11-05 23:02:36'),
+(14144, 'Z905', 'Ausencia adquirida de riÃƒÂ±on', NULL, '2018-11-05 23:02:36', '2018-11-05 23:02:36'),
 (14145, 'Z906', 'Ausencia adquirida de otras partes de las vias urinarias', NULL, '2018-11-05 23:02:36', '2018-11-05 23:02:36'),
 (14146, 'Z907', 'Ausencia adquirida de organo(s) genital(es)', NULL, '2018-11-05 23:02:36', '2018-11-05 23:02:36'),
 (14147, 'Z908', 'Ausencia adquirida de otros organos', NULL, '2018-11-05 23:02:36', '2018-11-05 23:02:36'),
@@ -14289,7 +14303,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (14149, 'Z910', 'Historia personal de alergia', ' no debida a drogas ni a sustancias biologicas', '2018-11-05 23:02:36', '2018-11-05 23:02:36'),
 (14150, 'Z911', 'Historia personal de incumplimiento del regimen o tratamiento medico', NULL, '2018-11-05 23:02:36', '2018-11-05 23:02:36'),
 (14151, 'Z912', 'Historia personal de higiene personal deficiente', NULL, '2018-11-05 23:02:36', '2018-11-05 23:02:36'),
-(14152, 'Z913', 'Historia personal del ciclo sueÃ±o', NULL, '2018-11-05 23:02:36', '2018-11-05 23:02:36'),
+(14152, 'Z913', 'Historia personal del ciclo sueÃƒÂ±o', NULL, '2018-11-05 23:02:36', '2018-11-05 23:02:36'),
 (14153, 'Z914', 'Historia personal de trauma psicologico', ' no clasificado en otra parte', '2018-11-05 23:02:36', '2018-11-05 23:02:36'),
 (14154, 'Z915', 'Historia personal de lesion autoinfligida intencionalmente', NULL, '2018-11-05 23:02:36', '2018-11-05 23:02:36'),
 (14155, 'Z916', 'Historia personal de otro trauma fisico', NULL, '2018-11-05 23:02:36', '2018-11-05 23:02:36'),
@@ -14314,7 +14328,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (14174, 'Z938', 'Otras aberturas artificiales', NULL, '2018-11-05 23:02:37', '2018-11-05 23:02:37'),
 (14175, 'Z939', 'Abertura artificial', ' no especificada', '2018-11-05 23:02:37', '2018-11-05 23:02:37'),
 (14176, 'Z94', 'Organos y tejidos trasplantados', NULL, '2018-11-05 23:02:37', '2018-11-05 23:02:37'),
-(14177, 'Z940', 'Trasplante de riÃ±on', NULL, '2018-11-05 23:02:37', '2018-11-05 23:02:37'),
+(14177, 'Z940', 'Trasplante de riÃƒÂ±on', NULL, '2018-11-05 23:02:37', '2018-11-05 23:02:37'),
 (14178, 'Z941', 'Trasplante de corazon', NULL, '2018-11-05 23:02:37', '2018-11-05 23:02:37'),
 (14179, 'Z942', 'Trasplante de pulmon', NULL, '2018-11-05 23:02:37', '2018-11-05 23:02:37'),
 (14180, 'Z943', 'Trasplante de corazon y pulmones', NULL, '2018-11-05 23:02:37', '2018-11-05 23:02:37'),
@@ -14365,7 +14379,7 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (14225, 'Z998', 'Dependencia de otras maquinas y dispositivos capacitantes', NULL, '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
 (14226, 'Z999', 'Dependencia de maquina y dispositivo capacitante', ' no especificada', '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
 (14227, '|I1', 'Enfermedades infecciosas intestinales', NULL, '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
-(14228, '|I10', 'Fiebres virales trasmitidas por artropodos y fiebres virales hemorrÃ¡gicas', NULL, '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
+(14228, '|I10', 'Fiebres virales trasmitidas por artropodos y fiebres virales hemorrÃƒÂ¡gicas', NULL, '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
 (14229, '|I11', 'Infecciones virales caracterizadas por lesiones de la piel y de las membranas mucosas', NULL, '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
 (14230, '|I12', 'Hepatitis viral', NULL, '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
 (14231, '|I13', 'Enfermedad por virus de la inmunodeficiencia humana (HIV)', NULL, '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
@@ -14386,70 +14400,70 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (14246, '|I8', 'Rickettsiosis', NULL, '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
 (14247, '|I9', 'Infecciones virales del sistema nervioso central', NULL, '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
 (14248, '|II1', 'Tumores malignos de labio de la cavidad bucal y de la faringe', NULL, '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
-(14249, '|II10', 'Tumores malignos de las vÃ­as urinarias', NULL, '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
+(14249, '|II10', 'Tumores malignos de las vÃƒÂ­as urinarias', NULL, '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
 (14250, '|II11', 'Tumores malignos del ojo del encefalo y de otras partes del sistema nervioso', NULL, '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
-(14251, '|II12', 'Tumores malignos de la glÃ¡ndula tiroides y de otras glÃ¡ndulas endocrinas', NULL, '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
+(14251, '|II12', 'Tumores malignos de la glÃƒÂ¡ndula tiroides y de otras glÃƒÂ¡ndulas endocrinas', NULL, '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
 (14252, '|II13', 'Tumores malignos de sitios mal definidos secundarios y de sitios no especificados', NULL, '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
-(14253, '|II14', 'Tumores malignos del tejido linfÃ¡tico', ' de los organos hematopoyeticos y de tejidos afines', '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
-(14254, '|II15', 'Tumores malignos(primarios) de sitios mÃºltiples independientes', NULL, '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
+(14253, '|II14', 'Tumores malignos del tejido linfÃƒÂ¡tico', ' de los organos hematopoyeticos y de tejidos afines', '2018-11-05 23:02:39', '2018-11-05 23:02:39'),
+(14254, '|II15', 'Tumores malignos(primarios) de sitios mÃƒÂºltiples independientes', NULL, '2018-11-05 23:02:39', '2018-11-05 23:02:39');
+INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
 (14255, '|II16', 'Tumores (neoplasias) in situ', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14256, '|II17', 'Tumores (neoplasias) benignos', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14257, '|II18', 'Tumores (neoplasias) de comportamiento incierto o desconocido', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
-(14258, '|II2', 'Tumores malignos de los organos digestivos', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40');
-INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `updated_at`) VALUES
-(14259, '|II3', 'Tumores malignos de los organos respiratorios e intratorÃ¡cicos', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
-(14260, '|II4', 'Tumores malignos de los huesos y de los cartÃ­lagos articulares', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
+(14258, '|II2', 'Tumores malignos de los organos digestivos', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
+(14259, '|II3', 'Tumores malignos de los organos respiratorios e intratorÃƒÂ¡cicos', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
+(14260, '|II4', 'Tumores malignos de los huesos y de los cartÃƒÂ­lagos articulares', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14261, '|II5', 'Melanoma y otros tumores malignos de la piel', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14262, '|II6', 'Tumores malignos de los tejidos mesoteliales y de los tejidos blandos', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14263, '|II7', 'Tumor maligno de mama', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14264, '|II8', 'Tumores malignos de los organos genitales femeninos', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14265, '|II9', 'Tumores malignos de los organos genitales masculinos', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14266, '|III1', 'Anemias nutricionales', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
-(14267, '|III2', 'Anemias hemolÃ­ticas', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
-(14268, '|III3', 'Anemias aplÃ¡sticas y otras anemias', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
-(14269, '|III4', 'Defectos de la coagulacion', ' pÃºrpura y otras afecciones hemorrÃ¡gicas', '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
+(14267, '|III2', 'Anemias hemolÃƒÂ­ticas', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
+(14268, '|III3', 'Anemias aplÃƒÂ¡sticas y otras anemias', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
+(14269, '|III4', 'Defectos de la coagulacion', ' pÃƒÂºrpura y otras afecciones hemorrÃƒÂ¡gicas', '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14270, '|III5', 'Otras enfermedades de la sangre y de los organos hematopoyeticos', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14271, '|III6', 'Ciertos trastornos que afectan el mecanismo de la inmunidad', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
-(14272, '|IV1', 'Trastornos de la glÃ¡ndula tiroides', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
+(14272, '|IV1', 'Trastornos de la glÃƒÂ¡ndula tiroides', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14273, '|IV2', 'Diabetes mellitus', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
-(14274, '|IV3', 'Otros trastornos de la regulacion de la glucosa y de la secrecion interna del pÃ¡ncreas', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
-(14275, '|IV4', 'Trastornos de otras glÃ¡ndulas endocrinas.', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
+(14274, '|IV3', 'Otros trastornos de la regulacion de la glucosa y de la secrecion interna del pÃƒÂ¡ncreas', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
+(14275, '|IV4', 'Trastornos de otras glÃƒÂ¡ndulas endocrinas.', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14276, '|IV5', 'Desnutricion', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14277, '|IV6', 'Otras deficiencias nutricionales', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14278, '|IV7', 'Obesidad y otros tipo de hiperalimentacion', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14279, '|IV8', 'Trastornos metabolicos', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
-(14280, '|IX1', 'Fiebre reumÃ¡tica aguda', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
+(14280, '|IX1', 'Fiebre reumÃƒÂ¡tica aguda', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14281, '|IX10', 'Otros trastornos y los no especificados del sistema circulatorio', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
-(14282, '|IX2', 'Enfermedades cardÃ­acas reumÃ¡ticas cronicas', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
+(14282, '|IX2', 'Enfermedades cardÃƒÂ­acas reumÃƒÂ¡ticas cronicas', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14283, '|IX3', 'Enfermedades hipertensivas', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14284, '|IX4', 'Enfermedades isquemicas del corazon', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14285, '|IX5', 'Enfermedad cardiopulmonar y enfermedades de la circulacion pulmonar', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14286, '|IX6', 'Otras formas de enfermedad del corazon', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14287, '|IX7', 'Enfermedades cerebrovasculares', NULL, '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
 (14288, '|IX8', 'Enfermedades de las arterias', ' de las arteriales y de los vasos capilares', '2018-11-05 23:02:40', '2018-11-05 23:02:40'),
-(14289, '|IX9', 'Enfermedades de las venas y de los vasos y ganglios linfÃ¡ticos', ' no clasificados en otra parte', '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
-(14290, '|V1', 'Trastornos mentales orgÃ¡nicos', ' incluidos los trastornos sintomÃ¡ticos', '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
+(14289, '|IX9', 'Enfermedades de las venas y de los vasos y ganglios linfÃƒÂ¡ticos', ' no clasificados en otra parte', '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
+(14290, '|V1', 'Trastornos mentales orgÃƒÂ¡nicos', ' incluidos los trastornos sintomÃƒÂ¡ticos', '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
 (14291, '|V10', 'Trastorno mental no especificado', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
-(14292, '|v2', 'Esquizofrenia', 'trastornos esquizotÃ­picos y trastornos delirantes', '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
+(14292, '|v2', 'Esquizofrenia', 'trastornos esquizotÃƒÂ­picos y trastornos delirantes', '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
 (14293, '|V3', 'Trastornos del humor (afectivos)', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
 (14294, '|V4', 'Trastornos neuroticos', ' trastornos relacionados con el stress y trastornos somatomorfos', '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
-(14295, '|V5', 'SÃ­ndromes del comportamiento asociados con alteraciones fisiologicas y factores fÃ­sicos', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
+(14295, '|V5', 'SÃƒÂ­ndromes del comportamiento asociados con alteraciones fisiologicas y factores fÃƒÂ­sicos', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
 (14296, '|V6', 'Trastornos de la personalidad y del comportamiento en adultos', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
 (14297, '|V7', 'Retraso mental', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
 (14298, '|V8', 'Trastornos del desarrollo psicologico', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
-(14299, '|V9', 'Trastornos emocionales y del comportamiento que aparecen habitualmente en la niÃ±ez u en la adolescencia', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
+(14299, '|V9', 'Trastornos emocionales y del comportamiento que aparecen habitualmente en la niÃƒÂ±ez u en la adolescencia', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
 (14300, '|VI1', 'Enfermedades inflamatorias del sistema nervioso central', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
-(14301, '|VI10', 'ParÃ¡lisis cerebral y otros sÃ­ndromes paralÃ­ticos', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
+(14301, '|VI10', 'ParÃƒÂ¡lisis cerebral y otros sÃƒÂ­ndromes paralÃƒÂ­ticos', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
 (14302, '|VI11', 'Otros trastornos del sistema nervioso', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
 (14303, '|VI2', 'Atrofias sistemicas que afectan principalmente el sistema nervioso central', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
 (14304, '|VI3', 'Trastornos extrapiramidales y del movimiento', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
 (14305, '|VI4', 'Otras enfermedades degenerativas del sistema nervioso', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
 (14306, '|VI5', 'Enfermedades desmielinizantes del sistema nervioso central', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
-(14307, '|VI6', 'Trastornos episodicos y paroxÃ­stico', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
-(14308, '|VI7', 'Trastorno de los nervios', 'de las raÃ­ces y de los plexos nerviosos', '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
-(14309, '|VI8', 'PolineuropatÃ­as y otros trastornos del sistema nervioso periferico', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
+(14307, '|VI6', 'Trastornos episodicos y paroxÃƒÂ­stico', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
+(14308, '|VI7', 'Trastorno de los nervios', 'de las raÃƒÂ­ces y de los plexos nerviosos', '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
+(14309, '|VI8', 'PolineuropatÃƒÂ­as y otros trastornos del sistema nervioso periferico', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
 (14310, '|VI9', 'Enfermedades musculares y de la union neuromuscular', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
-(14311, '|VII1', 'Trastornos del pÃ¡rpado', ' aparato lagrimal y orbita', '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
+(14311, '|VII1', 'Trastornos del pÃƒÂ¡rpado', ' aparato lagrimal y orbita', '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
 (14312, '|VII10', 'Alteracion de la vision y ceguera', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
 (14313, '|VII11', 'Otros trastornos del ojo y sus anexos', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
 (14314, '|VII2', 'Trastornos de la conjuntiva', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
@@ -14458,23 +14472,23 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (14317, '|VII5', 'Trastornos de la coroides y retina', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
 (14318, '|VII6', 'Glaucoma', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
 (14319, '|VII7', 'Trastornos del cuerpo vitreo y del globo ocular', NULL, '2018-11-05 23:02:41', '2018-11-05 23:02:41'),
-(14320, '|VII8', 'Trastornos del nervio optico y de las vÃ­as opticas', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
-(14321, '|VII9', 'Trastornos de los mÃºsculos oculares del movimiento binocular de la acomodacion y de la refraccion', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
-(14322, '|VIII1', 'Enfermedades del oÃ­do externo', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
-(14323, '|VIII2', 'Enfermedades del oÃ­do medio y de la mastoides', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
-(14324, '|VIII3', 'Enfermedades del oÃ­do interno', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
-(14325, '|VIII4', 'Otros trastornos del oÃ­do', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
-(14326, '|X1', 'Infecciones agudas de las vÃ­as respiratorias superiores', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
+(14320, '|VII8', 'Trastornos del nervio optico y de las vÃƒÂ­as opticas', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
+(14321, '|VII9', 'Trastornos de los mÃƒÂºsculos oculares del movimiento binocular de la acomodacion y de la refraccion', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
+(14322, '|VIII1', 'Enfermedades del oÃƒÂ­do externo', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
+(14323, '|VIII2', 'Enfermedades del oÃƒÂ­do medio y de la mastoides', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
+(14324, '|VIII3', 'Enfermedades del oÃƒÂ­do interno', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
+(14325, '|VIII4', 'Otros trastornos del oÃƒÂ­do', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
+(14326, '|X1', 'Infecciones agudas de las vÃƒÂ­as respiratorias superiores', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
 (14327, '|X10', 'Otras enfermedades del sistema respiratorio', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
-(14328, '|X2', 'Influenza (gripe) y neumonÃ­a', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
-(14329, '|X3', 'Otras infecciones agudas de las vÃ­as respiratorias inferiores', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
-(14330, '|X4', 'Otras enfermedades de las vÃ­as respiratorias superiores', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
-(14331, '|X5', 'Enfermedades cronicas de las vÃ­as respiratorias inferiores', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
+(14328, '|X2', 'Influenza (gripe) y neumonÃƒÂ­a', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
+(14329, '|X3', 'Otras infecciones agudas de las vÃƒÂ­as respiratorias inferiores', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
+(14330, '|X4', 'Otras enfermedades de las vÃƒÂ­as respiratorias superiores', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
+(14331, '|X5', 'Enfermedades cronicas de las vÃƒÂ­as respiratorias inferiores', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
 (14332, '|X6', 'Enfermedades del pulmon debida a agentes externos', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
 (14333, '|X7', 'Otras enfermedades respiratorias que afectan principalmente al intersticio', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
-(14334, '|X8', 'Afecciones supurativas y necroticas de las vÃ­as respiratorias inferiores', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
+(14334, '|X8', 'Afecciones supurativas y necroticas de las vÃƒÂ­as respiratorias inferiores', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
 (14335, '|X9', 'Otras enfermedades de la pleura', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
-(14336, '|XI1', 'Enfermedades de la cavidad bucal de las glÃ¡ndulas salivales y de los maxilares', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
+(14336, '|XI1', 'Enfermedades de la cavidad bucal de las glÃƒÂ¡ndulas salivales y de los maxilares', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
 (14337, '|XI10', 'Otras enfermedades del sistema digestivo', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
 (14338, '|XI2', 'Enfermedades del esofago', ' del estomago y del duodeno', '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
 (14339, '|XI3', 'Enfermedades del apendice', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
@@ -14482,28 +14496,28 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (14341, '|XI5', 'Enteritis y colitis no infecciosa', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
 (14342, '|XI6', 'Otras enfermedades de los intestinos', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
 (14343, '|XI7', 'Enfermedades del peritoneo', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
-(14344, '|XI8', 'Enfermedades del hÃ­gado', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
-(14345, '|XI9', 'Trastornos de la vesÃ­cula biliar', ' de las vÃ­as biliares del pÃ¡ncreas', '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
-(14346, '|XII1', 'Infecciones de la piel y del tejido subcutÃ¡neo', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
+(14344, '|XI8', 'Enfermedades del hÃƒÂ­gado', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
+(14345, '|XI9', 'Trastornos de la vesÃƒÂ­cula biliar', ' de las vÃƒÂ­as biliares del pÃƒÂ¡ncreas', '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
+(14346, '|XII1', 'Infecciones de la piel y del tejido subcutÃƒÂ¡neo', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
 (14347, '|XII2', 'Dermatitis y eczema', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
 (14348, '|XII3', 'Trastornos papuloescamosos', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
 (14349, '|XII4', 'Urticaria y eritema', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
-(14350, '|XII5', 'Trastornos de la piel y del tejido subcutÃ¡neo relacionados con radiacion', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
+(14350, '|XII5', 'Trastornos de la piel y del tejido subcutÃƒÂ¡neo relacionados con radiacion', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
 (14351, '|XII6', 'Trastornos de las faneras', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
-(14352, '|XII7', 'Otros trastornos de la piel y del tejido subcutÃ¡neo', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
-(14353, '|XIII1', 'ArtropatÃ­as infecciosas', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
+(14352, '|XII7', 'Otros trastornos de la piel y del tejido subcutÃƒÂ¡neo', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
+(14353, '|XIII1', 'ArtropatÃƒÂ­as infecciosas', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
 (14354, '|XIII10', 'Otros trastornos de los tejidos blandos', NULL, '2018-11-05 23:02:42', '2018-11-05 23:02:42'),
 (14355, '|XIII11', 'Trastornos de la densidad y de la estructura oseas', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
-(14356, '|XIII12', 'Otras osteopatÃ­as', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
-(14357, '|XIII13', 'CondropatÃ­as', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
+(14356, '|XIII12', 'Otras osteopatÃƒÂ­as', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
+(14357, '|XIII13', 'CondropatÃƒÂ­as', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14358, '|XIII14', 'Otros trastornos del sistema osteomuscular y del tejido conjuntivo', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14359, '|XIII2', 'Artrosis', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14360, '|XIII3', 'Otros trastornos articulares', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14361, '|XIII4', 'Trastornos sistemicos del tejido conjuntivo', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
-(14362, '|XIII5', 'DorsopatÃ­as deformantes', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
-(14363, '|XIII6', 'EspondilopatÃ­as', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
+(14362, '|XIII5', 'DorsopatÃƒÂ­as deformantes', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
+(14363, '|XIII6', 'EspondilopatÃƒÂ­as', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14364, '|XIII7', 'Otras dorsopatias', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
-(14365, '|XIII8', 'Trastornos de los mÃºsculos', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
+(14365, '|XIII8', 'Trastornos de los mÃƒÂºsculos', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14366, '|XIII9', 'Trastornos de los tendones y de la sinovial', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14367, '|XIV1', 'Enfermedades glomerulares', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14368, '|XIV10', 'Trastornos no inflamatorios de los organos pelvicos femeninos', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
@@ -14511,32 +14525,32 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (14370, '|XIV2', 'Enfermedad renal tubulointersticial', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14371, '|XIV3', 'Insuficiencia renal', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14372, '|XIV4', 'Litiasis urinaria', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
-(14373, '|XIV5', 'Otros trastornos del riÃ±on y del ureter', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
+(14373, '|XIV5', 'Otros trastornos del riÃƒÂ±on y del ureter', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14374, '|XIV6', 'Otras enfermedades del sistema urinario', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14375, '|XIV7', 'Enfermedades de los organos genitales masculinos', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14376, '|XIV8', 'Trastornos de la mama', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14377, '|XIV9', 'Enfermedades inflamatorias de los organos pelvicos femeninos', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14378, '|XIX1', 'Traumatismo de la cabeza', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14379, '|XIX10', 'Traumatismos del tobillo y del pie', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
-(14380, '|XIX11', 'Traumatismos que afectan mÃºltiples regiones del cuerpo', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
+(14380, '|XIX11', 'Traumatismos que afectan mÃƒÂºltiples regiones del cuerpo', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14381, '|XIX12', 'Traumatismos de parte no especificada del tronco', ' miembro o region del cuerpo', '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
-(14382, '|XIX13', 'Efectos de cuerpos extraÃ±os que penetran por orificios naturales', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
+(14382, '|XIX13', 'Efectos de cuerpos extraÃƒÂ±os que penetran por orificios naturales', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14383, '|XIX14', 'Quemaduras y corrosiones de la superficie externa del cuerpo', ' especificadas por sitio', '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14384, '|XIX15', 'Quemaduras y corrosiones limitadas al ojo y organos internos', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
-(14385, '|XIX16', 'Quemaduras y corrosiones de mÃºltiples regiones del cuerpo y las no especificadas', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
+(14385, '|XIX16', 'Quemaduras y corrosiones de mÃƒÂºltiples regiones del cuerpo y las no especificadas', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14386, '|XIX17', 'Congelamiento', NULL, '2018-11-05 23:02:43', '2018-11-05 23:02:43'),
 (14387, '|XIX18', 'Envenenamiento por drogas', ' medicamentos y sustancias biologicas', '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14388, '|XIX19', 'Efectos toxicos de sustancias de procedencia principalmente no medicinal', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14389, '|XIX2', 'Traumatismos del cuello', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14390, '|XIX20', 'Otros efectos y los no especificados de causas externas', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14391, '|XIX21', 'Algunas complicaciones precoces de traumatismos', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
-(14392, '|XIX22', 'Complicaciones de la atencion medica y quirÃºrgica', ' no clasificadas en otra parte', '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
+(14392, '|XIX22', 'Complicaciones de la atencion medica y quirÃƒÂºrgica', ' no clasificadas en otra parte', '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14393, '|XIX23', 'Secuela de traumatismos', ' de envenenamientos y de otras consecuencia de causa externa', '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14394, '|XIX3', 'Traumatismos del torax', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14395, '|XIX4', 'Traumatismos del abdomen', ' de la region lumbosacra de la columna lumbar y de la pelvis', '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14396, '|XIX5', 'Traumatismos del hombro y del brazo', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14397, '|XIX6', 'Traumatismos del antebrazo y del codo', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
-(14398, '|XIX7', 'Traumatismos de la muÃ±eca y de la mano', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
+(14398, '|XIX7', 'Traumatismos de la muÃƒÂ±eca y de la mano', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14399, '|XIX8', 'Traumatismos de la cadera y del muslo', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14400, '|XIX9', 'Traumatismos de la rodilla y de la pierna', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14401, '|XV1', 'Embarazo terminado en aborto', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
@@ -14548,19 +14562,19 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (14407, '|XV7', 'Complicaciones principalmente relacionadas con el puerperio', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14408, '|XV8', 'Otras afecciones obstetricas no clasificadas en otra parte', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14409, '|XVI1', 'Feto y recien nacido afectados por factores maternos y por complicaciones del embarazo trabajo de parto y del parto', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
-(14410, '|XVI10', 'Otros trastornos originados en el perÃ­odo perinatal', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
+(14410, '|XVI10', 'Otros trastornos originados en el perÃƒÂ­odo perinatal', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14411, '|XVI2', 'Trastornos relacionados con la duracion de la gestacion y el crecimiento fetal', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14412, '|XVI3', 'Traumatismo del nacimiento', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
-(14413, '|XVI4', 'Trastornos respiratorios y cardiovasculares especÃ­ficos del perÃ­odo perinatal', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
-(14414, '|XVI5', 'Infecciones especÃ­ficas del perÃ­odo perinatral', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
-(14415, '|XVI6', 'Trastornos hemorrÃ¡gicos y hematologicos del feto y del recien nacido', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
-(14416, '|XVI7', 'Trastornos endocrinos y metabolicos transitorios especÃ­ficos del feto y del recien nacido', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
+(14413, '|XVI4', 'Trastornos respiratorios y cardiovasculares especÃƒÂ­ficos del perÃƒÂ­odo perinatal', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
+(14414, '|XVI5', 'Infecciones especÃƒÂ­ficas del perÃƒÂ­odo perinatral', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
+(14415, '|XVI6', 'Trastornos hemorrÃƒÂ¡gicos y hematologicos del feto y del recien nacido', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
+(14416, '|XVI7', 'Trastornos endocrinos y metabolicos transitorios especÃƒÂ­ficos del feto y del recien nacido', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14417, '|XVI8', 'Trastornos del sistema digestivo del feto y del recien nacido', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14418, '|XVI9', 'Afecciones asociadas con la regulacion tegumentaria y la temperatura del feto y del recien nacido', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14419, '|XVII1', 'Malfomaciones congenitas del sistema nervioso', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14420, '|XVII10', 'Otras malformaciones congenitas', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
-(14421, '|XVII11', 'AnomalÃ­as cromosomicas no clasificadas en otra parte', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
-(14422, '|XVII2', 'Malformaciones congenitas del ojo', ' del oÃ­do de la cara y del cuello', '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
+(14421, '|XVII11', 'AnomalÃƒÂ­as cromosomicas no clasificadas en otra parte', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
+(14422, '|XVII2', 'Malformaciones congenitas del ojo', ' del oÃƒÂ­do de la cara y del cuello', '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14423, '|XVII3', 'Malformaciones congenitas del sistema circulatorio', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14424, '|XVII4', 'Malformaciones congenitas del sistema respiratorio', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
 (14425, '|XVII5', 'Fisura del paladar y labio leporino', NULL, '2018-11-05 23:02:44', '2018-11-05 23:02:44'),
@@ -14568,32 +14582,32 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (14427, '|XVII7', 'Malformaciones congenitas de los organos genitales', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
 (14428, '|XVII8', 'Malformaciones congenitas del sistema urinario', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
 (14429, '|XVII9', 'Malformaciones y deformidades congenitas del sistema osteomuscular', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
-(14430, '|XVIII1', 'SÃ­ntomas y signos que involucran los sistemas circulatorios y respiratorios', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
+(14430, '|XVIII1', 'SÃƒÂ­ntomas y signos que involucran los sistemas circulatorios y respiratorios', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
 (14431, '|XVIII10', 'Hallazgos anormales en el examen de orina sin diagnostico', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
-(14432, '|XVIII11', 'Hallazgos anormales en el examen de otros lÃ­quidos sustancias y tejidos corporales sin diagnostico', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
-(14433, '|XVIII12', 'Hallazgos anormales en diagnostico por imÃ¡genes y en estudios funcionales', ' sin diagnostico', '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
-(14434, '|XVIII2', 'SÃ­ntomas y signos que involucran el sistema digestivo y el abdomen', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
-(14435, '|XVIII3', 'SÃ­ntomas y signos que involucran la piel y el tejido subcutÃ¡neo', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
-(14436, '|XVIII4', 'SÃ­ntomas y signos que involucran los sistemas nervioso y osteomuscular', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
-(14437, '|XVIII5', 'SÃ­ntomas y signos que involucran el sistema urinario', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
-(14438, '|XVIII6', 'SÃ­ntomas y signos que involucran el conocimiento la percepcion', ' el estado emocional y la conducta', '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
-(14439, '|XVIII7', 'SÃ­ntomas y signos que involucran el habla y la voz', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
-(14440, '|XVIII8', 'SÃ­ntomas y signos generales', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
+(14432, '|XVIII11', 'Hallazgos anormales en el examen de otros lÃƒÂ­quidos sustancias y tejidos corporales sin diagnostico', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
+(14433, '|XVIII12', 'Hallazgos anormales en diagnostico por imÃƒÂ¡genes y en estudios funcionales', ' sin diagnostico', '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
+(14434, '|XVIII2', 'SÃƒÂ­ntomas y signos que involucran el sistema digestivo y el abdomen', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
+(14435, '|XVIII3', 'SÃƒÂ­ntomas y signos que involucran la piel y el tejido subcutÃƒÂ¡neo', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
+(14436, '|XVIII4', 'SÃƒÂ­ntomas y signos que involucran los sistemas nervioso y osteomuscular', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
+(14437, '|XVIII5', 'SÃƒÂ­ntomas y signos que involucran el sistema urinario', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
+(14438, '|XVIII6', 'SÃƒÂ­ntomas y signos que involucran el conocimiento la percepcion', ' el estado emocional y la conducta', '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
+(14439, '|XVIII7', 'SÃƒÂ­ntomas y signos que involucran el habla y la voz', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
+(14440, '|XVIII8', 'SÃƒÂ­ntomas y signos generales', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
 (14441, '|XVIII9', 'Hallazgos anormales en el examen de sangre sin diagnostico', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
 (14442, '|XX1', 'Peaton lesionado en accidente de transporte', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
 (14443, '|XX10', 'Accidentes de transporte por agua', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
 (14444, '|XX11', 'Accidentes de transporte aereo y espacial', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
 (14445, '|XX12', 'Otros accidentes de transporte y los no especificados', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
-(14446, '|XX13', 'Otras causas externas de traumatismos accidentales CaÃ­das', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
-(14447, '|XX14', 'Exposicion a fuerzas mecÃ¡nicas inanimadas', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
-(14448, '|XX15', 'Exposicion a fuerzas mecÃ¡nicas animadas', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
+(14446, '|XX13', 'Otras causas externas de traumatismos accidentales CaÃƒÂ­das', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
+(14447, '|XX14', 'Exposicion a fuerzas mecÃƒÂ¡nicas inanimadas', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
+(14448, '|XX15', 'Exposicion a fuerzas mecÃƒÂ¡nicas animadas', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
 (14449, '|XX16', 'Ahogamiento y sumersion accidentales', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
 (14450, '|XX17', 'Otros accidentes que obstruyen la respiracion', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
 (14451, '|XX18', 'Exposicion a la corriente electrica radiacion y temperatura y presion del aire ambientales extremas', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
 (14452, '|XX19', 'Exposicion al fuego humo y llamas', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
 (14453, '|XX2', 'Ciclista lesionado en accidente de transporte', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
 (14454, '|XX20', 'Contacto con calor y sustancias calientes', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
-(14455, '|XX21', 'Contacto traumÃ¡tico con animales y plantas venenosas', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
+(14455, '|XX21', 'Contacto traumÃƒÂ¡tico con animales y plantas venenosas', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
 (14456, '|XX22', 'Exposicion a fuerzas de la naturaleza', NULL, '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
 (14457, '|XX23', 'Envenenamiento accidental por', ' y exposicion a sustancias nocivas', '2018-11-05 23:02:45', '2018-11-05 23:02:45'),
 (14458, '|XX24', 'Exceso de esfuerzo', ' viajes y privacion', '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
@@ -14604,25 +14618,40 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 (14463, '|XX29', 'Intervencion legal y operaciones de guerra', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
 (14464, '|XX3', 'Motociclista lesionado en accidente de transporte', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
 (14465, '|XX30', 'Drogas medicamentos y sustancias biologicas causantes de efectos adversos en su uso terapeutico', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
-(14466, '|XX31', 'Incidentes ocurridos al paciente durante la atencion medica y quirÃºrgica', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
+(14466, '|XX31', 'Incidentes ocurridos al paciente durante la atencion medica y quirÃƒÂºrgica', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
 (14467, '|XX32', 'Dispositivos medicos de diagnostico y de uso terapeutico asociados con incidentes adversos', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
-(14468, '|XX33', 'Procedimientos quirÃºrgicos y otros procedimientos medicos como causa de reaccion anormal del paciente o complicacion posterior', ' sin mencion de incidente en el momento de efectuar el procedimiento', '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
+(14468, '|XX33', 'Procedimientos quirÃƒÂºrgicos y otros procedimientos medicos como causa de reaccion anormal del paciente o complicacion posterior', ' sin mencion de incidente en el momento de efectuar el procedimiento', '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
 (14469, '|XX34', 'Secuelas de causas externas de morbilidad y mortalidad', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
 (14470, '|XX35', 'Factores suplementarios relacionados con causas de morbilidad y de mortalidad clasificadas en otra parte', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
-(14471, '|XX4', 'Ocupante de vehÃ­culo de motor de tres ruedas lesionado en accidente de transporte', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
+(14471, '|XX4', 'Ocupante de vehÃƒÂ­culo de motor de tres ruedas lesionado en accidente de transporte', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
 (14472, '|XX5', 'Ocupante de automovil lesionado en accidente de transporte', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
 (14473, '|XX6', 'Ocupante de camioneta o furgoneta lesionado en accidente de transporte', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
-(14474, '|XX7', 'Ocupante de vehÃ­culo de transporte pesado lesionado en accidente de transporte', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
-(14475, '|XX8', 'Ocupante de autobÃºs lesionado en accidente de transporte', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
+(14474, '|XX7', 'Ocupante de vehÃƒÂ­culo de transporte pesado lesionado en accidente de transporte', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
+(14475, '|XX8', 'Ocupante de autobÃƒÂºs lesionado en accidente de transporte', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
 (14476, '|XX9', 'Otros accidentes de transporte terrestre', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
-(14477, '|XXI1', 'Personas en contacto con los servicios de salud para investigacion o exÃ¡menes', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
+(14477, '|XXI1', 'Personas en contacto con los servicios de salud para investigacion o exÃƒÂ¡menes', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
 (14478, '|XXI2', 'Personas con riesgos potenciales para su salud', ' relacionados con enfermedades transmisibles', '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
 (14479, '|XXI3', 'Personas en contacto con los servicios de salud en circunstancias relacionadas con la reproduccion', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
-(14480, '|XXI4', 'Personas en contacto con los servicios de salud para procedimientos especÃ­ficos y cuidados de salud', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
+(14480, '|XXI4', 'Personas en contacto con los servicios de salud para procedimientos especÃƒÂ­ficos y cuidados de salud', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
 (14481, '|XXI5', 'Personas con riesgos potenciales para su salud', ' relacionados con circunstancias economicas y psicosociales', '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
 (14482, '|XXI6', 'Personas en contacto con los servicios de salud por otras circunstancias', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
 (14483, '|XXI7', 'Personas con riesgos potenciales para su salud relacionados con su historia familiar y personal y algunas condiciones que influyen en su estado de salud', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46'),
 (14484, '|XXII', 'Codigos para situaciones especiales', NULL, '2018-11-05 23:02:46', '2018-11-05 23:02:46');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cita_medica`
+--
+
+CREATE TABLE `cita_medica` (
+  `id` int(4) NOT NULL,
+  `horacita` time NOT NULL,
+  `diacita` date NOT NULL,
+  `asuntocita` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `estado` varchar(15) CHARACTER SET utf32 COLLATE utf32_unicode_ci NOT NULL,
+  `fk_paciente` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -14633,6 +14662,8 @@ INSERT INTO `cie` (`id`, `codigo`, `descripcion`, `campo`, `created_at`, `update
 CREATE TABLE `consulta` (
   `id` int(3) NOT NULL,
   `motivo_consulta` varchar(250) NOT NULL,
+  `fecha_consulta` date NOT NULL,
+  `hora_consulta` time NOT NULL,
   `observaciones` varchar(250) NOT NULL,
   `pk_id_examen` int(11) DEFAULT NULL,
   `pk_id_paciente` int(11) NOT NULL,
@@ -14641,29 +14672,13 @@ CREATE TABLE `consulta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELACIONES PARA LA TABLA `consulta`:
---   `pk_id_examen`
---       `examen_fisico` -> `id_examen`
---
-
---
 -- Volcado de datos para la tabla `consulta`
 --
 
-INSERT INTO `consulta` (`id`, `motivo_consulta`, `observaciones`, `pk_id_examen`, `pk_id_paciente`, `created_at`, `updated_at`) VALUES
-(1, 'motivo', 'observo', NULL, 2, '2018-12-04 20:10:23', '2018-12-04 20:10:23'),
-(3, 'rty', 'werwer', NULL, 2, '2018-12-04 20:21:32', '2018-12-04 20:21:32'),
-(23, 'uyu', 'yuy', NULL, 2, '2018-12-04 20:34:54', '2018-12-04 20:34:54'),
-(46, 'tyt', 'tytyerer', NULL, 1, '2018-12-04 21:27:45', '2018-12-04 21:27:45'),
-(47, 'tyt', 'tytyerer', NULL, 1, '2018-12-04 21:28:12', '2018-12-04 21:28:12'),
-(48, 'tyt', 'tytyerer', NULL, 1, '2018-12-04 21:28:39', '2018-12-04 21:28:39'),
-(49, 'tyt', 'tytyerer', NULL, 1, '2018-12-04 21:32:19', '2018-12-04 21:32:19'),
-(50, 'motivation', 'observation', NULL, 1, '2018-12-04 21:33:12', '2018-12-04 21:33:12'),
-(51, 'motivation', 'observation', NULL, 1, '2018-12-04 21:37:58', '2018-12-04 21:37:58'),
-(52, 'motivation', 'observation', NULL, 1, '2018-12-04 21:38:24', '2018-12-04 21:38:24'),
-(53, 'motivation', 'observation', NULL, 1, '2018-12-04 21:41:53', '2018-12-04 21:41:53'),
-(54, 'motivation', 'observation', NULL, 1, '2018-12-04 21:41:59', '2018-12-04 21:41:59'),
-(55, 'motivation', 'observation', NULL, 1, '2018-12-04 22:03:59', '2018-12-04 22:03:59');
+INSERT INTO `consulta` (`id`, `motivo_consulta`, `fecha_consulta`, `hora_consulta`, `observaciones`, `pk_id_examen`, `pk_id_paciente`, `created_at`, `updated_at`) VALUES
+(113, 'dsd', '2019-01-10', '00:00:00', 'fdf', NULL, 46, '2019-01-10 16:55:58', '2019-01-10 16:49:57'),
+(114, 'fg', '2019-01-10', '15:54:00', 'erer', NULL, 46, '2019-01-10 20:54:40', '2019-01-10 20:54:40'),
+(115, 'fg', '2019-01-10', '15:57:00', 'erer', NULL, 46, '2019-01-10 20:57:22', '2019-01-10 20:57:22');
 
 -- --------------------------------------------------------
 
@@ -14672,7 +14687,7 @@ INSERT INTO `consulta` (`id`, `motivo_consulta`, `observaciones`, `pk_id_examen`
 --
 
 CREATE TABLE `diagnostico` (
-  `id_diagnostico` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `indicaciones` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `pk_id_consulta` int(11) NOT NULL,
   `pk_tipo_diagnostico` int(11) NOT NULL,
@@ -14680,14 +14695,11 @@ CREATE TABLE `diagnostico` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELACIONES PARA LA TABLA `diagnostico`:
---   `pk_tipo_diagnostico`
---       `tipo_diagnostico` -> `id_tipo_diagnostico`
---   `pk_cie`
---       `cie` -> `id`
---   `pk_id_consulta`
---       `consulta` -> `id`
+-- Volcado de datos para la tabla `diagnostico`
 --
+
+INSERT INTO `diagnostico` (`id`, `indicaciones`, `pk_id_consulta`, `pk_tipo_diagnostico`, `pk_cie`) VALUES
+(49, 'sdfsdf', 113, 2, 4);
 
 -- --------------------------------------------------------
 
@@ -14705,10 +14717,6 @@ CREATE TABLE `examen_fisico` (
   `pk_id_paciente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- RELACIONES PARA LA TABLA `examen_fisico`:
---
-
 -- --------------------------------------------------------
 
 --
@@ -14716,23 +14724,30 @@ CREATE TABLE `examen_fisico` (
 --
 
 CREATE TABLE `farmacia` (
-  `id_farmacia` int(11) NOT NULL,
-  `codigo` varchar(10) NOT NULL,
+  `id` int(11) NOT NULL,
+  `codigo` varchar(10) DEFAULT NULL,
   `nombre` varchar(20) NOT NULL,
-  `concentracion` varchar(10) NOT NULL,
+  `concentracion` varchar(20) NOT NULL,
+  `cantidad` int(3) NOT NULL,
+  `estado` tinyint(1) NOT NULL,
   `fecha_ingreso` date NOT NULL,
-  `fecha_reposicion` date NOT NULL,
-  `fk_tipo_medicamento` int(11) NOT NULL,
-  `fk_sucursal` int(11) NOT NULL
+  `fecha_reposicion` date DEFAULT NULL,
+  `fk_tipo_medicamento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELACIONES PARA LA TABLA `farmacia`:
---   `fk_tipo_medicamento`
---       `tipo_medicamento` -> `id_tipo_medicamento`
---   `fk_sucursal`
---       `sucursal` -> `id_sucursal`
+-- Volcado de datos para la tabla `farmacia`
 --
+
+INSERT INTO `farmacia` (`id`, `codigo`, `nombre`, `concentracion`, `cantidad`, `estado`, `fecha_ingreso`, `fecha_reposicion`, `fk_tipo_medicamento`) VALUES
+(1, NULL, 'Duo-Pas', '30gr', 40, 0, '2018-12-11', '2018-12-13', 5),
+(2, NULL, 'Duo-Pas', '50gr', 2, 0, '2018-12-11', '2019-07-18', 5),
+(3, NULL, 'Funda agua caliente', '1 litro', 0, 0, '2018-12-13', '2018-12-12', 17),
+(4, NULL, 'Ibuprofeno60', '30gr', 2, 1, '2018-12-19', NULL, 2),
+(5, NULL, 'SAL ANDREWS', '100mg', 37, 1, '2018-12-11', '2018-12-20', 6),
+(6, NULL, 'Antiax', '10g', 60, 1, '2018-12-12', '2018-12-20', 4),
+(7, NULL, 'Antiax', '1000mg', 56, 1, '2018-12-12', NULL, 4),
+(8, NULL, 'Lamoderm', '100gr', 1, 1, '2018-12-01', NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -14745,10 +14760,6 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- RELACIONES PARA LA TABLA `migrations`:
---
 
 --
 -- Volcado de datos para la tabla `migrations`
@@ -14768,9 +14779,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `pacientes` (
   `id` int(11) NOT NULL,
   `nombres` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `apellidos` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `apellido1` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `apellido2` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `CI` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fecha_nacimiento` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fecha_nacimiento` date DEFAULT NULL,
   `lugar_nacimiento` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `edad` int(3) DEFAULT NULL,
   `profesion` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -14788,29 +14800,20 @@ CREATE TABLE `pacientes` (
   `pk_genero` int(11) NOT NULL,
   `pk_nivel_instruccion` int(11) NOT NULL,
   `pk_discapacidad` int(11) NOT NULL,
+  `pk_sucursal` int(11) NOT NULL,
+  `area` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `puesto` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- RELACIONES PARA LA TABLA `pacientes`:
---   `pk_estado_civil`
---       `tipo_estado_civil` -> `id`
---   `pk_genero`
---       `tipo_genero` -> `id`
---   `pk_nivel_instruccion`
---       `tipo_instruccion` -> `id`
---   `pk_discapacidad`
---       `tipo_discapacidad` -> `id`
---
-
---
 -- Volcado de datos para la tabla `pacientes`
 --
 
-INSERT INTO `pacientes` (`id`, `nombres`, `apellidos`, `CI`, `fecha_nacimiento`, `lugar_nacimiento`, `edad`, `profesion`, `ocupacion`, `direccion`, `telf1`, `telf2`, `contacto`, `telf3`, `telf4`, `discapacidad`, `carnet`, `porcentaje`, `pk_estado_civil`, `pk_genero`, `pk_nivel_instruccion`, `pk_discapacidad`, `created_at`, `updated_at`) VALUES
-(1, 'Jazmin', 'Villamarin', '1721089645', '2/3/18', 'Quito', 15, 'no se', 'ninguna', 'wewew', 3010856, 3010856, 'Diana Sarango', 3010856, NULL, 0, '1721089645', 5, 3, 3, 5, 4, NULL, NULL),
-(2, 'Benito', 'Juarez', '1234567890', '6/5/1995', 'ju', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 3, 3, 6, 1, NULL, NULL);
+INSERT INTO `pacientes` (`id`, `nombres`, `apellido1`, `apellido2`, `CI`, `fecha_nacimiento`, `lugar_nacimiento`, `edad`, `profesion`, `ocupacion`, `direccion`, `telf1`, `telf2`, `contacto`, `telf3`, `telf4`, `discapacidad`, `carnet`, `porcentaje`, `pk_estado_civil`, `pk_genero`, `pk_nivel_instruccion`, `pk_discapacidad`, `pk_sucursal`, `area`, `puesto`, `created_at`, `updated_at`) VALUES
+(45, 'a', 'b', 'c', NULL, '2019-01-07', NULL, 0, NULL, NULL, NULL, NULL, NULL, 'io', NULL, NULL, 0, NULL, NULL, 1, 1, 1, 1, 1, NULL, NULL, NULL, NULL),
+(46, 'fgh', 'fgh', 'fgh', '1214354345', '1960-06-07', 'fgh', 58, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 1, 2, 1, 1, 1, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -14822,10 +14825,6 @@ CREATE TABLE `parroquia` (
   `id` int(11) NOT NULL,
   `descripcion` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- RELACIONES PARA LA TABLA `parroquia`:
---
 
 -- --------------------------------------------------------
 
@@ -14839,10 +14838,6 @@ CREATE TABLE `password_resets` (
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- RELACIONES PARA LA TABLA `password_resets`:
---
-
 -- --------------------------------------------------------
 
 --
@@ -14850,7 +14845,7 @@ CREATE TABLE `password_resets` (
 --
 
 CREATE TABLE `procedimiento_medico` (
-  `id_procedimiento` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `diagnostico` varchar(250) NOT NULL,
   `pk_paciente` int(11) NOT NULL,
@@ -14861,16 +14856,15 @@ CREATE TABLE `procedimiento_medico` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELACIONES PARA LA TABLA `procedimiento_medico`:
---   `pk_tipo_sano`
---       `tipo_sano` -> `id_sano`
---   `pk_vigilancia`
---       `tipo_vigilancia_salud` -> `id_tipo_vigilancia`
---   `pk_morbilidad`
---       `tipo_morbilidad` -> `id_morbilidad`
---   `pk_atendido_por`
---       `atendido_por` -> `id_atendido_por`
+-- Volcado de datos para la tabla `procedimiento_medico`
 --
+
+INSERT INTO `procedimiento_medico` (`id`, `fecha`, `diagnostico`, `pk_paciente`, `pk_tipo_sano`, `pk_morbilidad`, `pk_vigilancia`, `pk_atendido_por`) VALUES
+(76, '2019-01-09', '1', 45, 1, 1, 1, 2),
+(77, '2019-01-09', '2', 45, 1, 1, 1, 2),
+(78, '2019-01-08', '3', 45, 1, 1, 1, 2),
+(79, '2019-01-08', '4', 45, 1, 1, 1, 2),
+(80, '2019-01-10', '5', 46, 1, 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -14883,10 +14877,6 @@ CREATE TABLE `provincia` (
   `descripcion` varchar(15) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- RELACIONES PARA LA TABLA `provincia`:
---
-
 -- --------------------------------------------------------
 
 --
@@ -14894,13 +14884,28 @@ CREATE TABLE `provincia` (
 --
 
 CREATE TABLE `sucursal` (
-  `id_sucursal` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `descripcion` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELACIONES PARA LA TABLA `sucursal`:
+-- Volcado de datos para la tabla `sucursal`
 --
+
+INSERT INTO `sucursal` (`id`, `descripcion`) VALUES
+(1, 'Administración'),
+(2, 'Mega Dilipa'),
+(3, 'Villaflora'),
+(4, 'Carrión'),
+(5, 'Cotocollao'),
+(6, 'Calderón'),
+(7, 'U.Central'),
+(8, 'Tumbaco'),
+(9, 'Ambato'),
+(10, 'Ibarra'),
+(11, 'Sto Domingo 1'),
+(12, 'Sto Domingo 2'),
+(13, 'Sto Domingo 3');
 
 -- --------------------------------------------------------
 
@@ -14909,19 +14914,15 @@ CREATE TABLE `sucursal` (
 --
 
 CREATE TABLE `tipo_diagnostico` (
-  `id_tipo_diagnostico` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `descripcion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- RELACIONES PARA LA TABLA `tipo_diagnostico`:
---
 
 --
 -- Volcado de datos para la tabla `tipo_diagnostico`
 --
 
-INSERT INTO `tipo_diagnostico` (`id_tipo_diagnostico`, `descripcion`) VALUES
+INSERT INTO `tipo_diagnostico` (`id`, `descripcion`) VALUES
 (1, 'Presuntivo'),
 (2, 'Definitivo');
 
@@ -14935,10 +14936,6 @@ CREATE TABLE `tipo_discapacidad` (
   `id` int(11) NOT NULL,
   `descripcion` varchar(15) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- RELACIONES PARA LA TABLA `tipo_discapacidad`:
---
 
 --
 -- Volcado de datos para la tabla `tipo_discapacidad`
@@ -14965,10 +14962,6 @@ CREATE TABLE `tipo_estado_civil` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- RELACIONES PARA LA TABLA `tipo_estado_civil`:
---
-
---
 -- Volcado de datos para la tabla `tipo_estado_civil`
 --
 
@@ -14977,7 +14970,7 @@ INSERT INTO `tipo_estado_civil` (`id`, `descripcion`) VALUES
 (2, 'Casado/a'),
 (3, 'Divorciado'),
 (4, 'Viudo/a'),
-(5, 'Unión de hecho');
+(5, 'UniÃ³n de hech');
 
 -- --------------------------------------------------------
 
@@ -14989,10 +14982,6 @@ CREATE TABLE `tipo_genero` (
   `id` int(11) NOT NULL,
   `descripcion` varchar(10) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- RELACIONES PARA LA TABLA `tipo_genero`:
---
 
 --
 -- Volcado de datos para la tabla `tipo_genero`
@@ -15015,10 +15004,6 @@ CREATE TABLE `tipo_instruccion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- RELACIONES PARA LA TABLA `tipo_instruccion`:
---
-
---
 -- Volcado de datos para la tabla `tipo_instruccion`
 --
 
@@ -15026,7 +15011,7 @@ INSERT INTO `tipo_instruccion` (`id`, `descripcion`) VALUES
 (1, 'Primaria'),
 (2, 'Secundaria'),
 (3, 'Bachillerato'),
-(4, 'Tecnología'),
+(4, 'TecnologÃ­a'),
 (5, 'Egresado'),
 (6, 'Tercer Nivel'),
 (7, 'Cuarto Nivel'),
@@ -15039,13 +15024,25 @@ INSERT INTO `tipo_instruccion` (`id`, `descripcion`) VALUES
 --
 
 CREATE TABLE `tipo_medicamento` (
-  `id_tipo_medicamento` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `descripcion` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELACIONES PARA LA TABLA `tipo_medicamento`:
+-- Volcado de datos para la tabla `tipo_medicamento`
 --
+
+INSERT INTO `tipo_medicamento` (`id`, `descripcion`) VALUES
+(1, 'Ampollas'),
+(2, 'Tabletas'),
+(3, 'Tubo'),
+(4, 'Tab. Masticables'),
+(5, 'Capsulas'),
+(6, 'Sobres'),
+(7, 'Gotas'),
+(8, 'Frascos'),
+(17, 'Unidad'),
+(18, 'Caja100');
 
 -- --------------------------------------------------------
 
@@ -15054,13 +15051,17 @@ CREATE TABLE `tipo_medicamento` (
 --
 
 CREATE TABLE `tipo_morbilidad` (
-  `id_morbilidad` int(11) NOT NULL,
-  `descripcion` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `descripcion` varchar(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELACIONES PARA LA TABLA `tipo_morbilidad`:
+-- Volcado de datos para la tabla `tipo_morbilidad`
 --
+
+INSERT INTO `tipo_morbilidad` (`id`, `descripcion`) VALUES
+(1, 'Primera'),
+(2, 'Subsecuente');
 
 -- --------------------------------------------------------
 
@@ -15069,13 +15070,17 @@ CREATE TABLE `tipo_morbilidad` (
 --
 
 CREATE TABLE `tipo_sano` (
-  `id_sano` int(11) NOT NULL,
-  `descripcion` varchar(20) NOT NULL
+  `id` int(11) NOT NULL,
+  `descripcion` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELACIONES PARA LA TABLA `tipo_sano`:
+-- Volcado de datos para la tabla `tipo_sano`
 --
+
+INSERT INTO `tipo_sano` (`id`, `descripcion`) VALUES
+(1, 'Control Sano'),
+(2, 'Parto');
 
 -- --------------------------------------------------------
 
@@ -15084,13 +15089,18 @@ CREATE TABLE `tipo_sano` (
 --
 
 CREATE TABLE `tipo_vigilancia_salud` (
-  `id_tipo_vigilancia` int(11) NOT NULL,
-  `descripcion` varchar(10) NOT NULL
+  `id` int(11) NOT NULL,
+  `descripcion` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- RELACIONES PARA LA TABLA `tipo_vigilancia_salud`:
+-- Volcado de datos para la tabla `tipo_vigilancia_salud`
 --
+
+INSERT INTO `tipo_vigilancia_salud` (`id`, `descripcion`) VALUES
+(1, 'Preocupacional'),
+(2, 'Ocupacional'),
+(3, 'Postocupacional');
 
 -- --------------------------------------------------------
 
@@ -15109,15 +15119,11 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- RELACIONES PARA LA TABLA `users`:
---
-
---
 -- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Jazmin', 'jazminv8.95@gmail.com', '$2y$10$5xspVIBFFRvZJG0LRJ8Qa.o7q4/BaOwxGdZ6edF3MIBMIU5sYjs/q', 'PP2cx9WmsiUiy4j9sBvqXMYkrM8CdoIpaDThhe64yZpejMnSxde8ZiKEjwZv', '2018-11-05 21:58:49', '2018-11-05 21:58:49'),
+(1, 'Jazmin', 'jazminv8.95@gmail.com', '$2y$10$5xspVIBFFRvZJG0LRJ8Qa.o7q4/BaOwxGdZ6edF3MIBMIU5sYjs/q', 'vXn8X9yoXC1HUvHaBBicPBp6iEuwIfsb543CdiFxyXORHArT8MPIUtg8Ri74', '2018-11-05 21:58:49', '2018-11-05 21:58:49'),
 (2, 'Fredy', 'fcoloma@dilipa.com.ec', '$2y$10$W3scV0PcQK1xjUuYmK63U.T4M7lsogbLvZwZ6AHEUHzuAwwGKSWZi', NULL, '2018-11-05 21:58:49', '2018-11-05 21:58:49');
 
 --
@@ -15128,14 +15134,14 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 -- Indices de la tabla `atendido_por`
 --
 ALTER TABLE `atendido_por`
-  ADD PRIMARY KEY (`id_atendido_por`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `botiquin`
 --
 ALTER TABLE `botiquin`
-  ADD PRIMARY KEY (`id_botiquin`),
-  ADD KEY `pk_id_sucusal` (`pk_id_sucusal`),
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pk_id_sucusal` (`pk_id_sucursal`),
   ADD KEY `pk_farmacia` (`pk_farmacia`);
 
 --
@@ -15152,6 +15158,13 @@ ALTER TABLE `cie`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `cita_medica`
+--
+ALTER TABLE `cita_medica`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_paciente` (`fk_paciente`);
+
+--
 -- Indices de la tabla `consulta`
 --
 ALTER TABLE `consulta`
@@ -15164,10 +15177,11 @@ ALTER TABLE `consulta`
 -- Indices de la tabla `diagnostico`
 --
 ALTER TABLE `diagnostico`
-  ADD PRIMARY KEY (`id_diagnostico`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `pk_tipo_diagnostico` (`pk_tipo_diagnostico`),
   ADD KEY `pk_cie` (`pk_cie`),
-  ADD KEY `pk_id_consulta` (`pk_id_consulta`);
+  ADD KEY `pk_id_consulta` (`pk_id_consulta`),
+  ADD KEY `pk_id_consulta_2` (`pk_id_consulta`);
 
 --
 -- Indices de la tabla `examen_fisico`
@@ -15180,9 +15194,8 @@ ALTER TABLE `examen_fisico`
 -- Indices de la tabla `farmacia`
 --
 ALTER TABLE `farmacia`
-  ADD PRIMARY KEY (`id_farmacia`),
-  ADD KEY `fk_tipo_medicamento` (`fk_tipo_medicamento`),
-  ADD KEY `fk_sucursal` (`fk_sucursal`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_tipo_medicamento` (`fk_tipo_medicamento`);
 
 --
 -- Indices de la tabla `migrations`
@@ -15198,7 +15211,8 @@ ALTER TABLE `pacientes`
   ADD KEY `pk_estado_civil` (`pk_estado_civil`),
   ADD KEY `pk_genero` (`pk_genero`,`pk_nivel_instruccion`,`pk_discapacidad`),
   ADD KEY `pk_nivel_instruccion` (`pk_nivel_instruccion`),
-  ADD KEY `pk_discapacidad` (`pk_discapacidad`);
+  ADD KEY `pk_discapacidad` (`pk_discapacidad`),
+  ADD KEY `pk_sucursal` (`pk_sucursal`);
 
 --
 -- Indices de la tabla `parroquia`
@@ -15216,7 +15230,7 @@ ALTER TABLE `password_resets`
 -- Indices de la tabla `procedimiento_medico`
 --
 ALTER TABLE `procedimiento_medico`
-  ADD PRIMARY KEY (`id_procedimiento`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `pk_paciente` (`pk_paciente`),
   ADD KEY `pk_tipo_sano` (`pk_tipo_sano`),
   ADD KEY `pk_paciente_2` (`pk_paciente`,`pk_tipo_sano`,`pk_morbilidad`,`pk_vigilancia`),
@@ -15235,13 +15249,13 @@ ALTER TABLE `provincia`
 -- Indices de la tabla `sucursal`
 --
 ALTER TABLE `sucursal`
-  ADD PRIMARY KEY (`id_sucursal`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `tipo_diagnostico`
 --
 ALTER TABLE `tipo_diagnostico`
-  ADD PRIMARY KEY (`id_tipo_diagnostico`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `tipo_discapacidad`
@@ -15271,25 +15285,25 @@ ALTER TABLE `tipo_instruccion`
 -- Indices de la tabla `tipo_medicamento`
 --
 ALTER TABLE `tipo_medicamento`
-  ADD PRIMARY KEY (`id_tipo_medicamento`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `tipo_morbilidad`
 --
 ALTER TABLE `tipo_morbilidad`
-  ADD PRIMARY KEY (`id_morbilidad`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `tipo_sano`
 --
 ALTER TABLE `tipo_sano`
-  ADD PRIMARY KEY (`id_sano`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `tipo_vigilancia_salud`
 --
 ALTER TABLE `tipo_vigilancia_salud`
-  ADD PRIMARY KEY (`id_tipo_vigilancia`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `users`
@@ -15306,13 +15320,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `atendido_por`
 --
 ALTER TABLE `atendido_por`
-  MODIFY `id_atendido_por` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `botiquin`
 --
 ALTER TABLE `botiquin`
-  MODIFY `id_botiquin` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `cie`
@@ -15321,16 +15335,22 @@ ALTER TABLE `cie`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14485;
 
 --
+-- AUTO_INCREMENT de la tabla `cita_medica`
+--
+ALTER TABLE `cita_medica`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `consulta`
 --
 ALTER TABLE `consulta`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT de la tabla `diagnostico`
 --
 ALTER TABLE `diagnostico`
-  MODIFY `id_diagnostico` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de la tabla `examen_fisico`
@@ -15342,7 +15362,7 @@ ALTER TABLE `examen_fisico`
 -- AUTO_INCREMENT de la tabla `farmacia`
 --
 ALTER TABLE `farmacia`
-  MODIFY `id_farmacia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
@@ -15354,7 +15374,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `pacientes`
 --
 ALTER TABLE `pacientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `parroquia`
@@ -15366,7 +15386,7 @@ ALTER TABLE `parroquia`
 -- AUTO_INCREMENT de la tabla `procedimiento_medico`
 --
 ALTER TABLE `procedimiento_medico`
-  MODIFY `id_procedimiento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT de la tabla `provincia`
@@ -15378,13 +15398,13 @@ ALTER TABLE `provincia`
 -- AUTO_INCREMENT de la tabla `sucursal`
 --
 ALTER TABLE `sucursal`
-  MODIFY `id_sucursal` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_diagnostico`
 --
 ALTER TABLE `tipo_diagnostico`
-  MODIFY `id_tipo_diagnostico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_discapacidad`
@@ -15414,25 +15434,25 @@ ALTER TABLE `tipo_instruccion`
 -- AUTO_INCREMENT de la tabla `tipo_medicamento`
 --
 ALTER TABLE `tipo_medicamento`
-  MODIFY `id_tipo_medicamento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_morbilidad`
 --
 ALTER TABLE `tipo_morbilidad`
-  MODIFY `id_morbilidad` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_sano`
 --
 ALTER TABLE `tipo_sano`
-  MODIFY `id_sano` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_vigilancia_salud`
 --
 ALTER TABLE `tipo_vigilancia_salud`
-  MODIFY `id_tipo_vigilancia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -15448,20 +15468,27 @@ ALTER TABLE `users`
 -- Filtros para la tabla `botiquin`
 --
 ALTER TABLE `botiquin`
-  ADD CONSTRAINT `botiquin_ibfk_1` FOREIGN KEY (`pk_id_sucusal`) REFERENCES `sucursal` (`id_sucursal`),
-  ADD CONSTRAINT `botiquin_ibfk_2` FOREIGN KEY (`pk_farmacia`) REFERENCES `farmacia` (`id_farmacia`);
+  ADD CONSTRAINT `botiquin_ibfk_1` FOREIGN KEY (`pk_id_sucursal`) REFERENCES `sucursal` (`id`),
+  ADD CONSTRAINT `botiquin_ibfk_2` FOREIGN KEY (`pk_farmacia`) REFERENCES `farmacia` (`id`);
+
+--
+-- Filtros para la tabla `cita_medica`
+--
+ALTER TABLE `cita_medica`
+  ADD CONSTRAINT `cita_medica_ibfk_1` FOREIGN KEY (`fk_paciente`) REFERENCES `pacientes` (`id`);
 
 --
 -- Filtros para la tabla `consulta`
 --
 ALTER TABLE `consulta`
-  ADD CONSTRAINT `consulta_ibfk_2` FOREIGN KEY (`pk_id_examen`) REFERENCES `examen_fisico` (`id_examen`);
+  ADD CONSTRAINT `consulta_ibfk_2` FOREIGN KEY (`pk_id_examen`) REFERENCES `examen_fisico` (`id_examen`),
+  ADD CONSTRAINT `consulta_ibfk_3` FOREIGN KEY (`pk_id_paciente`) REFERENCES `pacientes` (`id`);
 
 --
 -- Filtros para la tabla `diagnostico`
 --
 ALTER TABLE `diagnostico`
-  ADD CONSTRAINT `diagnostico_ibfk_1` FOREIGN KEY (`pk_tipo_diagnostico`) REFERENCES `tipo_diagnostico` (`id_tipo_diagnostico`),
+  ADD CONSTRAINT `diagnostico_ibfk_1` FOREIGN KEY (`pk_tipo_diagnostico`) REFERENCES `tipo_diagnostico` (`id`),
   ADD CONSTRAINT `diagnostico_ibfk_2` FOREIGN KEY (`pk_cie`) REFERENCES `cie` (`id`),
   ADD CONSTRAINT `diagnostico_ibfk_3` FOREIGN KEY (`pk_id_consulta`) REFERENCES `consulta` (`id`);
 
@@ -15469,8 +15496,7 @@ ALTER TABLE `diagnostico`
 -- Filtros para la tabla `farmacia`
 --
 ALTER TABLE `farmacia`
-  ADD CONSTRAINT `farmacia_ibfk_1` FOREIGN KEY (`fk_tipo_medicamento`) REFERENCES `tipo_medicamento` (`id_tipo_medicamento`),
-  ADD CONSTRAINT `farmacia_ibfk_2` FOREIGN KEY (`fk_sucursal`) REFERENCES `sucursal` (`id_sucursal`);
+  ADD CONSTRAINT `farmacia_ibfk_1` FOREIGN KEY (`fk_tipo_medicamento`) REFERENCES `tipo_medicamento` (`id`);
 
 --
 -- Filtros para la tabla `pacientes`
@@ -15479,16 +15505,17 @@ ALTER TABLE `pacientes`
   ADD CONSTRAINT `pacientes_ibfk_1` FOREIGN KEY (`pk_estado_civil`) REFERENCES `tipo_estado_civil` (`id`),
   ADD CONSTRAINT `pacientes_ibfk_2` FOREIGN KEY (`pk_genero`) REFERENCES `tipo_genero` (`id`),
   ADD CONSTRAINT `pacientes_ibfk_3` FOREIGN KEY (`pk_nivel_instruccion`) REFERENCES `tipo_instruccion` (`id`),
-  ADD CONSTRAINT `pacientes_ibfk_4` FOREIGN KEY (`pk_discapacidad`) REFERENCES `tipo_discapacidad` (`id`);
+  ADD CONSTRAINT `pacientes_ibfk_4` FOREIGN KEY (`pk_discapacidad`) REFERENCES `tipo_discapacidad` (`id`),
+  ADD CONSTRAINT `pacientes_ibfk_5` FOREIGN KEY (`pk_sucursal`) REFERENCES `sucursal` (`id`);
 
 --
 -- Filtros para la tabla `procedimiento_medico`
 --
 ALTER TABLE `procedimiento_medico`
-  ADD CONSTRAINT `procedimiento_medico_ibfk_2` FOREIGN KEY (`pk_tipo_sano`) REFERENCES `tipo_sano` (`id_sano`),
-  ADD CONSTRAINT `procedimiento_medico_ibfk_3` FOREIGN KEY (`pk_vigilancia`) REFERENCES `tipo_vigilancia_salud` (`id_tipo_vigilancia`),
-  ADD CONSTRAINT `procedimiento_medico_ibfk_4` FOREIGN KEY (`pk_morbilidad`) REFERENCES `tipo_morbilidad` (`id_morbilidad`),
-  ADD CONSTRAINT `procedimiento_medico_ibfk_5` FOREIGN KEY (`pk_atendido_por`) REFERENCES `atendido_por` (`id_atendido_por`);
+  ADD CONSTRAINT `procedimiento_medico_ibfk_2` FOREIGN KEY (`pk_tipo_sano`) REFERENCES `tipo_sano` (`id`),
+  ADD CONSTRAINT `procedimiento_medico_ibfk_3` FOREIGN KEY (`pk_vigilancia`) REFERENCES `tipo_vigilancia_salud` (`id`),
+  ADD CONSTRAINT `procedimiento_medico_ibfk_4` FOREIGN KEY (`pk_morbilidad`) REFERENCES `tipo_morbilidad` (`id`),
+  ADD CONSTRAINT `procedimiento_medico_ibfk_5` FOREIGN KEY (`pk_atendido_por`) REFERENCES `atendido_por` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
