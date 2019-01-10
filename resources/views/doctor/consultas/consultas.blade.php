@@ -61,9 +61,10 @@
                             foreach ($cie as $cie=>$ids) {
                                 $id=$ids->id;
                                 if ($id==$id_cie){
-                                    $cies=$ids->codigo.' '.$ids->descripcion;}}
+                                    $cies=$ids->codigo.' '.$ids->descripcion;
+                                }}
                             ?>
-                            <td>{!! $cies!!}</td>
+
                         <td>
                             <a class="badge badge-tomate" href="#">
                                 <span style="font-size: 1.5em; color: #0071bd;">
