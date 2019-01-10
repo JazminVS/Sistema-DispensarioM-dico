@@ -21,8 +21,8 @@
     @if($consultas->isEmpty())
         <p>NO EXISTEN REGISTROS !!</p>
     @else
-        <table class="table table-responsive-md text-center table-bordered">
-            <thead class="thead-celeste">
+        <table class="table table-responsive-md text-center table-hover">
+            <thead class="thead-diliceleste">
             <tr>
                 <th>N°</th>
                 <th>Fecha</th>
@@ -31,6 +31,7 @@
                 <th>Motivo</th>
                 <th>Tipo de diagnóstico</th>
                 <th>Diagnóstico (CIE)</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
