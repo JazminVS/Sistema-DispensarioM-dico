@@ -138,6 +138,13 @@ body {
     background-color: #0071bd;
     border-color: #0071bd;
 }
+
+/*HEADER DE TABLAS PERSONALIZADOS*/
+.table .thead-diliceleste th {
+    color: #fff;
+    background-color: #30426a;
+    border-color: #30426a;
+}
 /**/
 /*PALETA DE COLORES
 1. #30426a
