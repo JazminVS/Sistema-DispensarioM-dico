@@ -107,6 +107,9 @@ body {
 .text-dilipa{
     color:#00447C!important;
 }
+.text-dilipa1{
+    color:#EE7401!important;
+}
 .border-dilipa {
     border-color:#00447C !important;
 }
@@ -144,6 +147,11 @@ body {
     color: #fff;
     background-color: #30426a;
     border-color: #30426a;
+}
+.table .thead-diliazul th {
+    color: #fff;
+    background-color: #0071bd;
+    border-color: #0071bd;
 }
 /**/
 /*PALETA DE COLORES

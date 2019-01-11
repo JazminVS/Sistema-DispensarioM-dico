@@ -9,26 +9,26 @@
 
     <title>Doctor</title>
 
-    <!-- Bootstrap core CSS -->
+    <!-- Bootstrap -->
     <link href="{{asset('bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- CSS creados-->
     <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
+    <!-- ... -->
     <!-- Calendario en fechas -->
     <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js" type="text/javascript"></script>
-
-
+    <!-- ... -->
     <!-- select2 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
-
     <!-- select2-bootstrap4-theme -->
     <link href="{{asset('css/select2-bootstrap4.min.css')}}" rel="stylesheet">
+    <!-- ... -->
 
-    <!--botones font-asome -->
+    <!--botones font-asweome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
+    <!-- ... -->
 
 
 </head>
@@ -127,6 +127,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="bootstrap/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 <script src="{{asset('bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('bootstrap/dist/js/bootstrap.js')}}"></script>
 <!-- Icons -->
 <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
 <script>

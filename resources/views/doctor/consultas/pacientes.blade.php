@@ -11,7 +11,7 @@
     </nav>
     <div class="form-group">
     {{Form::open(['route'=>'consultapaciente','method'=>'GET','class'=>'form-inline'])}}
-    <h5 class="text-primary col-md-4">Búsqueda de Pacientes</h5>
+    <h5 class="text-dilipa1 col-md-4">Búsqueda de Pacientes</h5>
     {{Form::text('nombre',null,['class'=>'form-control form-control-sm col-md-3','placeholder'=>'Por apellidos o nombres'])}}
     {{Form::text('cedula',null,['class'=>'form-control form-control-sm col-md-3','placeholder'=>'Por cedula'])}}
 
@@ -29,8 +29,8 @@
             @if($pacientes->isEmpty())
                 <p>No existen registros</p>
             @else
-                <table class="table table-sm">
-                    <thead class="thead-dark">
+                <table class="table table-md">
+                    <thead class="thead-diliazul">
                     <tr>
                         <th>Apellidos</th>
                         <th>Nombres</th>
@@ -44,14 +44,14 @@
                     <tbody>
                     @foreach($pacientes as $paciente)
                         <tr>
-                            <td>{!! $paciente->apellido1." ".$paciente->apellido2 !!}</td>
+                            <td >{!! $paciente->apellido1." ".$paciente->apellido2 !!}</td>
                             <td>{!! $paciente->nombres !!}</td>
                             <td>{!! $paciente->CI !!}</td>
                             <td>{!! $paciente->fecha_nacimiento!!}</td>
                             <td>{!! $paciente->lugar_nacimiento!!}</td>
                             <td>{!! $paciente->edad!!}</td>
                             <td>
-                                <a class="btn btn-diliceleste btn-xs" href="{!!action('Doctor\PacienteController@show',$paciente->id)!!}">Generar consulta</a>
+                                <a class="btn btn-dilipa btn-sm" href="{!!action('Doctor\PacienteController@show',$paciente->id)!!}">Escoger</a>
                             </td>
                         </tr>
                     @endforeach

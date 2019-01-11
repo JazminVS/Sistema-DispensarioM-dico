@@ -24,7 +24,8 @@
         <div class="row">
             <div class="col-md-6 form-group">
                 <label for="nombres" class="col-form-label">PACIENTE</label>
-                <input value="{{$paciente->id}}" name="paciente" style="display:none">
+                <input value="{{$paciente->id}}" name="idpaciente" style="display:none">
+                <input value="{{$paciente->nombres." ".$paciente->apellido1." ".$paciente->apellido2}}" name="paciente" style="display:none">
                 <input value="{{$paciente->nombres." ".$paciente->apellido1." ".$paciente->apellido2}}" class="form-control" disabled>
             </div>
             <div class="col-md-3 form-group">
@@ -40,22 +41,15 @@
                     });
                 </script>
             </div>
+
             <div class="col-md-2 form-group">
                 <label for="fecha" class="col-form-label">HORA</label>
                 <input type="text" class="form-control" id="timepicker" name="hora">
                 <script>
                     $('#timepicker').timepicker({
-                        timeFormat: 'h:mm:ss',
-                        interval: 60,
-                        minTime: '20',
-                        maxTime: '6:00pm',
-                        dynamic: true,
-                        dropdown: true,
-                        scrollbar: true,
+                        timeFormat: 'H:mm:ss',
                         uiLibrary: 'bootstrap4',
-                        onSelect: function(date) {
-                                alert(date);
-                        }
+                        mode: 'h24'
                     });
                 </script>
             </div>

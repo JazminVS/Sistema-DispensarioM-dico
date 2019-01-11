@@ -12,7 +12,7 @@
     <div class="row form-inline container">
         <div class="col-md-4 form-inline">
             <h5 class="text-primary col-md-8">Lista de Consultas</h5>
-            <a class="btn btn-sm col-md-4" href="consultapaciente" role="button" style="font-size: 1em; color: green;">
+            <a class="btn btn-sm col-md-4" href="consultapaciente" role="button" style="font-size: 1em; color: #0071bd;">
                 <i class="fas fa-plus-circle"></i>
                 Agregar
             </a>
@@ -45,26 +45,7 @@
                             <td>{!! $consulta->hora_consulta !!}</td>
                             <td>{!! $paciente->nombres.' '.$paciente->apellido1.' '.$paciente->apellido2!!}</td>
                             <td>{!! $consulta->motivo_consulta!!}</td>
-                            <?php
-                            //TIPO DE DIAGNOSTICO
-                            $id_paciente=$diagnostico->pk_tipo_diagnostico;
-                            foreach ($tipo_diagnostico as $tipo_diagnostico=>$ids) {
-                                $id=$ids->id;
-                                if ($id==$id_paciente){
-                                $tipodiagnostico=$ids->descripcion;}}
-                            ?>
 
-                            <td>{!! $tipodiagnostico!!}</td>
-
-                            <?php
-                            //TIPO DE DIAGNOSTICO
-                            $id_cie=$diagnostico->pk_cie;
-                            foreach ($cie as $cie=>$ids) {
-                                $id=$ids->id;
-                                if ($id==$id_cie){
-                                    $cies=$ids->codigo.' '.$ids->descripcion;}}
-                            ?>
-                            <td>{!! $cies!!}</td>
                         <td>
                             <a class="badge badge-tomate" href="#">
                                 <span style="font-size: 1.5em; color: #0071bd;">

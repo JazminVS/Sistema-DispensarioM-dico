@@ -20,6 +20,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "feather-icons": "^4.9.0"
+        "feather-icons": "^4.9.0",
+        "tempusdominus-bootstrap-4": "^5.1.2"
     }
 }

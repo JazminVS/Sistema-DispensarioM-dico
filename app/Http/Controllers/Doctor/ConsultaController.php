@@ -34,7 +34,8 @@ class ConsultaController extends Controller
         $hora_consulta = $request -> input('hora');
         $examen = $request -> input('examen');
         $observaciones = $request -> input('observaciones');
-        $id_paciente=$request->get('paciente');
+        $id_paciente=$request->get('idpaciente');
+        $paciente=$request->get('paciente');
 
         //$todos = $request->all();
         //ECHO $motivo,$examen,$observaciones," id: ",$id;
@@ -48,10 +49,9 @@ class ConsultaController extends Controller
                 'pk_id_paciente'=> $id_paciente,
             ]);
         $diagnosticos=TipoDiagnostico::all();
-
         $enfermedades=cie::all();
-        flash('Los datos de la consulta han sido ingresados correctamente. Por favor llene los sihuientes campos para seguir con el proceso!!');
-        return view('doctor.consultas.diagnostico', compact('id_consulta','diagnosticos', 'enfermedades','resultado'));
+        flash('Los datos de la consulta han sido ingresados correctamente. Por favor llene los siguientes campos para seguir con el proceso!!');
+        return view('doctor.consultas.diagnostico', compact('id_consulta','diagnosticos', 'enfermedades','paciente','observaciones'));
 
     }
 
@@ -61,6 +61,8 @@ class ConsultaController extends Controller
         $consulta = $request -> input('consulta');
         $diagnostico = $request->get('diagnostico');
         $enfermedad = $request->get('enfermedad');
+        $paciente=$request->get('paciente');
+        $observaciones = $request -> input('observaciones');
         //echo "tipo_diagnostico:",$diagnostico;
         DB::table('diagnostico')->insert(
             [
@@ -69,8 +71,10 @@ class ConsultaController extends Controller
                 'pk_tipo_diagnostico'=> $diagnostico,
                 'pk_cie'=>$enfermedad,
             ]);
+        $diagnosticos=TipoDiagnostico::all();
+
         flash('Transacción exitosa!!');
-        return view('doctor.consultas.resultados');
+        return view('doctor.consultas.resultados',compact('consulta','diagnostico','diagnosticos','paciente','observaciones'));
 
     }
 
