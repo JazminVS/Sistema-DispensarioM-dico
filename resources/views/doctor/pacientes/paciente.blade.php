@@ -49,6 +49,7 @@
                 <th>Cedula</th>
                 <th>Fecha de nacimiento</th>
                 <th>Lugar de nacimiento</th>
+                <th>Genero</th>
                 <th></th>
             </tr>
             </thead>
@@ -60,6 +61,11 @@
                     <td>{!! $paciente->CI !!}</td>
                     <td>{!! $paciente->fecha_nacimiento!!}</td>
                     <td>{!! $paciente->lugar_nacimiento!!}</td>
+                    @foreach ($generos as $genero)
+                        @if($genero->id == $paciente->pk_genero)
+                            <td>{!! $genero->descripcion!!}</td>
+                        @endif
+                    @endforeach
                     <td>
                         <a class="btn btn-diliazul btn-sm" href="{!!action('Doctor\PacienteController@editarpaciente',$paciente->id)!!}">Editar</a>
                         <a class="btn btn-diliceleste btn-sm" href="{{ route('pacientes.eliminar',$paciente->id)}}" onclick="return confirm('¿Seguro que deseas eliminarlo?')">Eliminar

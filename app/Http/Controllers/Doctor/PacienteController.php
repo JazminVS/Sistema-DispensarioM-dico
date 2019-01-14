@@ -9,6 +9,7 @@ use App\Modelos\Morbilidad;
 use App\Modelos\NivelInstruccion;
 use App\Modelos\Sucursal;
 use App\Modelos\TipoDiscapacidad;
+use App\Modelos\TipoInstruccion;
 use App\Modelos\TipoSano;
 use App\Modelos\VigilanciaSalud;
 use Illuminate\Contracts\Session\Session;
@@ -35,8 +36,9 @@ class PacienteController extends Controller
     {
         $pacientes = Paciente::name($request->get('nombre'))
             ->orderBy('apellido1')
-            ->paginate('4');
-        return view('doctor.pacientes.paciente', compact('pacientes'));
+            ->paginate('5');
+        $generos= Genero::all();
+        return view('doctor.pacientes.paciente', compact('pacientes','generos'));
     }
 
     public function show($id)
@@ -88,6 +90,7 @@ class PacienteController extends Controller
     }
     protected function crearpaciente(Request $request)
     {
+
         function edad($fecha_nacimiento)
         {
             $dia = date("d");
@@ -112,17 +115,19 @@ class PacienteController extends Controller
             return $edad;
         }
 
+
+
         $nombres = $request->input('nombres');
         $apellido1 = $request->input('apellido1');
         $apellido2 = $request->input('apellido2');
         $cedula = $request->input('cedula');
-        $fecha_nacimiento = $request->input('fecha_nacimiento');
+
         $lugar = $request->input('lugar');
         $profesion = $request->input('profesion');
         $ocupacion = $request->input('ocupacion');
         $direccion = $request->input('direccion');
         $telf1 = $request->input('telf1');
-        $telf2 = $request->input('telf1');
+        $telf2 = $request->input('telf2');
         $contacto = $request->input('contacto');
         $telf3 = $request->input('telf3');
         $telf4 = $request->input('telf4');
@@ -141,6 +146,7 @@ class PacienteController extends Controller
         $direccion,$telf1,$telf2,$telf3,$telf4,$contacto,$carnet,"<br>","discapacidad: ",$discapacidad,
         "estado civil: ", $estado_civil,"genero",$genero,"nivel_instruccion",$nivel,"tipo discapacidad",$tipo_discapacidad,$porcentaje;*/
         //echo $fecha_nacimiento;
+        $fecha_nacimiento = $request->input('fecha_nacimiento');
         $date = date_create($fecha_nacimiento);
         $nacimiento = date_format($date, 'Y-m-d'); //fecha de nacimiento para ingresar a base
         $edad=edad($nacimiento);
@@ -175,7 +181,6 @@ class PacienteController extends Controller
             ]);
         flash('El paciente: '.$nombres.' '.$apellido1.'. Ha sido agregado exitosamente!!');
         return redirect()->route('pacientes');
-
     }
 
     protected function actualizarpaciente(Request $request,$id_paciente)
@@ -268,20 +273,21 @@ class PacienteController extends Controller
     }
     public function descargarexcel()
     {
-        $pacientes = Paciente::all();
-        Excel::create("pacientes", function ($excel) use ($pacientes) {
-            $excel->setTitle("Title");
-            $excel->sheet("Sheet 1", function ($sheet) use ($pacientes) {
-                $sheet->fromArray($pacientes);
+        \Excel::create('listaPacientes', function($excel) {
+            $excel->sheet('listaPacientes', function($sheet) {
+                $pacientes = Paciente::all();
+                $generos = Genero::all();
+                $estados = EstadoCivil::all();
+                $instruccion= TipoInstruccion::all();
+                $sucursales= Sucursal::all();
+                $discapacidades=TipoDiscapacidad::all();
+                $sheet->loadView('doctor.pacientes.excel')->with('pacientes',$pacientes)->with('generos',$generos)
+                    ->with('estados',$estados) ->with('instruccion',$instruccion)->with('sucursales',$sucursales)
+                    ->with('discapacidades',$discapacidades);;
             });
         })->download('xls');
         return back();
     }
-
-
-
-
-
 
 
 

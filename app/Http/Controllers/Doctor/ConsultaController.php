@@ -78,5 +78,21 @@ class ConsultaController extends Controller
 
     }
 
+    public function descargarexcel()
+    {
+        \Excel::create('listaConsultas', function($excel) {
+            $excel->sheet('Consultas', function($sheet) {
+                $consultas = Consulta::all();
+                $cies=cie::all();
+                $diagnosticos=Diagnosticos::all();
+                $sheet->loadView('doctor.consultas.excel')->with('consultas',$consultas)
+                                                        ->with('cies',$cies)
+                    ->with('diagnosticos',$diagnosticos);
+                ;
+            });
+        })->download('xls');
+        return back();
+    }
+
 
 }

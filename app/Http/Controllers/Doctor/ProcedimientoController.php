@@ -62,7 +62,7 @@ class ProcedimientoController extends Controller
         Excel::create("procedimientos", function ($excel) use ($procedimientos) {
             $excel->setTitle("Title");
             $excel->sheet("Sheet 1", function ($sheet) use ($procedimientos) {
-                $sheet->fromArray($procedimientos);
+                $sheet-> loadView('doctor.pacientes.paciente')->with();
             });
         })->download('xls');
         return back();

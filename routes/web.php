@@ -19,8 +19,8 @@ Route::group(['prefix' => 'doctor'], function() {
 });
 Route::group(['prefix' => 'doctor'], function() {
     Route::get('procedimientos',  'Doctor\ProcedimientoController@index')->name('doctor.procedimientos');
-    Route::get('descargarprocedimiento',  'Doctor\ProcedimientoController@descargarexcel')->name('descargar.procedimientos');
     Route::get('descargarpacientes',  'Doctor\PacienteController@descargarexcel')->name('descargar.pacientes');
+    Route::get('descargarconsultas',  'Doctor\ConsultaController@descargarexcel')->name('descargar.consultas');
 });
 Route::group(['prefix' => 'doctor'], function() {
     Route::get('editarpaciente/{id_paciente?}',  'Doctor\PacienteController@editarpaciente')->name('doctor_editarpaciente');

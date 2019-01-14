@@ -119,7 +119,7 @@
             </div>
             <div class="col-md-4 form-group">
                 <label for="telf1" class="col-form-label">Telf. convencional</label>
-                <input type="text" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf1" name="telf1" maxlength="10">
+                <input type="text" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf1" name="telf1" maxlength="7">
                 <script>
                     var nav4 = window.Event ? true : false;
                     function aceptNum(evt){
@@ -130,7 +130,7 @@
             </div>
             <div class="col-md-4 form-group">
                 <label for="telf2" class="col-form-label">Nro. celular</label>
-                <input type="text" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf2" name="telf2" maxlength="10">
+                <input type="text" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf2" name="telf2" maxlength="8">
                 <script>
                     var nav4 = window.Event ? true : false;
                     function aceptNum(evt){
@@ -147,7 +147,7 @@
             </div>
             <div class="col-md-4 form-group">
                 <label for="telf3" class="col-form-label">Telf.convencional</label>
-                <input type="text" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf3" name="telf3" maxlength="10">
+                <input type="text" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf3" name="telf3" maxlength="7">
                 <script>
                     var nav4 = window.Event ? true : false;
                     function aceptNum(evt){
@@ -158,7 +158,7 @@
             </div>
             <div class="col-md-4 form-group">
                 <label for="telf4" class="col-form-label">Nro. celular</label>
-                <input type="text" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf4" name="telf4" maxlength="10">
+                <input type="text" onkeypress="return aceptNum(event)" onpaste="return false;" class="form-control" id="telf4" name="telf4" maxlength="8">
                 <script>
                     var nav4 = window.Event ? true : false;
                     function aceptNum(evt){

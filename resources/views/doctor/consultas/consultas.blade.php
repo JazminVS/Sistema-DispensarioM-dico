@@ -18,6 +18,11 @@
             </a>
         </div>
     </div>
+    <div>
+        <a class="btn btn-success offset-md-5" href="{{ URL::to('doctor/descargarconsultas') }}" role="button">
+            <span class="fas fa-file-excel"></span>
+        </a>
+    </div>
     @if($consultas->isEmpty())
         <p>NO EXISTEN REGISTROS !!</p>
     @else
@@ -46,21 +51,6 @@
                             <td>{!! $paciente->nombres.' '.$paciente->apellido1.' '.$paciente->apellido2!!}</td>
                             <td>{!! $consulta->motivo_consulta!!}</td>
 
-<<<<<<< HEAD
-=======
-                            <td>{!! $tipodiagnostico!!}</td>
-
-                            <?php
-                            //TIPO DE DIAGNOSTICO
-                            $id_cie=$diagnostico->pk_cie;
-                            foreach ($cie as $cie=>$ids) {
-                                $id=$ids->id;
-                                if ($id==$id_cie){
-                                    $cies=$ids->codigo.' '.$ids->descripcion;
-                                }}
-                            ?>
-
->>>>>>> 3763f62e15b6562c4c961a04956c81acd14dd63c
                         <td>
                             <a class="badge badge-tomate" href="#">
                                 <span style="font-size: 1.5em; color: #0071bd;">
